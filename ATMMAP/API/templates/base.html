@@ -1,6 +1,12 @@
 HEADER STUFF
 <br></br>
 
+{% if messages %}
+    {% for message in messages %}
+        {{message}}
+    {% endfor %}
+{% endif %}
+
 {% block content %}
 
 {% endblock %}
