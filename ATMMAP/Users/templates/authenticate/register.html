@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    {% if from.errors %}
+        <p> There has been an error with your registration attempt</p>
+    {% endif %}
+
+    <h1>Register</h1>
+
+    <br></br>
+
+    <form action="" method = POST>
+        {% csrf_token %}
+
+        {{form}}
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+{% endblock %}
