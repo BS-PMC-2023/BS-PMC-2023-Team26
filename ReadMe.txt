@@ -6,5 +6,23 @@ ReadMe
 4. Connect Mongo to Django https://www.youtube.com/watch?v=MiS6y9kffBs&t=349s
 5. React-Bootstarp documention https://react-bootstrap.github.io/getting-started/introduction/
 
+FIRST TIME RUNNING PROGRAM:
+1. open terminal
+2. type: cd .\ATMMAP\ //moves you to currect directory
+3. type: python manage.py makemigrations // makes migrations
+4. type: python manage.py migrate // migrates
+5. type: python runserver // runs server
+
+TO RUN PROGRAM:
+1. open terminal
+2. type: cd .\ATMMAP\
+3. type: python runserver
+
+ADMIN USER:
 Username: Admin
 Password: 123password
+
+Dependcies:
+Django
+React
+Python
