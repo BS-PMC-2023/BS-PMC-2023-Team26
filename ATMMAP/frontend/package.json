@@ -4,6 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js"
+  },
+  "scripts": {
     "dev": "webpack --mode development --stats-error-details",
     "build": "webpack --mode production"
   },
