@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { render } from "react-dom";
+import { createRoot } from "react-dom/client";
 import Homepage from "./Homepage";
 
 export default class App extends Component {
@@ -7,9 +7,9 @@ export default class App extends Component {
         super(props);
     }    
     render() {
-        return <Homepage />;
+        return <Homepage/>;
     }
 }
 
-const appDiv = document.getElementById("app");
-render(<App />, appDiv);
+const root = createRoot(document.getElementById("app"));
+root.render(<App />);
