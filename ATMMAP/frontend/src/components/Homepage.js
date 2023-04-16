@@ -1,7 +1,7 @@
 import Navbar from './Navbar';
 import React, { Component } from 'react';
 import '../styles/Homepage.css';
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 import LoginPage from "./LoginPage";
 import Signuppage from "./Signuppage";
 
@@ -37,8 +37,12 @@ class Home extends Component {
           <div className="col-md-6 text-center">
             <h1>Welcome to Professional Exchange</h1>
             <p>Connect with professionals in your industry</p>
+            <Link to="/login">
             <button className="btn btn-primary btn-lg">Log In</button>
+            </Link>
+            <Link to="/signup">
             <button className="btn btn-secondary btn-lg">Sign Up</button>
+            </Link>
           </div>
         </div>
       </div>
