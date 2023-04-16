@@ -1,1 +1,11 @@
-clientside/node_modules/
+# Django
+*.log
+*.pot
+*.pyc
+pycache/
+local_settings.py
+db.sqlite3
+
+# Node
+node_modules/
+build/
