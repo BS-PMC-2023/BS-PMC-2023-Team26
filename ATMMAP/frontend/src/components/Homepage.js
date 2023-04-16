@@ -38,7 +38,7 @@ class Home extends Component {
             <h1>Welcome to Professional Exchange</h1>
             <p>Connect with professionals in your industry</p>
             <button className="btn btn-primary btn-lg">Log In</button>
-            <button className="btn btn-secondary btn-lg">Sign Up</button>
+
           </div>
         </div>
       </div>
