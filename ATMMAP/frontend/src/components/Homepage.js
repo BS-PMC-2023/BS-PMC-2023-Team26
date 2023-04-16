@@ -4,7 +4,7 @@ import '../styles/Homepage.css';
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 import LoginPage from "./LoginPage";
 import Signuppage from "./Signuppage";
-
+import MapPage from "./MapPage";
 
 
 export default class Homepage extends Component {
@@ -18,6 +18,7 @@ render(){
         <Route exact path="/" Component={Home}/>
         <Route exact path="/signup" Component={Signuppage}/>
         <Route exact path="/login" Component={LoginPage}/>
+        <Route exact path="/map" Component={MapPage}/>
       </Routes>
     </BrowserRouter>
   );
@@ -39,10 +40,14 @@ class Home extends Component {
             <p>Connect with professionals in your industry</p>
             <Link to="/login">
             <button className="btn btn-primary btn-lg">Log In</button>
+<<<<<<< HEAD
             </Link>
             <Link to="/signup">
             <button className="btn btn-secondary btn-lg">Sign Up</button>
             </Link>
+=======
+
+>>>>>>> parent of 51907035 (BSPMC2326-29: Mark Create sign up button)
           </div>
         </div>
       </div>
