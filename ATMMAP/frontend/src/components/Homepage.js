@@ -45,7 +45,7 @@ class Home extends Component {
             <button className="btn btn-secondary btn-lg">Sign Up</button>
             </Link>
             <Link to="/ExchangeRate">
-            <button className="btn btn-secondary btn-lg">Sign Up</button>
+            <button className="btn btn-primary btn-lg">Exchange rate</button>
             </Link>
           </div>
         </div>
@@ -53,4 +53,4 @@ class Home extends Component {
     </div>
     );
   }
-  }
+}
