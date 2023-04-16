@@ -13,13 +13,14 @@ export default class App extends Component {
     }    
     render() {
         return(
-            
-            <Router>
-                <div>
-                    <Route exact path="/" component={Homepage} />
-                    <Route exact path="/login" component={Loginpage} />
-                </div>
-            </Router>
+            <div>
+                
+                {/* HELLO */}
+                {/* <Navbar/> */}
+                <Homepage/>
+                {/* <Signuppage/> */}
+                {/* <Loginpage/> */}
+            </div>
         );
         //  return <p1>Hey </p1>
         //  return <Loginpage />;

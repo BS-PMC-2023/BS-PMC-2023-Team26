@@ -1,11 +1,10 @@
 import Navbar from './Navbar';
 import React from 'react';
 import '../styles/Homepage.css';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+
 
 const Homepage = () => {
   return (
-    <Router>
     <div className="home-page">
       <Navbar />
       <div className="container">
@@ -19,7 +18,6 @@ const Homepage = () => {
         </div>
       </div>
     </div>
-    </Router>
   );
 };
 
