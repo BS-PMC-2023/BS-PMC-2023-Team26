@@ -1,30 +1,35 @@
-import React from 'react';
-import '../styles/Signuppage.css';
+import React, { useState } from 'react';
 
-const Signuppage = () => {
+const SignUp = () => {
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    // handle form submission
+  }
+
   return (
-    <div className="signup-container">
-      <form>
-        <div className="mb-3">
-          <label htmlFor="fullname" className="form-label">Full Name</label>
-          <input type="text" className="form-control" id="fullname" />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="email" className="form-label">Email address</label>
-          <input type="email" className="form-control" id="email" aria-describedby="emailHelp" />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="password" className="form-label">Password</label>
-          <input type="password" className="form-control" id="password" />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="confirm-password" className="form-label">Confirm Password</label>
-          <input type="password" className="form-control" id="confirm-password" />
-        </div>
-        <button type="submit" className="btn btn-primary">Sign up</button>
-      </form>
-    </div>
+    <form onSubmit={handleSignUp}>
+      <label>
+        Username:
+        <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+      </label>
+      <br />
+      <label>
+        Email:
+        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+      </label>
+      <br />
+      <label>
+        Password:
+        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+      </label>
+      <br />
+      <button type="submit">Sign Up</button>
+    </form>
   );
 };
 
-export default Signuppage;
+export default SignUp;
