@@ -1,11 +1,36 @@
 import Navbar from './Navbar';
-import React from 'react';
+import React, { Component } from 'react';
 import '../styles/Homepage.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import LoginPage from "./LoginPage";
+import Signuppage from "./Signuppage";
 
 
-const Homepage = () => {
+
+export default class Homepage extends Component {
+constructor(props){
+  super(props);
+}
+render(){
   return (
-    <div className="home-page">
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" Component={Home}/>
+        <Route exact path="/signup" Component={Signuppage}/>
+        <Route exact path="/login" Component={LoginPage}/>
+      </Routes>
+    </BrowserRouter>
+  );
+}
+}
+
+class Home extends Component {
+  constructor(props){
+    super(props);
+  }
+  render(){
+    return (
+      <div className="home-page">
       <Navbar />
       <div className="container">
         <div className="row justify-content-center">
@@ -18,8 +43,6 @@ const Homepage = () => {
         </div>
       </div>
     </div>
-  );
-};
-
-export default Homepage;
-
+    );
+  }
+  }
