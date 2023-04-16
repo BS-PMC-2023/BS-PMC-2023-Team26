@@ -1,0 +1,22 @@
+.home-page {
+  background-color: #f26322;
+  color: #ffffff;
+  height: 100vh;
+}
+
+.container {
+  margin-top: 100px;
+}
+
+.btn-primary {
+  background-color: #ffffff;
+  color: #f26322;
+  border: none;
+  margin-right: 10px;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+}
