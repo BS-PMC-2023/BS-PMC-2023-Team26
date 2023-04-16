@@ -4,7 +4,7 @@ import '../styles/Homepage.css';
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 import LoginPage from "./LoginPage";
 import Signuppage from "./Signuppage";
-
+import MapPage from "./MapPage";
 
 
 export default class Homepage extends Component {
@@ -18,6 +18,7 @@ render(){
         <Route exact path="/" Component={Home}/>
         <Route exact path="/signup" Component={Signuppage}/>
         <Route exact path="/login" Component={LoginPage}/>
+        <Route exact path="/map" Component={MapPage}/>
       </Routes>
     </BrowserRouter>
   );
