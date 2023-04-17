@@ -1,22 +1,70 @@
-import React from 'react';
-import '../styles/Loginpage.css';
+import React, { useState, useEffect } from 'react';
+import { Navigate } from 'react-router-dom';
 
-const Loginpage = () => {
+function LoginPage() {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [csrfToken, setCsrfToken] = useState('');
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    fetch('/Users/get-csrf-token/')
+      .then(response => response.json())
+      .then(data => {
+        setCsrfToken(data.csrfToken);
+      })
+      .catch(error => {
+        console.error('Failed to fetch CSRF token:', error);
+      });
+  }, []);
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append('username', username);
+    formData.append('password', password);
+    formData.append('csrfmiddlewaretoken', csrfToken);
+
+    fetch('/Users/signin/', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'X-CSRFToken': csrfToken,
+      },
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        } else {
+          setLoggedIn(true); 
+        }
+      })
+      .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+      });
+  }
+
+  if (loggedIn) {
+    return <Navigate to="/" />; 
+  }
+
   return (
-    <div className="login-container">
-      <form>
-        <div className="mb-3">
-          <label htmlFor="email" className="form-label">Email address</label>
-          <input type="email" className="form-control" id="email" aria-describedby="emailHelp" />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="password" className="form-label">Password</label>
-          <input type="password" className="form-control" id="password" />
-        </div>
-        <button type="submit" className="btn btn-primary">Log in</button>
-      </form>
-    </div>
+    <form onSubmit={handleLogin}>
+      <input type="hidden" name="csrfmiddlewaretoken" value={csrfToken} />
+      <label>
+        Username:
+        <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+      </label>
+      <br />
+      <label>
+        Password:
+        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+      </label>
+      <br />
+      <button type="submit">Login</button>
+    </form>
   );
-};
+}
 
-export default Loginpage;
+export default LoginPage;
