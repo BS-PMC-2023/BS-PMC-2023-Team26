@@ -1,6 +1,6 @@
-import { Route } from 'react-router-dom';
-import './ExchangeRatePage.css';
-
+import { useState } from 'react';
+import React from 'react';
+import '../styles/ExchangeRatePage.css'
 function ExchangeRatePage() {
   const [fromCurrency, setFromCurrency] = useState('USD');
   const [toCurrency, setToCurrency] = useState('EUR');
@@ -8,14 +8,17 @@ function ExchangeRatePage() {
   const [convertedAmount, setConvertedAmount] = useState(null);
 
   const handleFromCurrencyChange = (event) => {
+    console.log('got into handle amount change click');
     setFromCurrency(event.target.value);
   };
 
   const handleToCurrencyChange = (event) => {
+    console.log('got into handle amount change click');
     setToCurrency(event.target.value);
   };
 
   const handleAmountChange = (event) => {
+    console.log('got into handle amount change click');
     setAmount(event.target.value);
   };
 
@@ -39,12 +42,13 @@ function ExchangeRatePage() {
   };
 
   const handleConvertClick = () => {
-    convertCurrency();
+    console.log('got into handle amount change click');
+     convertCurrency();
   };
 
   return (
     <div>
-      <h1>Currency Exchange Rate</h1>
+      <h1 className='h1'>Currency Exchange Rate</h1>
       <div>
         <label>
           From Currency:

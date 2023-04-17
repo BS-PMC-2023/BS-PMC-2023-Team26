@@ -16,7 +16,8 @@
 }
 
 .btn-secondary {
-  background-color: transparent;
-  color: #ffffff;
-  border: 2px solid #ffffff;
+  background-color: #f9a602;
+  color: #f26322;
+  border: none;
+  margin-right: 10px;
 }

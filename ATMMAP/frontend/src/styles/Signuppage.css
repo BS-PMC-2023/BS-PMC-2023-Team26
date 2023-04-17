@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: #f7bc50;
+  background-color: #f9a602;
 }
 
 .signup-form {
@@ -56,6 +56,7 @@
   transition: background-color 0.2s ease;
 }
 
-.signup-form button:hover {
-  background-color: #1a1a1a;
+.btn-primary:hover {
+  background-color: #ffbb33;
+  border-color: #ffbb33;
 }
