@@ -2,7 +2,7 @@ import Navbar from './Navbar';
 import React, { Component } from 'react';
 import '../styles/Homepage.css';
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
-import LoginPage from "./LoginPage";
+import LoginPage from "./Loginpage";
 import SignUp from "./Signuppage";
 import MapPage from "./MapPage";
 
@@ -17,7 +17,7 @@ render(){
       <Routes>
         <Route exact path="/" Component={Home}/>
         <Route exact path="/signup" Component={SignUp}/>
-        <Route exact path="/login" Component={LoginPage}/>
+        <Route exact path="/signin" Component={LoginPage}/>
         <Route exact path="/map" Component={MapPage}/>
       </Routes>
     </BrowserRouter>

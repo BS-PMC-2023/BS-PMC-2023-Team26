@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Navigate } from 'react-router-dom';
 
 const SignUp = () => {
   const [username, setUsername] = useState('');
@@ -6,6 +7,7 @@ const SignUp = () => {
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
   const [csrfToken, setCsrfToken] = useState('');
+  const [isSuccess, setIsSuccess] = useState(false);
 
   useEffect(() => {
     fetch('/Users/get-csrf-token/')
@@ -36,16 +38,20 @@ const SignUp = () => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
+        setIsSuccess(true);
         return response.json();
       })
       .then(data => {
         console.log(data);
-        // handle success response
       })
       .catch(error => {
         console.error('There was a problem with the fetch operation:', error);
         // handle error
       });
+  }
+
+  if (isSuccess) {
+    return <Navigate to="/" replace />;
   }
 
   return (
@@ -71,7 +77,7 @@ const SignUp = () => {
         <input type="password" value={password2} onChange={(e) => setPassword2(e.target.value)} />
       </label>
       <br />
-      <button type="submit" to="/">Sign Up</button>
+      <button type="submit">Sign Up</button>
     </form>
   );
 };
