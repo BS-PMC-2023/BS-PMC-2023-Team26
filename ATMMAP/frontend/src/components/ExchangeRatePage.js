@@ -57,6 +57,7 @@ function ExchangeRatePage() {
             <option value="EUR">EUR</option>
             <option value="GBP">GBP</option>
             <option value="CAD">CAD</option>
+            <option value="NIS">NIS</option>
           </select>
         </label>
       </div>
@@ -68,6 +69,7 @@ function ExchangeRatePage() {
             <option value="EUR">EUR</option>
             <option value="GBP">GBP</option>
             <option value="CAD">CAD</option>
+            <option value="NIS">NIS</option>
           </select>
         </label>
       </div>
