@@ -13,7 +13,7 @@ const Loginpage = () => {
           <label htmlFor="password" className="form-label">Password</label>
           <input type="password" className="form-control" id="password" />
         </div>
-        <button type="submit" className="btn btn-primary">Log in</button>
+        <button type="submit" className="btn btn-primary">Log-in</button>
       </form>
     </div>
   );
