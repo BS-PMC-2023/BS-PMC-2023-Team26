@@ -5,10 +5,7 @@ import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 import LoginPage from "./Loginpage";
 import SignUp from "./Signuppage";
 import MapPage from "./MapPage";
-import LoginPage from "./LoginPage";
-import Signuppage from "./Signuppage";
 import ExchangeRatePage from './ExchangeRatePage';
-
 
 export default class Homepage extends Component {
 constructor(props){
