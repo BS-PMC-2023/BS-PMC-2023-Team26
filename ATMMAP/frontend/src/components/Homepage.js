@@ -5,6 +5,9 @@ import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 import LoginPage from "./Loginpage";
 import SignUp from "./Signuppage";
 import MapPage from "./MapPage";
+import LoginPage from "./LoginPage";
+import Signuppage from "./Signuppage";
+import ExchangeRatePage from './ExchangeRatePage';
 
 
 export default class Homepage extends Component {
@@ -19,6 +22,8 @@ render(){
         <Route exact path="/signup" Component={SignUp}/>
         <Route exact path="/signin" Component={LoginPage}/>
         <Route exact path="/map" Component={MapPage}/>
+        <Route exact path="/ExchangeRate" Component={ExchangeRatePage}/>
+
       </Routes>
     </BrowserRouter>
   );
@@ -45,10 +50,13 @@ class Home extends Component {
             <button className="btn btn-secondary btn-lg">Sign Up</button>
             </Link>
 
+            <Link to="/ExchangeRate">
+            <button className="btn btn-primary btn-lg">Exchange rate</button>
+            </Link>
           </div>
         </div>
       </div>
     </div>
     );
   }
-  }
+}
