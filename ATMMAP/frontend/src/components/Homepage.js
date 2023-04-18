@@ -38,7 +38,7 @@ class Home extends Component {
           <div className="col-md-6 text-center">
             <h1>Welcome to Professional Exchange</h1>
             <p>Connect with professionals in your industry</p>
-            <Link to="/login">
+            <Link to="/signin">
             <button className="btn btn-primary btn-lg">Log In</button>
             </Link>
             <Link to="/signup">
