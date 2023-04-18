@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { Navigate } from 'react-router-dom';
+import '../styles/Signuppage.css';
+import Navbar from './Navbar';
 
 const SignUp = () => {
   const [username, setUsername] = useState('');
@@ -6,6 +9,7 @@ const SignUp = () => {
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
   const [csrfToken, setCsrfToken] = useState('');
+  const [isSuccess, setIsSuccess] = useState(false);
 
   useEffect(() => {
     fetch('/Users/get-csrf-token/')
@@ -36,11 +40,11 @@ const SignUp = () => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
+        setIsSuccess(true);
         return response.json();
       })
       .then(data => {
         console.log(data);
-        // handle success response
       })
       .catch(error => {
         console.error('There was a problem with the fetch operation:', error);
@@ -48,31 +52,35 @@ const SignUp = () => {
       });
   }
 
+  if (isSuccess) {
+    return <Navigate to="/" replace />;
+  }
+
   return (
-    <form onSubmit={handleSignUp}>
-      <input type="hidden" name="csrfmiddlewaretoken" value={csrfToken} />
-      <label>
-        Username:
-        <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-      </label>
-      <br />
-      <label>
-        Email:
-        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-      </label>
-      <br />
-      <label>
-        Password:
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      </label>
-      <br />
-      <label>
-        Confirm Password:
-        <input type="password" value={password2} onChange={(e) => setPassword2(e.target.value)} />
-      </label>
-      <br />
-      <button type="submit" to="/">Sign Up</button>
-    </form>
+    <>
+      <Navbar />
+      <form className="signup-form" onSubmit={handleSignUp}>
+        <h2>Create an Account</h2>
+        <input type="hidden" name="csrfmiddlewaretoken" value={csrfToken} />
+        <label className="signup-label">
+          Username:
+          <input className="signup-input" type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+        </label>
+        <label className="signup-label">
+          Email:
+          <input className="signup-input" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+        </label>
+        <label className="signup-label">
+          Password:
+          <input className="signup-input" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        </label>
+        <label className="signup-label">
+          Confirm Password:
+          <input className="signup-input" type="password" value={password2} onChange={(e) => setPassword2(e.target.value)} />
+        </label>
+        <button className="signup-button" type="submit">Sign Up</button>
+      </form>
+    </>
   );
 };
 

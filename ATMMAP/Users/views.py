@@ -1,9 +1,9 @@
 import json
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
-from django.contrib import messages
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.http import JsonResponse
+
 TEMPLATE_DIRS = (
     'ATMMAP/frontend'
 )
@@ -13,18 +13,15 @@ from django.middleware.csrf import get_token
 def get_csrf_token(request):
     return JsonResponse({'csrfToken': get_token(request)})
 
-def login_user(request):
-    if request.method == "POST":
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username = username, password = password)
-        if user is not None:
+def signin(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, request.POST)
+        if form.is_valid():
+            user = form.get_user()
             login(request, user)
-            return redirect('home')
-        else: 
-            messages.success(request, ("There was an error login in"))
-            return redirect('login')
-    return render(request, 'authenticate/login.html', {})
+            return JsonResponse({'success': True})
+        else:
+            return JsonResponse({'success': False, 'error': 'Invalid username or password'})
 
 def signup(request):
     if request.method == 'POST':

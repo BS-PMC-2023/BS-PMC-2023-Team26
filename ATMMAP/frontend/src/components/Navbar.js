@@ -1,15 +1,20 @@
 import React from 'react';
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+
 
 function MyNavBar() {
   return (
     <Navbar bg="light" expand="lg">
-      <Navbar.Brand href="#home">My Website</Navbar.Brand>
+      <Navbar.Brand className="navbar-brand" as={Link} to="/">ATM MAP</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="#home">Home</Nav.Link>
-          <Nav.Link href="#link">Link</Nav.Link>
+          <Nav.Link as={Link} to="/">Home</Nav.Link>
+          <Nav.Link as={Link} to="/map">Map</Nav.Link>
+          <Nav.Link href="#currency">Currency</Nav.Link>
+          <Nav.Link href="#account">Account Details</Nav.Link>
+         
           <NavDropdown title="Dropdown" id="basic-nav-dropdown">
             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
@@ -18,6 +23,7 @@ function MyNavBar() {
             <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
           </NavDropdown>
         </Nav>
+        <Button variant="outline-dark" href="#login">Log In</Button>
       </Navbar.Collapse>
     </Navbar>
   );
