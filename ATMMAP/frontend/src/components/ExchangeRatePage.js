@@ -1,6 +1,7 @@
-import { useState } from 'react';
-import React from 'react';
-import '../styles/ExchangeRatePage.css'
+import React, { useState } from 'react';
+import '../styles/ExchangeRatePage.css';
+
+
 function ExchangeRatePage() {
   const [fromCurrency, setFromCurrency] = useState('USD');
   const [toCurrency, setToCurrency] = useState('EUR');
@@ -8,22 +9,19 @@ function ExchangeRatePage() {
   const [convertedAmount, setConvertedAmount] = useState(null);
 
   const handleFromCurrencyChange = (event) => {
-    console.log('got into handle amount change click');
     setFromCurrency(event.target.value);
   };
 
   const handleToCurrencyChange = (event) => {
-    console.log('got into handle amount change click');
     setToCurrency(event.target.value);
   };
 
   const handleAmountChange = (event) => {
-    console.log('got into handle amount change click');
     setAmount(event.target.value);
   };
 
   const convertCurrency = () => {
-    fetch(`https://api.exchangeratesapi.io/latest?base=${fromCurrency}&symbols=${toCurrency}`)
+    fetch(`https://api.exchangerate.host/latest?base=${fromCurrency}&symbols=${toCurrency}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`Request failed with status ${response.status}`);
@@ -42,8 +40,7 @@ function ExchangeRatePage() {
   };
 
   const handleConvertClick = () => {
-    console.log('got into handle amount change click');
-     convertCurrency();
+    convertCurrency();
   };
 
   return (
@@ -57,7 +54,7 @@ function ExchangeRatePage() {
             <option value="EUR">EUR</option>
             <option value="GBP">GBP</option>
             <option value="CAD">CAD</option>
-            <option value="NIS">NIS</option>
+            <option value="ILS">ILS</option>
           </select>
         </label>
       </div>
@@ -69,7 +66,7 @@ function ExchangeRatePage() {
             <option value="EUR">EUR</option>
             <option value="GBP">GBP</option>
             <option value="CAD">CAD</option>
-            <option value="NIS">NIS</option>
+            <option value="ILS">ILS</option>
           </select>
         </label>
       </div>
