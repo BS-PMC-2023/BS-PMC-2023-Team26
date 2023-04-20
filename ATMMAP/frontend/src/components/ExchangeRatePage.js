@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/ExchangeRatePage.css';
+import Navbar from './Navbar';
 
 
 function ExchangeRatePage() {
@@ -45,8 +46,10 @@ function ExchangeRatePage() {
 
   return (
     <div>
-      <h1 className='h1'>Currency Exchange Rate</h1>
-      <div>
+      <Navbar />
+    <div className="ExchangeRatePage">
+      <h1>Currency Exchange Rate</h1>
+      <div className="form-group">
         <label>
           From Currency:
           <select value={fromCurrency} onChange={handleFromCurrencyChange}>
@@ -57,8 +60,6 @@ function ExchangeRatePage() {
             <option value="ILS">ILS</option>
           </select>
         </label>
-      </div>
-      <div>
         <label>
           To Currency:
           <select value={toCurrency} onChange={handleToCurrencyChange}>
@@ -69,16 +70,12 @@ function ExchangeRatePage() {
             <option value="ILS">ILS</option>
           </select>
         </label>
-      </div>
-      <div>
         <label>
           Amount:
           <input type="number" value={amount} onChange={handleAmountChange} />
         </label>
       </div>
-      <div>
-        <button onClick={handleConvertClick}>Convert</button>
-      </div>
+      <button onClick={handleConvertClick}>Convert</button>
       <div>
         {convertedAmount && (
           <p>
@@ -86,6 +83,7 @@ function ExchangeRatePage() {
           </p>
         )}
       </div>
+    </div>
     </div>
   );
 }
