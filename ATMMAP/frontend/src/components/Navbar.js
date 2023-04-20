@@ -12,7 +12,7 @@ function MyNavBar() {
         <Nav className="mr-auto">
           <Nav.Link as={Link} to="/">Home</Nav.Link>
           <Nav.Link as={Link} to="/map">Map</Nav.Link>
-          <Nav.Link href="#currency">Currency</Nav.Link>
+          <Nav.Link as={Link} to="/ExchangeRate">Exchange rate</Nav.Link>
           <Nav.Link href="#account">Account Details</Nav.Link>
          
           <NavDropdown title="Dropdown" id="basic-nav-dropdown">

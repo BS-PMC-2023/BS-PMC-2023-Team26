@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/ExchangeRatePage.css';
+import Navbar from './Navbar';
 
 
 function ExchangeRatePage() {
@@ -44,6 +45,8 @@ function ExchangeRatePage() {
   };
 
   return (
+    <>
+    <Navbar/>
     <div>
       <h1 className='h1'>Currency Exchange Rate</h1>
       <div>
@@ -87,6 +90,7 @@ function ExchangeRatePage() {
         )}
       </div>
     </div>
+    </>
   );
 }
 
