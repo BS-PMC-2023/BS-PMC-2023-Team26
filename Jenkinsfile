@@ -5,6 +5,16 @@ pipeline {
         DOCKER_REGISTRY_URL = 'my-docker-registry.com'
     }
     stages {
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    docker.withRegistry('https://my-docker-registry.com', 'my-registry-credentials') {
+                        def image = docker.build('my-image-name')
+                        image.push()
+                    }
+                }
+            }
+        }
         stage('Build and test') {
             steps {
                 sh 'npm install'
