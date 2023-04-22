@@ -8,8 +8,10 @@ pipeline {
         
         stage('Build and test') {
             steps {
+                sh 'cd ./ATMMAP/frontend'
                 sh 'npm install'
                 sh 'npm run dev'
+                sh 'cd ls'
                 sh 'python manage.py runserver'
             }
         }
