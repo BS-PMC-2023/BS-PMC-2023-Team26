@@ -44,7 +44,7 @@ class Home extends Component {
             <button className="btn btn-primary btn-lg">Log In</button>
             </Link>
             <Link to="/signup">
-            <button className="btn btn-secondary btn-lg">Sign Up</button>
+            <button className="btn btn-primary btn-lg">Sign Up</button>
             </Link>
 
             <Link to="/ExchangeRate">

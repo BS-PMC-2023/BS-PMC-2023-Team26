@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
+import Navbar from './Navbar';
 
 function LoginPage() {
   const [username, setUsername] = useState('');
@@ -50,20 +51,30 @@ function LoginPage() {
   }
 
   return (
-    <form onSubmit={handleLogin}>
-      <input type="hidden" name="csrfmiddlewaretoken" value={csrfToken} />
-      <label>
-        Username:
-        <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-      </label>
-      <br />
-      <label>
-        Password:
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      </label>
-      <br />
-      <button type="submit">Login</button>
-    </form>
+    
+  <>
+  <Navbar />
+  <section className="signup-container">
+    <div className="signup-form">
+      <h2>Sign in</h2>
+      <form onSubmit={handleLogin}>
+        <input type="hidden" name="csrfmiddlewaretoken" value={csrfToken} />
+        <label className="signup-label">
+          Username:
+          <input className="signup-input" type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+        </label>
+        <label className="signup-label">
+          Password:
+          <input className="signup-input" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        </label>
+        <button className="signup-button" type="submit">Login</button>
+      </form>
+    </div>
+  </section>
+</>
+
+
+
   );
 }
 
