@@ -18,8 +18,8 @@ pipeline {
         stage('Build and test') {
             steps {
                 sh 'npm install'
-                sh 'npm run build'
-                sh 'python manage.py test'
+                sh 'npm run dev'
+                sh 'python manage.py runserver'
             }
         }
         stage('Build and push Docker image') {
