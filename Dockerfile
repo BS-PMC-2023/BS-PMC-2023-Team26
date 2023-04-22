@@ -2,7 +2,7 @@
 FROM node:14.16.0-alpine as build
 
 # Set the working directory for the React app
-WORKDIR /app/frontend
+WORKDIR /ATMMAP/frontend
 
 # Copy the package.json and package-lock.json files to the working directory
 COPY frontend/package*.json ./
@@ -20,7 +20,7 @@ RUN npm run build
 FROM python:3.9.2-alpine3.13
 
 # Set the working directory for the Django app
-WORKDIR /app
+WORKDIR /ATMMAP
 
 # Copy the requirements.txt file to the working directory
 COPY backend/requirements.txt .
