@@ -8,23 +8,23 @@ import MapPage from "./MapPage";
 import ExchangeRatePage from './ExchangeRatePage';
 
 export default class Homepage extends Component {
-constructor(props){
-  super(props);
-}
-render(){
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route exact path="/" Component={Home}/>
-        <Route exact path="/signup" Component={SignUp}/>
-        <Route exact path="/signin" Component={LoginPage}/>
-        <Route exact path="/map" Component={MapPage}/>
-        <Route exact path="/ExchangeRate" Component={ExchangeRatePage}/>
+  constructor(props){
+    super(props);
+  }
+  render(){
+    return (
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/" Component={Home}/>
+          <Route exact path="/signup" Component={SignUp}/>
+          <Route exact path="/signin" Component={LoginPage}/>
+          <Route exact path="/map" Component={MapPage}/>
+          <Route exact path="/ExchangeRate" Component={ExchangeRatePage}/>
 
-      </Routes>
-    </BrowserRouter>
-  );
-}
+        </Routes>
+      </BrowserRouter>
+    );
+  }
 }
 
 class Home extends Component {
@@ -34,26 +34,25 @@ class Home extends Component {
   render(){
     return (
       <div className="home-page">
-      <Navbar />
-      <div className="container">
-        <div className="row justify-content-center">
-          <div className="col-md-6 text-center">
-            <h1>Welcome to Professional Exchange</h1>
-            <p>Connect with professionals in your industry</p>
-            <Link to="/signin">
-            <button className="btn btn-primary btn-lg">Log In</button>
-            </Link>
-            <Link to="/signup">
-            <button className="btn btn-primary btn-lg">Sign Up</button>
-            </Link>
+        <Navbar />
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-md-6 text-center">
+             <h1 style={{ color: '#ffffff', fontSize: '42px', fontWeight: 'bold', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>
+              smart and convenient <br /> money management
+              </h1>
 
-            <Link to="/ExchangeRate">
-            <button className="btn btn-primary btn-lg">Exchange rate</button>
-            </Link>
+              <p>Connect with professionals in your industry</p>
+              <Link to="/signin">
+                <button className="btn btn-primary btn-lg">Log In</button>
+              </Link>
+              <Link to="/signup">
+                <button className="btn btn-primary btn-lg">Sign Up</button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     );
   }
 }
