@@ -1,5 +1,8 @@
 .home-page {
-  background-color: #f26322;
+  background-image: url('finance_img_i1140.jpg'); 
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
   color: #ffffff;
   height: 100vh;
 }
@@ -21,4 +24,3 @@
   border: none;
   margin-right: 10px;
 }
-
