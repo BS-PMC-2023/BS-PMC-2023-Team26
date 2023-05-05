@@ -6,6 +6,7 @@ import LoginPage from "./Loginpage";
 import SignUp from "./Signuppage";
 import MapPage from "./MapPage";
 import ExchangeRatePage from './ExchangeRatePage';
+import AuthButton from './AuthButton';
 
 export default class Homepage extends Component {
 constructor(props){
@@ -40,11 +41,9 @@ class Home extends Component {
           <div className="col-md-6 text-center">
             <h1>Welcome to Professional Exchange</h1>
             <p>Connect with professionals in your industry</p>
-            <Link to="/signin">
-            <button className="btn btn-primary btn-lg">Log In</button>
-            </Link>
+            <AuthButton />
             <Link to="/signup">
-            <button className="btn btn-primary btn-lg">Sign Up</button>
+             
             </Link>
 
             <Link to="/ExchangeRate">

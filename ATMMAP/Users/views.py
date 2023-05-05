@@ -5,6 +5,8 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.http import JsonResponse
 from django.contrib.auth.models import User
 from django.middleware.csrf import get_token
+from django.views.decorators.csrf import csrf_exempt
+
 TEMPLATE_DIRS = (
     'ATMMAP/frontend'
 )
@@ -45,8 +47,14 @@ def signup(request):
         form = UserCreationForm()
     return render(request, '/signup', {'form': form})
 
+@csrf_exempt
 def signout(request):
     if request.method == 'POST':
         logout(request)
         return JsonResponse({'success': True})
     return render(request, '/')
+
+@csrf_exempt
+def check_login(request):
+    is_authenticated = request.user.is_authenticated
+    return JsonResponse({'isLoggedIn': is_authenticated})
