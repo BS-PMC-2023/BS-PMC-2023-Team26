@@ -7,6 +7,7 @@ import SignUp from "./Signuppage";
 import MapPage from "./MapPage";
 import ExchangeRatePage from './ExchangeRatePage';
 import AuthButton from './AuthButton';
+import AccountDetails from './AccountDetails';
 
 export default class Homepage extends Component {
   constructor(props){
@@ -21,7 +22,7 @@ export default class Homepage extends Component {
           <Route exact path="/signin" Component={LoginPage}/>
           <Route exact path="/map" Component={MapPage}/>
           <Route exact path="/ExchangeRate" Component={ExchangeRatePage}/>
-
+          <Route exact path="/account" Component={AccountDetails}/>
         </Routes>
       </BrowserRouter>
     );
@@ -42,9 +43,6 @@ class Home extends Component {
             <h1>Welcome to Professional Exchange</h1>
             <p>Connect with professionals in your industry</p>
             <AuthButton />
-            <Link to="/ExchangeRate">
-            <button className="btn btn-primary btn-lg">Exchange rate</button>
-            </Link>
           </div>
         </div>
         </div>

@@ -35,17 +35,28 @@ class AuthButton extends Component {
     const { isLoggedIn } = this.state;
     if (isLoggedIn) {
       return (
-        <button className="btn btn-primary btn-lg" onClick={this.handleSignOut}>Sign Out</button>
+        <div>
+            <button className="btn btn-primary btn-lg" onClick={this.handleSignOut}>Sign Out</button>
+            <Link to="/account">
+                <button className="btn btn-primary btn-lg">Account Details</button>
+            </Link>
+            <Link to="/ExchangeRate">
+                <button className="btn btn-primary btn-lg">Exchange rate</button>
+            </Link>
+        </div>
       );
     } else {
       return (
-        <div className="col-md-6 text-center">
-          <Link to="/signin">
-            <button className="btn btn-primary btn-lg">Sign In</button>
-          </Link>
-          <Link to="/signup">
-            <button className="btn btn-primary btn-lg">Sign Up</button>
-          </Link>
+        <div>
+            <Link to="/signin">
+                <button className="btn btn-primary btn-lg">Sign In</button>
+            </Link>
+            <Link to="/signup">
+                <button className="btn btn-primary btn-lg">Sign Up</button>
+            </Link>
+            <Link to="/ExchangeRate">
+                <button className="btn btn-primary btn-lg">Exchange rate</button>
+            </Link>
         </div>
       );
     }

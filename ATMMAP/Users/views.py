@@ -1,11 +1,12 @@
 import json
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm
 from django.http import JsonResponse
 from django.contrib.auth.models import User
 from django.middleware.csrf import get_token
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
 
 TEMPLATE_DIRS = (
     'ATMMAP/frontend'
@@ -62,3 +63,13 @@ def signout(request):
 def check_login(request): 
     is_authenticated = request.user.is_authenticated
     return JsonResponse({'isLoggedIn': is_authenticated})
+
+# Checks if a user is logged in or not
+@login_required
+def user_details(request):
+    user = request.user
+    user_data = {
+        'username': user.username,
+        'email': user.email,
+    }
+    return JsonResponse(user_data)
