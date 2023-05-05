@@ -80,3 +80,8 @@ h2 {
   background-color: #ffbb33;
   border-color: #ffbb33;
 }
+
+.signup-error {
+  color: red;
+  font-weight: bold;
+}
