@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
-from django.http import JsonResponse
+from django.http import HttpResponseRedirect, JsonResponse
 from django.contrib.auth.models import User
 from django.middleware.csrf import get_token
 from django.views.decorators.csrf import csrf_exempt
@@ -14,21 +14,17 @@ TEMPLATE_DIRS = (
     'ATMMAP/frontend'
 )
 
+@csrf_exempt
 def signup(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            # create user
-            user = form.save(commit=False)
+            user = form.save()
             user.email = form.cleaned_data.get('email')
             user.is_active = False
             user.save()
-
-            # generate confirmation token
             token_generator = PasswordResetTokenGenerator()
             token = token_generator.make_token(user)
-
-            # send confirmation email
             confirmation_link = request.build_absolute_uri(reverse('confirm_email', args=[user.id, token]))
             email_subject = 'Confirm your email address'
             email_body = f'Please click the following link to confirm your email address: {confirmation_link}'
@@ -85,6 +81,7 @@ def user_details(request):
     }
     return JsonResponse(user_data)
 
+@csrf_exempt
 def signin(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -92,3 +89,10 @@ def signin(request):
         user = authenticate(request, username=username, password=password)
         if user is not None: 
             login(request, user)
+            return JsonResponse({'success': True})
+        else:
+            try:
+                user = User.objects.get(username=username)
+                return JsonResponse({'success': False, 'message': 'Incorrect password.'})
+            except User.DoesNotExist:
+                return JsonResponse({'success': False, 'message': 'Invalid username or password.'})
