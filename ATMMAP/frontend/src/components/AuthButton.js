@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import { Button } from 'reactstrap';
-import axios from 'axios';
 import { Link, Navigate } from 'react-router-dom';
 
 class AuthButton extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -13,36 +10,43 @@ class AuthButton extends Component {
   }
 
   componentDidMount() {
-    axios.get('/Users/check_login/')
-      .then(response => {
+    fetch('/Users/check_login/')
+      .then(response => response.json())
+      .then(data => {
         this.setState({
-          isLoggedIn: response.data.isLoggedIn
+          isLoggedIn: data.isLoggedIn
         });
       });
   }
 
   handleSignOut = () => {
-    axios.post('/Users/signout/')
+    fetch('/Users/signout/', { method: 'POST' })
       .then(response => {
-        this.setState({
-          isLoggedIn: false
-        });
-        return <Navigate to="/" />; 
+        if (response.ok) {
+          this.setState({
+            isLoggedIn: false
+          });
+          return <Navigate to="/" />; 
+        }
       });
   }
 
   render() {
     const { isLoggedIn } = this.state;
-
     if (isLoggedIn) {
       return (
         <button className="btn btn-primary btn-lg" onClick={this.handleSignOut}>Sign Out</button>
       );
     } else {
       return (
-        <Link to="/signin">
+        <div className="col-md-6 text-center">
+          <Link to="/signin">
             <button className="btn btn-primary btn-lg">Sign In</button>
-        </Link>
+          </Link>
+          <Link to="/signup">
+            <button className="btn btn-primary btn-lg">Sign Up</button>
+          </Link>
+        </div>
       );
     }
   }

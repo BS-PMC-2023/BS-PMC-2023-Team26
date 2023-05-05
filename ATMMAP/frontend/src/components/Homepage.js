@@ -41,11 +41,6 @@ class Home extends Component {
           <div className="col-md-6 text-center">
             <h1>Welcome to Professional Exchange</h1>
             <p>Connect with professionals in your industry</p>
-            <AuthButton />
-            <Link to="/signup">
-             
-            </Link>
-
             <Link to="/ExchangeRate">
             <button className="btn btn-primary btn-lg">Exchange rate</button>
             </Link>
