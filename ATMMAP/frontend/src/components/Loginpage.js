@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
+import '../styles/LoginPage.css';
 import Navbar from './Navbar';
+
+
 
 function LoginPage() {
   const [username, setUsername] = useState('');
@@ -54,20 +57,20 @@ function LoginPage() {
     
   <>
   <Navbar />
-  <section className="signup-container">
-    <div className="signup-form">
+  <section className="login-container">
+    <div className="login-form">
       <h2>Sign in</h2>
       <form onSubmit={handleLogin}>
         <input type="hidden" name="csrfmiddlewaretoken" value={csrfToken} />
-        <label className="signup-label">
+        <label className="login-label">
           Username:
-          <input className="signup-input" type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+          <input className="login-input" type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
         </label>
-        <label className="signup-label">
+        <label className="login-label">
           Password:
-          <input className="signup-input" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <input className="login-input" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </label>
-        <button className="signup-button" type="submit">Login</button>
+        <button className="login-button" type="submit">Login</button>
       </form>
     </div>
   </section>

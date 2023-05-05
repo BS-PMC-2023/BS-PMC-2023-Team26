@@ -9,23 +9,23 @@ import ExchangeRatePage from './ExchangeRatePage';
 import AuthButton from './AuthButton';
 
 export default class Homepage extends Component {
-constructor(props){
-  super(props);
-}
-render(){
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route exact path="/" Component={Home}/>
-        <Route exact path="/signup" Component={SignUp}/>
-        <Route exact path="/signin" Component={LoginPage}/>
-        <Route exact path="/map" Component={MapPage}/>
-        <Route exact path="/ExchangeRate" Component={ExchangeRatePage}/>
+  constructor(props){
+    super(props);
+  }
+  render(){
+    return (
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/" Component={Home}/>
+          <Route exact path="/signup" Component={SignUp}/>
+          <Route exact path="/signin" Component={LoginPage}/>
+          <Route exact path="/map" Component={MapPage}/>
+          <Route exact path="/ExchangeRate" Component={ExchangeRatePage}/>
 
-      </Routes>
-    </BrowserRouter>
-  );
-}
+        </Routes>
+      </BrowserRouter>
+    );
+  }
 }
 
 class Home extends Component {
@@ -48,7 +48,6 @@ class Home extends Component {
           </div>
         </div>
       </div>
-    </div>
     );
   }
 }

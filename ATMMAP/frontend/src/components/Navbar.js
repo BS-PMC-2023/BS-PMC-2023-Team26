@@ -23,7 +23,6 @@ function MyNavBar() {
             <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
           </NavDropdown>
         </Nav>
-        <Button variant="outline-dark" href="#login">Log In</Button>
       </Navbar.Collapse>
     </Navbar>
   );
