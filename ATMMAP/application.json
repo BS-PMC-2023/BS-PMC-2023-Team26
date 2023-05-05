@@ -1,0 +1,96 @@
+{
+    "wsStatus": {
+      "statusCode": "CDI000",
+      "statusDesc": "Visa ATM Locator Svc-Success"
+    },
+    "responseData": [
+      {
+        "properties": [
+          {
+            "name": "BALANCE_INQUIRY",
+            "value": "13"
+          },
+          {
+            "name": "PIN_CHANGE",
+            "value": "1"
+          },
+          {
+            "name": "CHIP_CAPABLE",
+            "value": "23"
+          },
+          {
+            "name": "TOTALCOUNT",
+            "value": "110"
+          },
+          {
+            "name": "OPER_HRS",
+            "value": "64"
+          },
+          {
+            "name": "BRAILLE_AUDIO",
+            "value": "17"
+          },
+          {
+            "name": "PLUS_ALLIANCE_NO_SURCHARGE_FEE",
+            "value": "2"
+          },
+          {
+            "name": "PLACE_NAME",
+            "value": "7-Eleven #18677|7-Eleven #19283|ACME NO. 7841|AMERICAN LEGION|AMERICAN LEGION EASTON|AMISH COUNTRY FARMER'S MARKET|AMISH MARKET|ANNAPOLIS NORTH SHORE - EASTON|ASSATEAGUE ISLAND OASIS|ASSATEAGUE MARKET|ATM SERVICES CORPORATION|B & B FINANCIAL SERVICES, LLC|BANK OF AMERICA|BANK OF OCEAN CITY|BERLIN LIQUOR|BJSEASTON MD #322|CAPITAL ONE, NATIONAL ASSOCIATION|CARDTRONICS USA|CASTAWAYS RV RESORT|CORD FINANCIAL SERVICES|COUNTRY CHEESES & SALADS|CVS STORE #02531|DA VI NAILS|EASTERN SHORE MD-OCEAN PINES|EASTON CROWN|EASTON ENERGY|EASTON FIRE DEPARTMENT|EASTON MVA|EASTON SHELL|EASTON SUNOCO|EASTON SUPER SODA|EDS CREDIT UNION|EXXON FRIENDSHIP FOOD MART|FAST STOP|FCTI, INC.|FIRST MARINER BANK|FIRST SHORE FEDERAL SAVINGS AND LOAN ASSOCIATION|FIVE STAR LEASING / ATM|Food Lion #2521|Food Lion #2614|Food Lion #658|GANDERS CAR WASH LLC|HARRIS TEETER  #00380|HARRISONS WINES & SPIRITS|INDIAN RIVER MERCHANT SERVICES|KK NAILS|M & M STOP|M&T BANK|MONEY ACCESS SERVICE|OCEAN DOWNS CASINO|OCEAN PINES GOLF CLUB|PITT STOP BEER AND WINE-BERLIN|PNC BANK|PNC BANK AT WAWA|PROVIDENT STATE BANK|Polished Nails|RITA'S WORLD OF WINE & BEER|RITE AID NO. 319|RITE AID NO. 3758|RITE AID NO. 4917|SHOP KWIK|SHORE STOP #219|SIDETRACKED SALOON|SPARTA INN|SUNTRUST BANK|TARGET #2310|TARGET 2310|THE BAY CLUB|THE QUEENSTOWN BANK OF MARYLAND|THE TALBOT BANK OF EASTON, MARYLAND|U5 FOODS - EASTON|U5 FOODS 4|U5 FOODS BETHLEHEM|U5 FOODS INC|U5 FOODS PORT ST|WALGREENS #09967|WALGREENS 09967|WHISKERS BAR & GRILL|Weis 275 Easton|YOUR STORE MARKET"
+          },
+          {
+            "name": "ACCEPTS_PLUS_SHARED_DEPOSIT",
+            "value": "7"
+          },
+          {
+            "name": "ACPT_INTL_CRD_IND",
+            "value": "16"
+          },
+          {
+            "name": "WHEELCHAIR",
+            "value": "12"
+          },
+          {
+            "name": "BONUS_OFFER",
+            "value": "68"
+          },
+          {
+            "name": "PREFERRED_ATM",
+            "value": "83"
+          },
+          {
+            "name": "VISA_EVERYWHERE_ACCESS",
+            "value": "91"
+          }
+        ],
+        "bestMapView": {
+          "northEast": {
+            "latitude": 38.858024,
+            "longitude": -75.03479
+          },
+          "northWest": {
+            "latitude": 38.858024,
+            "longitude": -76.244734
+          },
+          "southEast": {
+            "latitude": 38.243925,
+            "longitude": -75.03479
+          },
+          "southWest": {
+            "latitude": 38.243925,
+            "longitude": -76.244734
+          },
+          "distanceAcross": 77.93563
+        },
+        "distanceUnit": "mi",
+        "totalATMCount": 0
+      }
+    ],
+    "wsResponseHeaderV2": {
+      "responseTs": 1593028354414,
+      "correlationId": "909420141104053819418",
+      "requestMessageId": "test1234567801",
+      "numOfRowsReturned": 1,
+      "responseMessageId": "51VATMLOC2683320200624195234208"
+    }
+  }
