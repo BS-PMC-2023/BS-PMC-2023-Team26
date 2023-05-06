@@ -1,12 +1,13 @@
 import json
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import UserCreationForm
-from django.http import HttpResponseRedirect, JsonResponse
+from .models import CustomUserCreationForm
+from django.http import JsonResponse
 from django.contrib.auth.models import User
 from django.middleware.csrf import get_token
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
 
 TEMPLATE_DIRS = (
     'ATMMAP/frontend'
@@ -34,20 +35,29 @@ def get_csrf_token(request):
 
 def signup(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST) # Take the default Django UserCreationForm
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            # Form input data
+            # Save user data
             user = form.save()
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
-            confirm_password = form.cleaned_data.get('password2')
-            user = authenticate(username=username, password=raw_password) # Authenticated input
-            login(request, user) # Logins in User
-            return JsonResponse({'success': True}) # returns json confirmed login
+            user = authenticate(username=username, password=raw_password)
+
+            # Configure email backend for sending emails
+            send_mail(
+                'Welcome to MySite',
+                'Thank you for signing up!',
+                'markos5623@gmail.com',
+                [user.email],
+                fail_silently=False,
+            )
+
+            login(request, user)
+            return JsonResponse({'success': True})
         else:
             return JsonResponse({'success': False, 'errors': form.errors})
     else:
-        form = UserCreationForm()
+        form = CustomUserCreationForm()
     return render(request, '/signup', {'form': form})
 
 # Sign out function
