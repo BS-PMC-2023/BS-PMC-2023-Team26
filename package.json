@@ -1,4 +1,9 @@
 {
+  "name": "my-project",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "echo 'Build complete.'"
+  },
   "dependencies": {
     "@turf/turf": "^6.5.0",
     "leaflet-routing-machine": "^3.2.12"
