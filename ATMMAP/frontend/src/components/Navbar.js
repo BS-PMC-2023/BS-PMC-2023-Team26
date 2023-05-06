@@ -13,8 +13,8 @@ function MyNavBar() {
           <Nav.Link as={Link} to="/">Home</Nav.Link>
           <Nav.Link as={Link} to="/map">Map</Nav.Link>
           <Nav.Link as={Link} to="/ExchangeRate">Exchange rate</Nav.Link>
+          <Nav.Link as={Link} to="/StockHistory">Stock History</Nav.Link>
           <Nav.Link href="#account">Account Details</Nav.Link>
-         
           <NavDropdown title="Dropdown" id="basic-nav-dropdown">
             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>

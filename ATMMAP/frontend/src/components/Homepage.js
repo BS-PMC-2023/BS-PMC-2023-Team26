@@ -8,6 +8,8 @@ import MapPage from "./MapPage";
 import ExchangeRatePage from './ExchangeRatePage';
 import AuthButton from './AuthButton';
 import AccountDetails from './AccountDetails';
+import StockHistory from './StockHistory';
+
 
 export default class Homepage extends Component {
   constructor(props){
@@ -23,6 +25,7 @@ export default class Homepage extends Component {
           <Route exact path="/map" Component={MapPage}/>
           <Route exact path="/ExchangeRate" Component={ExchangeRatePage}/>
           <Route exact path="/account" Component={AccountDetails}/>
+          <Route exact path="/StockHistory" Component={StockHistory}/>
         </Routes>
       </BrowserRouter>
     );
