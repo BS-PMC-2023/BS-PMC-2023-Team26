@@ -1,0 +1,3412 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Visa Global ATM Locator",
+    "description": "",
+    "version": "1"
+  },
+  "servers": [
+    {
+      "url": "https://sandbox.api.visa.com",
+      "description": "Sandbox server"
+    }
+  ],
+  "security": [],
+  "tags": [
+    {
+      "name": "Locate ATMs API",
+      "description": "The ATM Locator service lets cardholders search and find a convenient ATM when they need cash from over 1 million ATMs in over 200 countries. The ATM Locator Service is a cost effective way to deliver user friendly and trusted information when user needs"
+    }
+  ],
+  "paths": {
+    "/globalatmlocator/v1/localatms/totalsinquiry": {
+      "post": {
+        "tags": [
+          "Locate ATMs API"
+        ],
+        "summary": "Totals Inquiry",
+        "description": "This resource is used to return the number of ATM locations nearest to a given location. This allows an application to prepare the user interface or retrieve the amount of memory needed because there may be many results returned. For example, the requirements to show number of ATMs in a dense urban environment versus a rural area is quite different.",
+        "operationId": "searchATMTotals",
+        "parameters": [
+          {
+            "name": "x-correlation-id",
+            "in": "header",
+            "description": "the parameter that ATM locator needs to extract from VDP's request header and pass along to downstream API",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "search request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchRequest"
+              },
+              "examples": {
+                "Default": {
+                  "summary": "Default",
+                  "value": {
+                    "wsRequestHeaderV2": {
+                      "requestTs": "2015-01-21T00:00:00.000Z",
+                      "requestMessageId": "test12345678",
+                      "userBid": "10000108",
+                      "correlationId": "909420141104053819418",
+                      "applicationId": "VATMLOC",
+                      "userId": "CDISIUserID"
+                    },
+                    "requestData": {
+                      "distanceUnit": "mi",
+                      "distance": "20",
+                      "culture": "en-US",
+                      "options": {
+                        "findFilters": [
+                          {
+                            "filterValue": "C",
+                            "filterName": "OPER_HRS"
+                          },
+                          {
+                            "filterValue": "",
+                            "filterName": "AIRPORT_CD"
+                          },
+                          {
+                            "filterValue": "N",
+                            "filterName": "WHEELCHAIR"
+                          },
+                          {
+                            "filterValue": "N",
+                            "filterName": "BRAILLE_AUDIO"
+                          },
+                          {
+                            "filterValue": "N",
+                            "filterName": "BALANCE_INQUIRY"
+                          },
+                          {
+                            "filterValue": "N",
+                            "filterName": "CHIP_CAPABLE"
+                          },
+                          {
+                            "filterValue": "N",
+                            "filterName": "PIN_CHANGE"
+                          },
+                          {
+                            "filterValue": "N",
+                            "filterName": "RESTRICTED"
+                          },
+                          {
+                            "filterValue": "N",
+                            "filterName": "PLUS_ALLIANCE_NO_SURCHARGE_FEE"
+                          },
+                          {
+                            "filterValue": "N",
+                            "filterName": "ACCEPTS_PLUS_SHARED_DEPOSIT"
+                          },
+                          {
+                            "filterValue": "N",
+                            "filterName": "V_PAY_CAPABLE"
+                          },
+                          {
+                            "filterValue": "N",
+                            "filterName": "READY_LINK"
+                          }
+                        ],
+                        "range": {
+                          "count": 20,
+                          "start": 10
+                        },
+                        "operationName": "or",
+                        "sort": {
+                          "primary": "city",
+                          "direction": "asc"
+                        },
+                        "useFirstAmbiguous": true
+                      },
+                      "location": {
+                        "address": null,
+                        "geocodes": null,
+                        "placeName": "Allentown, PA"
+                      },
+                      "metaDataOptions": 0
+                    }
+                  }
+                }
+              },
+              "example": null
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "search ATM totals response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchResponseATMTotals"
+                },
+                "example": {
+                  "wsStatus": {
+                    "statusCode": "CDI000",
+                    "statusDesc": "Visa ATM Locator Svc-Success"
+                  },
+                  "responseData": [
+                    {
+                      "properties": [
+                        {
+                          "name": "BALANCE_INQUIRY",
+                          "value": "13"
+                        },
+                        {
+                          "name": "PIN_CHANGE",
+                          "value": "1"
+                        },
+                        {
+                          "name": "CHIP_CAPABLE",
+                          "value": "23"
+                        },
+                        {
+                          "name": "TOTALCOUNT",
+                          "value": "110"
+                        },
+                        {
+                          "name": "OPER_HRS",
+                          "value": "64"
+                        },
+                        {
+                          "name": "BRAILLE_AUDIO",
+                          "value": "17"
+                        },
+                        {
+                          "name": "PLUS_ALLIANCE_NO_SURCHARGE_FEE",
+                          "value": "2"
+                        },
+                        {
+                          "name": "PLACE_NAME",
+                          "value": "7-Eleven #18677|7-Eleven #19283|ACME NO. 7841|AMERICAN LEGION|AMERICAN LEGION EASTON|AMISH COUNTRY FARMER'S MARKET|AMISH MARKET|ANNAPOLIS NORTH SHORE - EASTON|ASSATEAGUE ISLAND OASIS|ASSATEAGUE MARKET|ATM SERVICES CORPORATION|B & B FINANCIAL SERVICES, LLC|BANK OF AMERICA|BANK OF OCEAN CITY|BERLIN LIQUOR|BJSEASTON MD #322|CAPITAL ONE, NATIONAL ASSOCIATION|CARDTRONICS USA|CASTAWAYS RV RESORT|CORD FINANCIAL SERVICES|COUNTRY CHEESES & SALADS|CVS STORE #02531|DA VI NAILS|EASTERN SHORE MD-OCEAN PINES|EASTON CROWN|EASTON ENERGY|EASTON FIRE DEPARTMENT|EASTON MVA|EASTON SHELL|EASTON SUNOCO|EASTON SUPER SODA|EDS CREDIT UNION|EXXON FRIENDSHIP FOOD MART|FAST STOP|FCTI, INC.|FIRST MARINER BANK|FIRST SHORE FEDERAL SAVINGS AND LOAN ASSOCIATION|FIVE STAR LEASING / ATM|Food Lion #2521|Food Lion #2614|Food Lion #658|GANDERS CAR WASH LLC|HARRIS TEETER  #00380|HARRISONS WINES & SPIRITS|INDIAN RIVER MERCHANT SERVICES|KK NAILS|M & M STOP|M&T BANK|MONEY ACCESS SERVICE|OCEAN DOWNS CASINO|OCEAN PINES GOLF CLUB|PITT STOP BEER AND WINE-BERLIN|PNC BANK|PNC BANK AT WAWA|PROVIDENT STATE BANK|Polished Nails|RITA'S WORLD OF WINE & BEER|RITE AID NO. 319|RITE AID NO. 3758|RITE AID NO. 4917|SHOP KWIK|SHORE STOP #219|SIDETRACKED SALOON|SPARTA INN|SUNTRUST BANK|TARGET #2310|TARGET 2310|THE BAY CLUB|THE QUEENSTOWN BANK OF MARYLAND|THE TALBOT BANK OF EASTON, MARYLAND|U5 FOODS - EASTON|U5 FOODS 4|U5 FOODS BETHLEHEM|U5 FOODS INC|U5 FOODS PORT ST|WALGREENS #09967|WALGREENS 09967|WHISKERS BAR & GRILL|Weis 275 Easton|YOUR STORE MARKET"
+                        },
+                        {
+                          "name": "ACCEPTS_PLUS_SHARED_DEPOSIT",
+                          "value": "7"
+                        },
+                        {
+                          "name": "ACPT_INTL_CRD_IND",
+                          "value": "16"
+                        },
+                        {
+                          "name": "WHEELCHAIR",
+                          "value": "12"
+                        },
+                        {
+                          "name": "BONUS_OFFER",
+                          "value": "68"
+                        },
+                        {
+                          "name": "PREFERRED_ATM",
+                          "value": "83"
+                        },
+                        {
+                          "name": "VISA_EVERYWHERE_ACCESS",
+                          "value": "91"
+                        }
+                      ],
+                      "bestMapView": {
+                        "northEast": {
+                          "latitude": 38.858024,
+                          "longitude": -75.03479
+                        },
+                        "northWest": {
+                          "latitude": 38.858024,
+                          "longitude": -76.244734
+                        },
+                        "southEast": {
+                          "latitude": 38.243925,
+                          "longitude": -75.03479
+                        },
+                        "southWest": {
+                          "latitude": 38.243925,
+                          "longitude": -76.244734
+                        },
+                        "distanceAcross": 77.93563
+                      },
+                      "distanceUnit": "mi",
+                      "totalATMCount": 0
+                    }
+                  ],
+                  "wsResponseHeaderV2": {
+                    "responseTs": 1593028354414,
+                    "correlationId": "909420141104053819418",
+                    "requestMessageId": "test1234567801",
+                    "numOfRowsReturned": 1,
+                    "responseMessageId": "51VATMLOC2683320200624195234208"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "SearchRequest",
+        "x-operationVersions": [
+          {
+            "label": "v1 - Latest",
+            "operationPointer": "#/paths/~1globalatmlocator~1v1~1localatms~1totalsinquiry/post",
+            "default": false
+          }
+        ],
+        "x-hideTryIt": true
+      }
+    },
+    "/globalatmlocator/v1/localatms/routesinquiry": {
+      "post": {
+        "tags": [
+          "Locate ATMs API"
+        ],
+        "summary": "Routes Inquiry",
+        "description": "This resource is useful for returning the geo-coordinates for a specified address or place. A user might be interested in finding the directions to a certain ATM starting from a location other than his or her current location. ",
+        "operationId": "findRoutes",
+        "parameters": [
+          {
+            "name": "x-correlation-id",
+            "in": "header",
+            "description": "the parameter that ATM locator needs to extract from VDP's request header and pass along to downstream API",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": " request route between to or more points",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RouteRequest"
+              },
+              "examples": {
+                "Default": {
+                  "summary": "Default",
+                  "value": {
+                    "wsRequestHeaderV2": {
+                      "requestTs": "2015-01-21T00:00:00.000Z",
+                      "requestMessageId": "ICE01-001",
+                      "userBid": "10000108",
+                      "correlationId": "909420141104053819418",
+                      "applicationId": "GEOCODE",
+                      "userId": "CDISIUserID"
+                    },
+                    "requestData": {
+                      "features": [
+                        {
+                          "geometry": {
+                            "x": -122.4079,
+                            "y": 37.78356
+                          }
+                        },
+                        {
+                          "geometry": {
+                            "x": -122.404,
+                            "y": 37.782
+                          }
+                        }
+                      ],
+                      "doNotLocateOnRestrictedElements": true,
+                      "type": "features",
+                      "travelMode": {
+                        "type": "WALKINGTIME"
+                      }
+                    }
+                  }
+                }
+              },
+              "example": null
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "find route response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RouteResponse"
+                },
+                "example": {
+                  "wsStatus": {
+                    "statusCode": "CDI000",
+                    "statusDesc": "Geocoding Svc-Success"
+                  },
+                  "responseData": [
+                    {
+                      "routes": {
+                        "features": [
+                          {
+                            "geometry": {
+                              "paths": [
+                                [
+                                  [
+                                    -122.40774845199996,
+                                    37.783745569000075
+                                  ],
+                                  [
+                                    -122.40745999999996,
+                                    37.783510000000035
+                                  ],
+                                  [
+                                    -122.40722999999996,
+                                    37.78334000000007
+                                  ],
+                                  [
+                                    -122.40718999999996,
+                                    37.78331000000003
+                                  ],
+                                  [
+                                    -122.40699999999998,
+                                    37.783160000000066
+                                  ],
+                                  [
+                                    -122.40648999999996,
+                                    37.78274000000005
+                                  ],
+                                  [
+                                    -122.40591999999998,
+                                    37.78230000000008
+                                  ],
+                                  [
+                                    -122.40545999999996,
+                                    37.78195000000005
+                                  ],
+                                  [
+                                    -122.40492999999998,
+                                    37.781510000000026
+                                  ],
+                                  [
+                                    -122.40428999999996,
+                                    37.782020000000045
+                                  ],
+                                  [
+                                    -122.40411933499996,
+                                    37.78215306100003
+                                  ]
+                                ]
+                              ]
+                            },
+                            "attributes": {
+                              "name": "Location 1 - Location 2",
+                              "objectID": 1,
+                              "stopCount": 2,
+                              "lastStopID": 2,
+                              "totalMiles": 0.28105916379078766,
+                              "firstStopID": 1,
+                              "shapeLength": 0.00463286509089376,
+                              "totalWalkTime": 5.427850546700656,
+                              "totalKilometers": 0.45232087889172135,
+                              "totalTravelTime": 0
+                            }
+                          }
+                        ],
+                        "fieldAliases": {
+                          "name": "Name",
+                          "objectID": "ObjectID",
+                          "stopCount": "StopCount",
+                          "lastStopID": "LastStopID",
+                          "totalMiles": "Total_Miles",
+                          "firstStopID": "FirstStopID",
+                          "shapeLength": "Shape_Length",
+                          "totalWalkTime": "Total_WalkTime",
+                          "totalKilometers": "Total_Kilometers",
+                          "totalTravelTime": "Total_TravelTime"
+                        },
+                        "geometryType": "esriGeometryPolyline",
+                        "spatialReference": {
+                          "wkid": 4326,
+                          "latestWkid": 4326
+                        }
+                      },
+                      "messages": [],
+                      "directions": [
+                        {
+                          "routeId": 1,
+                          "summary": {
+                            "envelope": {
+                              "xmax": -122.40411933499996,
+                              "xmin": -122.40774845199996,
+                              "ymax": 37.783745569000075,
+                              "ymin": 37.781510000000026,
+                              "spatialReference": {
+                                "wkid": 4326,
+                                "latestWkid": 4326
+                              }
+                            },
+                            "totalTime": 5.427850546700656,
+                            "totalLength": 0.28105862451694885,
+                            "totalDriveTime": 5.427850546700656
+                          },
+                          "features": [
+                            {
+                              "attributes": {
+                                "eta": -2209161600000,
+                                "text": "Start at Location 1",
+                                "time": 0,
+                                "length": 0,
+                                "maneuverType": "esriDMTDepart"
+                              },
+                              "compressedGeometry": "+gncga-1vvvvu7+jo52cf+0+0"
+                            },
+                            {
+                              "attributes": {
+                                "eta": -2209161600000,
+                                "text": "Go southeast on 5th St toward Stevenson St",
+                                "time": 4.217006628983801,
+                                "length": 0.218360117420972,
+                                "maneuverType": "esriDMTStraight"
+                              },
+                              "compressedGeometry": "+gncga-1vvvvu7+jo52cf+4u4-414+3u3-2t7+lu-ge+385-2i8+8nj-768+9og-7h7+7s6-5vt+92j-7h7"
+                            },
+                            {
+                              "attributes": {
+                                "eta": -2209161600000,
+                                "text": "Turn left on Howard St",
+                                "time": 1.210843917716855,
+                                "length": 0.06269850709597688,
+                                "maneuverType": "esriDMTTurnLeft"
+                              },
+                              "compressedGeometry": "+gncsu-1vvvvud+jo4avr+aus+8nj+2ti+28v"
+                            },
+                            {
+                              "attributes": {
+                                "eta": -2209161600000,
+                                "text": "Finish at Location 2, on the right",
+                                "time": 0,
+                                "length": 0,
+                                "maneuverType": "esriDMTStop"
+                              },
+                              "compressedGeometry": "+gnd0i-1vvvvtl+jo4q9c+0+0"
+                            }
+                          ],
+                          "routeName": "Location 1 - Location 2"
+                        }
+                      ]
+                    }
+                  ],
+                  "wsResponseHeaderV2": {
+                    "responseTs": 1592663970698,
+                    "correlationId": "909420141104053819418",
+                    "requestMessageId": "ROG01-001",
+                    "numOfRowsReturned": 15,
+                    "responseMessageId": "56GEOCODE8272020200620143930425"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "RouteRequest",
+        "x-operationVersions": [
+          {
+            "label": "v1 - Latest",
+            "operationPointer": "#/paths/~1globalatmlocator~1v1~1localatms~1routesinquiry/post",
+            "default": false
+          }
+        ],
+        "x-hideTryIt": true
+      }
+    },
+    "/globalatmlocator/v1/localatms/geocodesinquiry": {
+      "post": {
+        "tags": [
+          "Locate ATMs API"
+        ],
+        "summary": "Geocodes Inquiry",
+        "description": "This resource returns the route and directions between two or more points on a map. The directions can be either for walking or driving. The distance between two points and the estimate time of arrival is also provided.",
+        "operationId": "findGeocodes",
+        "parameters": [
+          {
+            "name": "x-correlation-id",
+            "in": "header",
+            "description": "the parameter that ATM locator needs to extract from VDP's request header and pass along to downstream API",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": " request geocoordinates: latitude, longitude",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeocodeRequest"
+              },
+              "examples": {
+                "Default": {
+                  "summary": "Default",
+                  "value": {
+                    "wsRequestHeaderV2": {
+                      "requestTs": "2017-07-17T18:40:47.000Z",
+                      "requestMessageId": "ICE01-001",
+                      "userBid": "10000108",
+                      "correlationId": "909420141104053819418",
+                      "applicationId": "GEOCODE",
+                      "userId": "CDISIUserID"
+                    },
+                    "requestData": {
+                      "distanceUnit": "mi",
+                      "distance": "20",
+                      "culture": null,
+                      "options": {
+                        "fetchATMOwnerData": "Y",
+                        "findFilters": [
+                          {
+                            "filterValue": 1,
+                            "filterName": "CHIP_ENABLED"
+                          },
+                          {
+                            "filterValue": "B",
+                            "filterName": "ACCESS_HOURS"
+                          }
+                        ],
+                        "range": {
+                          "count": 99,
+                          "start": 0
+                        },
+                        "sort": {
+                          "primary": "distance",
+                          "direction": "asc"
+                        },
+                        "useFirstAmbiguous": true
+                      },
+                      "location": {
+                        "address": null,
+                        "geocodes": null,
+                        "placeName": "San Raphael"
+                      },
+                      "metaDataOptions": 0
+                    }
+                  }
+                }
+              },
+              "example": null
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "find geocode response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GeocodeResponse"
+                },
+                "example": {
+                  "wsStatus": {
+                    "statusCode": "CDI000",
+                    "statusDesc": "Geocoding Svc-Success"
+                  },
+                  "responseData": [
+                    {
+                      "MatchedLocations": [
+                        {
+                          "Score": 100,
+                          "Location": {
+                            "Address": {
+                              "City": "Curitiba",
+                              "State": "Paran",
+                              "Street": "Rua Mateus Leme",
+                              "Country": "BRA",
+                              "Street2": "",
+                              "PostalCode": "82130-000"
+                            },
+                            "TypeName": "POI",
+                            "PlaceName": "San Raphael",
+                            "Coordinates": {
+                              "Latitude": -25.38152999999994,
+                              "Longitude": -49.270959999999945
+                            }
+                          }
+                        },
+                        {
+                          "Score": 100,
+                          "Location": {
+                            "Address": {
+                              "City": "Foz do Iguau",
+                              "State": "Paran",
+                              "Street": "Rua Jorge Sanwais",
+                              "Country": "BRA",
+                              "Street2": "",
+                              "PostalCode": "85851-150"
+                            },
+                            "TypeName": "POI",
+                            "PlaceName": "San Rafael",
+                            "Coordinates": {
+                              "Latitude": -25.54087999999996,
+                              "Longitude": -54.584559999999954
+                            }
+                          }
+                        },
+                        {
+                          "Score": 100,
+                          "Location": {
+                            "Address": {
+                              "City": "Foz do Iguau",
+                              "State": "Paran",
+                              "Street": "Rua Almirante Barroso 1660",
+                              "Country": "BRA",
+                              "Street2": "",
+                              "PostalCode": "85851-010"
+                            },
+                            "TypeName": "POI",
+                            "PlaceName": "San Rafael",
+                            "Coordinates": {
+                              "Latitude": -25.54019999999997,
+                              "Longitude": -54.58462999999995
+                            }
+                          }
+                        },
+                        {
+                          "Score": 100,
+                          "Location": {
+                            "Address": {
+                              "City": "Passo Fundo",
+                              "State": "Rio Grande do Sul",
+                              "Street": "Rua Coronel Pitinga",
+                              "Country": "BRA",
+                              "Street2": "",
+                              "PostalCode": "99030-210"
+                            },
+                            "TypeName": "POI",
+                            "PlaceName": "San Rafael",
+                            "Coordinates": {
+                              "Latitude": -28.263359999999977,
+                              "Longitude": -52.43738999999994
+                            }
+                          }
+                        },
+                        {
+                          "Score": 100,
+                          "Location": {
+                            "Address": {
+                              "City": "Piracicaba",
+                              "State": "So Paulo",
+                              "Street": "Rua Moraes Barros",
+                              "Country": "BRA",
+                              "Street2": "",
+                              "PostalCode": "13400-353"
+                            },
+                            "TypeName": "POI",
+                            "PlaceName": "San Raphael",
+                            "Coordinates": {
+                              "Latitude": -22.724519999999927,
+                              "Longitude": -47.650649999999985
+                            }
+                          }
+                        },
+                        {
+                          "Score": 100,
+                          "Location": {
+                            "Address": {
+                              "City": "Campinas",
+                              "State": "So Paulo",
+                              "Street": "Rua da Abolio 2640",
+                              "Country": "BRA",
+                              "Street2": "Vila Joaquim Incio",
+                              "PostalCode": "13045-750"
+                            },
+                            "TypeName": "POI",
+                            "PlaceName": "San Raphael",
+                            "Coordinates": {
+                              "Latitude": -22.931090076605635,
+                              "Longitude": -47.03733006217889
+                            }
+                          }
+                        },
+                        {
+                          "Score": 100,
+                          "Location": {
+                            "Address": {
+                              "City": "Ourinhos",
+                              "State": "So Paulo",
+                              "Street": "Avenida Jacinto Ferreira de S",
+                              "Country": "BRA",
+                              "Street2": "Vila Christoni",
+                              "PostalCode": "19911-720"
+                            },
+                            "TypeName": "POI",
+                            "PlaceName": "San Rafael",
+                            "Coordinates": {
+                              "Latitude": -22.974899999999938,
+                              "Longitude": -49.86835999999994
+                            }
+                          }
+                        },
+                        {
+                          "Score": 100,
+                          "Location": {
+                            "Address": {
+                              "City": "Maca",
+                              "State": "Rio de Janeiro",
+                              "Street": "Rua Joaquim da Silva Murteira",
+                              "Country": "BRA",
+                              "Street2": "",
+                              "PostalCode": "27920-230"
+                            },
+                            "TypeName": "POI",
+                            "PlaceName": "San Raphael",
+                            "Coordinates": {
+                              "Latitude": -22.403949999999952,
+                              "Longitude": -41.79766999999998
+                            }
+                          }
+                        },
+                        {
+                          "Score": 100,
+                          "Location": {
+                            "Address": {
+                              "City": "Langenthal",
+                              "State": "Bern",
+                              "Street": "Spitalgasse 1",
+                              "Country": "CHE",
+                              "Street2": "",
+                              "PostalCode": "4900"
+                            },
+                            "TypeName": "POI",
+                            "PlaceName": "St. Raphael",
+                            "Coordinates": {
+                              "Latitude": 47.21112993003085,
+                              "Longitude": 7.789319919499265
+                            }
+                          }
+                        },
+                        {
+                          "Score": 100,
+                          "Location": {
+                            "Address": {
+                              "City": "Curitiba",
+                              "State": "Paran",
+                              "Street": "Rua Monsenhor Ivo Zanlorenzi 2546",
+                              "Country": "BRA",
+                              "Street2": "",
+                              "PostalCode": "81210-000"
+                            },
+                            "TypeName": "POI",
+                            "PlaceName": "San Raphael",
+                            "Coordinates": {
+                              "Latitude": -25.438539959461067,
+                              "Longitude": -49.33070999610484
+                            }
+                          }
+                        },
+                        {
+                          "Score": 100,
+                          "Location": {
+                            "Address": {
+                              "City": "So Paulo",
+                              "State": "So Paulo",
+                              "Street": "Rua Pontins 190",
+                              "Country": "BRA",
+                              "Street2": "",
+                              "PostalCode": "02404-010"
+                            },
+                            "TypeName": "POI",
+                            "PlaceName": "San Rafael",
+                            "Coordinates": {
+                              "Latitude": -23.49071003722058,
+                              "Longitude": -46.629549923394286
+                            }
+                          }
+                        },
+                        {
+                          "Score": 100,
+                          "Location": {
+                            "Address": {
+                              "City": "Johannesburg",
+                              "State": "Gauteng",
+                              "Street": "San Raphael",
+                              "Country": "ZAF",
+                              "Street2": "",
+                              "PostalCode": "2191"
+                            },
+                            "TypeName": "POI",
+                            "PlaceName": "San Raphael",
+                            "Coordinates": {
+                              "Latitude": -26.00106999999997,
+                              "Longitude": 28.000460000000032
+                            }
+                          }
+                        },
+                        {
+                          "Score": 100,
+                          "Location": {
+                            "Address": {
+                              "City": "Johannesburg",
+                              "State": "Gauteng",
+                              "Street": "San Raphael",
+                              "Country": "ZAF",
+                              "Street2": "",
+                              "PostalCode": "2191"
+                            },
+                            "TypeName": "POI",
+                            "PlaceName": "San Raphael",
+                            "Coordinates": {
+                              "Latitude": -26.046779999999956,
+                              "Longitude": 28.06242000000003
+                            }
+                          }
+                        },
+                        {
+                          "Score": 100,
+                          "Location": {
+                            "Address": {
+                              "City": "Johannesburg",
+                              "State": "Gauteng",
+                              "Street": "San Raphael",
+                              "Country": "ZAF",
+                              "Street2": "",
+                              "PostalCode": "2196"
+                            },
+                            "TypeName": "POI",
+                            "PlaceName": "San Raphael",
+                            "Coordinates": {
+                              "Latitude": -26.084649999999954,
+                              "Longitude": 28.05538000000007
+                            }
+                          }
+                        },
+                        {
+                          "Score": 100,
+                          "Location": {
+                            "Address": {
+                              "City": "Couva-Tabaquite-Taiparo",
+                              "State": "Trinidad",
+                              "Street": "",
+                              "Country": "TTO",
+                              "Street2": "San Raphael",
+                              "PostalCode": ""
+                            },
+                            "TypeName": "Locality",
+                            "PlaceName": "San Raphael, Couva-Tabaquite-Taiparo, Trinidad",
+                            "Coordinates": {
+                              "Latitude": 10.58746000000002,
+                              "Longitude": -61.23375999999996
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "wsResponseHeaderV2": {
+                    "responseTs": 1592663970698,
+                    "correlationId": "909420141104053819418",
+                    "requestMessageId": "ROG01-001",
+                    "numOfRowsReturned": 15,
+                    "responseMessageId": "56GEOCODE8272020200620143930425"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "GeocodeRequest",
+        "x-operationVersions": [
+          {
+            "label": "v1 - Latest",
+            "operationPointer": "#/paths/~1globalatmlocator~1v1~1localatms~1geocodesinquiry/post",
+            "default": false
+          }
+        ]
+      }
+    },
+    "/globalatmlocator/v1/localatms/atmsinquiry": {
+      "post": {
+        "tags": [
+          "Locate ATMs API"
+        ],
+        "summary": "ATMs Inquiry",
+        "description": "This resource allows an application to retrieve all the details of all the ATMs near a given area. For example, this resource provides the name, address, geo-coordinates, and attributes (e.g., wheelchair accessibility) for all the ATMs near a given location up to 100 ATMs.",
+        "operationId": "searchATMs",
+        "parameters": [
+          {
+            "name": "x-correlation-id",
+            "in": "header",
+            "description": "the parameter that ATM locator needs to extract from VDP's request header and pass along to downstream API",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "search request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchRequest"
+              },
+              "examples": {
+                "Default": {
+                  "summary": "Default",
+                  "value": {
+                    "wsRequestHeaderV2": {
+                      "requestTs": "2015-08-11T01:49:53.887Z",
+                      "requestMessageId": "test1234567801",
+                      "userBid": "10000108",
+                      "correlationId": "909420141104053819418",
+                      "applicationId": "VATMLOC",
+                      "userId": "CDISIUserID"
+                    },
+                    "requestData": {
+                      "distanceUnit": "mi",
+                      "distance": "60",
+                      "culture": "en-US",
+                      "options": {
+                        "findFilters": [
+                          {
+                            "filterValue": "",
+                            "filterName": "PLACE_NAME"
+                          },
+                          {
+                            "filterValue": "",
+                            "filterName": "CARD_ACCEPT"
+                          },
+                          {
+                            "filterValue": "",
+                            "filterName": "OPER_HRS"
+                          },
+                          {
+                            "filterValue": "",
+                            "filterName": "AIRPORT_CD"
+                          },
+                          {
+                            "filterValue": "",
+                            "filterName": "WHEELCHAIR"
+                          },
+                          {
+                            "filterValue": "",
+                            "filterName": "BRAILLE_AUDIO"
+                          },
+                          {
+                            "filterValue": "",
+                            "filterName": "BALANCE_INQUIRY"
+                          },
+                          {
+                            "filterValue": "",
+                            "filterName": "CHIP_CAPABLE"
+                          },
+                          {
+                            "filterValue": "",
+                            "filterName": "PIN_CHANGE"
+                          },
+                          {
+                            "filterValue": "",
+                            "filterName": "RESTRICTED"
+                          },
+                          {
+                            "filterValue": "",
+                            "filterName": "PLUS_ALLIANCE_NO_SURCHARGE_FEE"
+                          },
+                          {
+                            "filterValue": "",
+                            "filterName": "ACCEPTS_PLUS_SHARED_DEPOSIT"
+                          },
+                          {
+                            "filterValue": "",
+                            "filterName": "V_PAY_CAPABLE"
+                          },
+                          {
+                            "filterValue": "",
+                            "filterName": "READY_LINK"
+                          },
+                          {
+                            "filterValue": "",
+                            "filterName": "ACPT_INTL_CRD_IND"
+                          },
+                          {
+                            "filterValue": "",
+                            "filterName": "NO_ATM_ACCS_FEE_IND"
+                          },
+                          {
+                            "filterValue": "",
+                            "filterName": "BONUS_OFFER"
+                          },
+                          {
+                            "filterValue": "",
+                            "filterName": "PREFERRED_ATM"
+                          },
+                          {
+                            "filterValue": "",
+                            "filterName": "VISA_EVERYWHERE_ACCESS"
+                          }
+                        ],
+                        "range": {
+                          "count": 10,
+                          "start": 0
+                        },
+                        "operationName": "and",
+                        "sort": {
+                          "primary": "distance",
+                          "direction": "asc"
+                        },
+                        "useFirstAmbiguous": true
+                      },
+                      "location": {
+                        "address": null,
+                        "geocodes": {
+                          "latitude": 38.28352,
+                          "longitude": -75.4169
+                        },
+                        "placeName": ""
+                      },
+                      "metaDataOptions": 0
+                    }
+                  }
+                }
+              },
+              "example": null
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "search response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchResponse"
+                },
+                "examples": {
+                  "Default": {
+                    "summary": "Default",
+                    "value": {
+                      "wsResponseHeaderV2": {
+                        "responseTs": 1593027799246,
+                        "responseMessageId": "51VATMLOC5205220200624194318944",
+                        "requestMessageId": "test1234567801",
+                        "correlationId": "909420141104053819418",
+                        "numOfRowsReturned": 10
+                      },
+                      "wsStatus": {
+                        "statusDesc": "Visa ATM Locator Svc-Success",
+                        "statusCode": "CDI000"
+                      },
+                      "wsResponseHeader": null,
+                      "responseSummaryData": null,
+                      "responseData": [
+                        {
+                          "metaData": {
+                            "targetCulture": null,
+                            "filters": "stringconcatenated|pipedelimited|listofallfiltersavailableinthetargetareaATMs",
+                            "fields": "stringconcatenated|pipedelimited|listoffieldsavailableforATMlocations"
+                          },
+                          "distanceUnit": "mi",
+                          "totalATMCount": 110,
+                          "foundATMLocations": [
+                            {
+                              "location": {
+                                "score": 9.600178,
+                                "isMappable": "Y",
+                                "address": {
+                                  "country": "UNITED STATES OF AMERICA",
+                                  "formattedAddress": "9122 LIBERTYTOWN RD, BERLIN, MD, 218112150",
+                                  "city": "BERLIN",
+                                  "street": "9122 LIBERTYTOWN RD",
+                                  "postalCode": "218112150",
+                                  "state": "MD",
+                                  "street2": ""
+                                },
+                                "ownerBusId": "10067849",
+                                "typeName": null,
+                                "coordinates": {
+                                  "latitude": 38.330447,
+                                  "longitude": -75.250237
+                                },
+                                "placeName": "THE BAY CLUB",
+                                "ownerBusName": "PAYMENT ALLIANCE INTERNATIONAL, INC.",
+                                "properties": [
+                                  {
+                                    "name": "ACCEPTS_PLUS_SHARED_DEPOSIT",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "CARD_ACCEPT",
+                                    "value": "B"
+                                  },
+                                  {
+                                    "name": "WHEELCHAIR",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "PLUS_ALLIANCE_NO_SURCHARGE_FEE",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "READY_LINK",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "NO_ATM_ACCS_FEE_IND",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "RESTRICTED",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "ACPT_INTL_CRD_IND",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "BALANCE_INQUIRY",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "OPER_HRS",
+                                    "value": "D"
+                                  },
+                                  {
+                                    "name": "LOC_DESC",
+                                    "value": ""
+                                  },
+                                  {
+                                    "name": "BRAILLE_AUDIO",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "PIN_CHANGE",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "AIRPORT_CD",
+                                    "value": ""
+                                  },
+                                  {
+                                    "name": "CHIP_CAPABLE",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "V_PAY_CAPABLE",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "BONUS_OFFER",
+                                    "value": "Y"
+                                  },
+                                  {
+                                    "name": "PREFERRED_ATM",
+                                    "value": "Y"
+                                  },
+                                  {
+                                    "name": "VISA_EVERYWHERE_ACCESS",
+                                    "value": "Y"
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "location": {
+                                "score": 10.946498,
+                                "isMappable": "Y",
+                                "address": {
+                                  "country": "UNITED STATES OF AMERICA",
+                                  "formattedAddress": "9040 WORCESTER HWY SUITE B, BERLIN, MD, 21811",
+                                  "city": "BERLIN",
+                                  "street": "9040 WORCESTER HWY SUITE B",
+                                  "postalCode": "21811",
+                                  "state": "MD",
+                                  "street2": ""
+                                },
+                                "ownerBusId": "10063436",
+                                "typeName": null,
+                                "coordinates": {
+                                  "latitude": 38.31267,
+                                  "longitude": -75.218472
+                                },
+                                "placeName": "PITT STOP BEER AND WINE-BERLIN",
+                                "ownerBusName": "INDIAN RIVER MERCHANT SERVICE",
+                                "properties": [
+                                  {
+                                    "name": "ACCEPTS_PLUS_SHARED_DEPOSIT",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "CARD_ACCEPT",
+                                    "value": "B"
+                                  },
+                                  {
+                                    "name": "WHEELCHAIR",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "PLUS_ALLIANCE_NO_SURCHARGE_FEE",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "READY_LINK",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "NO_ATM_ACCS_FEE_IND",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "RESTRICTED",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "ACPT_INTL_CRD_IND",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "BALANCE_INQUIRY",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "OPER_HRS",
+                                    "value": "D"
+                                  },
+                                  {
+                                    "name": "LOC_DESC",
+                                    "value": ""
+                                  },
+                                  {
+                                    "name": "BRAILLE_AUDIO",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "PIN_CHANGE",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "AIRPORT_CD",
+                                    "value": ""
+                                  },
+                                  {
+                                    "name": "CHIP_CAPABLE",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "V_PAY_CAPABLE",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "BONUS_OFFER",
+                                    "value": "Y"
+                                  },
+                                  {
+                                    "name": "PREFERRED_ATM",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "VISA_EVERYWHERE_ACCESS",
+                                    "value": "Y"
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "location": {
+                                "score": 10.946498,
+                                "isMappable": "Y",
+                                "address": {
+                                  "country": "UNITED STATES OF AMERICA",
+                                  "formattedAddress": "9040 WORCESTER HWY SUITE B, BERLIN, MD, 21811",
+                                  "city": "BERLIN",
+                                  "street": "9040 WORCESTER HWY SUITE B",
+                                  "postalCode": "21811",
+                                  "state": "MD",
+                                  "street2": ""
+                                },
+                                "ownerBusId": "10001098",
+                                "typeName": null,
+                                "coordinates": {
+                                  "latitude": 38.31267,
+                                  "longitude": -75.218472
+                                },
+                                "placeName": "INDIAN RIVER MERCHANT SERVICES",
+                                "ownerBusName": "THE PUEBLO BANK AND TRUST COMPANY",
+                                "properties": [
+                                  {
+                                    "name": "ACCEPTS_PLUS_SHARED_DEPOSIT",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "CARD_ACCEPT",
+                                    "value": "B"
+                                  },
+                                  {
+                                    "name": "WHEELCHAIR",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "PLUS_ALLIANCE_NO_SURCHARGE_FEE",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "READY_LINK",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "NO_ATM_ACCS_FEE_IND",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "RESTRICTED",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "ACPT_INTL_CRD_IND",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "BALANCE_INQUIRY",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "LOC_DESC",
+                                    "value": "PITT STOP BEER AND WINE-BERLIN"
+                                  },
+                                  {
+                                    "name": "BRAILLE_AUDIO",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "PIN_CHANGE",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "AIRPORT_CD",
+                                    "value": ""
+                                  },
+                                  {
+                                    "name": "CHIP_CAPABLE",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "V_PAY_CAPABLE",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "OPER_HRS",
+                                    "value": "A"
+                                  },
+                                  {
+                                    "name": "BONUS_OFFER",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "PREFERRED_ATM",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "VISA_EVERYWHERE_ACCESS",
+                                    "value": "Y"
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "location": {
+                                "score": 11.498277,
+                                "isMappable": "Y",
+                                "address": {
+                                  "country": "USA",
+                                  "formattedAddress": "310 FRANKLIN AVE, BERLIN, MD, 21811",
+                                  "city": "BERLIN",
+                                  "street": "310 FRANKLIN AVE",
+                                  "postalCode": "21811",
+                                  "state": "MD",
+                                  "street2": ""
+                                },
+                                "ownerBusId": "10053129",
+                                "typeName": null,
+                                "coordinates": {
+                                  "latitude": 38.330054,
+                                  "longitude": -75.213284
+                                },
+                                "placeName": "FIRST SHORE FEDERAL SAVINGS AND LOAN ASSOCIATION",
+                                "ownerBusName": "FIRST SHORE FEDERAL SAVINGS AND LOAN ASSOCIATION",
+                                "properties": [
+                                  {
+                                    "name": "CARD_ACCEPT",
+                                    "value": "B"
+                                  },
+                                  {
+                                    "name": "WHEELCHAIR",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "BRAILLE_AUDIO",
+                                    "value": "Y"
+                                  },
+                                  {
+                                    "name": "PLUS_ALLIANCE_NO_SURCHARGE_FEE",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "CHIP_CAPABLE",
+                                    "value": "Y"
+                                  },
+                                  {
+                                    "name": "READY_LINK",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "NO_ATM_ACCS_FEE_IND",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "RESTRICTED",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "ACPT_INTL_CRD_IND",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "BALANCE_INQUIRY",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "LOC_DESC",
+                                    "value": ""
+                                  },
+                                  {
+                                    "name": "PIN_CHANGE",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "AIRPORT_CD",
+                                    "value": ""
+                                  },
+                                  {
+                                    "name": "V_PAY_CAPABLE",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "OPER_HRS",
+                                    "value": "A"
+                                  },
+                                  {
+                                    "name": "ACCEPTS_PLUS_SHARED_DEPOSIT",
+                                    "value": "Y"
+                                  },
+                                  {
+                                    "name": "BONUS_OFFER",
+                                    "value": ""
+                                  },
+                                  {
+                                    "name": "PREFERRED_ATM",
+                                    "value": ""
+                                  },
+                                  {
+                                    "name": "VISA_EVERYWHERE_ACCESS",
+                                    "value": "Y"
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "location": {
+                                "score": 11.5803585,
+                                "isMappable": "Y",
+                                "address": {
+                                  "country": "USA",
+                                  "formattedAddress": "627 WILLIAM STREET, BERLIN, MD, 21811",
+                                  "city": "BERLIN",
+                                  "street": "627 WILLIAM STREET",
+                                  "postalCode": "21811",
+                                  "state": "MD",
+                                  "street2": ""
+                                },
+                                "ownerBusId": "10007394",
+                                "typeName": null,
+                                "coordinates": {
+                                  "latitude": 38.333916,
+                                  "longitude": -75.213189
+                                },
+                                "placeName": "BANK OF OCEAN CITY",
+                                "ownerBusName": "BANK OF OCEAN CITY",
+                                "properties": [
+                                  {
+                                    "name": "ACCEPTS_PLUS_SHARED_DEPOSIT",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "CARD_ACCEPT",
+                                    "value": "B"
+                                  },
+                                  {
+                                    "name": "WHEELCHAIR",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "BRAILLE_AUDIO",
+                                    "value": "Y"
+                                  },
+                                  {
+                                    "name": "PLUS_ALLIANCE_NO_SURCHARGE_FEE",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "CHIP_CAPABLE",
+                                    "value": "Y"
+                                  },
+                                  {
+                                    "name": "READY_LINK",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "NO_ATM_ACCS_FEE_IND",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "RESTRICTED",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "ACPT_INTL_CRD_IND",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "BALANCE_INQUIRY",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "LOC_DESC",
+                                    "value": ""
+                                  },
+                                  {
+                                    "name": "PIN_CHANGE",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "AIRPORT_CD",
+                                    "value": ""
+                                  },
+                                  {
+                                    "name": "V_PAY_CAPABLE",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "OPER_HRS",
+                                    "value": "A"
+                                  },
+                                  {
+                                    "name": "BONUS_OFFER",
+                                    "value": ""
+                                  },
+                                  {
+                                    "name": "PREFERRED_ATM",
+                                    "value": ""
+                                  },
+                                  {
+                                    "name": "VISA_EVERYWHERE_ACCESS",
+                                    "value": ""
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "location": {
+                                "score": 11.638743,
+                                "isMappable": "Y",
+                                "address": {
+                                  "country": "UNITED STATES OF AMERICA",
+                                  "formattedAddress": "10119 OLD OCEAN CITY BLVD, BERLIN, MD, 21811",
+                                  "city": "BERLIN",
+                                  "street": "10119 OLD OCEAN CITY BLVD",
+                                  "postalCode": "21811",
+                                  "state": "MD",
+                                  "street2": ""
+                                },
+                                "ownerBusId": "10051182",
+                                "typeName": null,
+                                "coordinates": {
+                                  "latitude": 38.334875,
+                                  "longitude": -75.212446
+                                },
+                                "placeName": "RITE AID NO. 319",
+                                "ownerBusName": "CARDTRONICS USA, INC",
+                                "properties": [
+                                  {
+                                    "name": "ACCEPTS_PLUS_SHARED_DEPOSIT",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "CARD_ACCEPT",
+                                    "value": "B"
+                                  },
+                                  {
+                                    "name": "WHEELCHAIR",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "PLUS_ALLIANCE_NO_SURCHARGE_FEE",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "READY_LINK",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "NO_ATM_ACCS_FEE_IND",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "RESTRICTED",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "ACPT_INTL_CRD_IND",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "BALANCE_INQUIRY",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "LOC_DESC",
+                                    "value": ""
+                                  },
+                                  {
+                                    "name": "BRAILLE_AUDIO",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "PIN_CHANGE",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "AIRPORT_CD",
+                                    "value": ""
+                                  },
+                                  {
+                                    "name": "CHIP_CAPABLE",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "V_PAY_CAPABLE",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "OPER_HRS",
+                                    "value": "A"
+                                  },
+                                  {
+                                    "name": "BONUS_OFFER",
+                                    "value": "Y"
+                                  },
+                                  {
+                                    "name": "PREFERRED_ATM",
+                                    "value": ""
+                                  },
+                                  {
+                                    "name": "VISA_EVERYWHERE_ACCESS",
+                                    "value": "N"
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "location": {
+                                "score": 11.668233,
+                                "isMappable": "Y",
+                                "address": {
+                                  "country": "UNITED STATES OF AMERICA",
+                                  "formattedAddress": "10126 OLD OCEAN CITY BLVD, BERLIN, MD, 21811",
+                                  "city": "BERLIN",
+                                  "street": "10126 OLD OCEAN CITY BLVD",
+                                  "postalCode": "21811",
+                                  "state": "MD",
+                                  "street2": ""
+                                },
+                                "ownerBusId": "10010435",
+                                "typeName": null,
+                                "coordinates": {
+                                  "latitude": 38.333564,
+                                  "longitude": -75.211351
+                                },
+                                "placeName": "Food Lion #658",
+                                "ownerBusName": "PROSPERITY BANK",
+                                "properties": [
+                                  {
+                                    "name": "ACCEPTS_PLUS_SHARED_DEPOSIT",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "CARD_ACCEPT",
+                                    "value": "B"
+                                  },
+                                  {
+                                    "name": "WHEELCHAIR",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "PLUS_ALLIANCE_NO_SURCHARGE_FEE",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "CHIP_CAPABLE",
+                                    "value": "Y"
+                                  },
+                                  {
+                                    "name": "READY_LINK",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "NO_ATM_ACCS_FEE_IND",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "RESTRICTED",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "BALANCE_INQUIRY",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "OPER_HRS",
+                                    "value": "D"
+                                  },
+                                  {
+                                    "name": "LOC_DESC",
+                                    "value": ""
+                                  },
+                                  {
+                                    "name": "BRAILLE_AUDIO",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "PIN_CHANGE",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "AIRPORT_CD",
+                                    "value": ""
+                                  },
+                                  {
+                                    "name": "V_PAY_CAPABLE",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "ACPT_INTL_CRD_IND",
+                                    "value": "Y"
+                                  },
+                                  {
+                                    "name": "BONUS_OFFER",
+                                    "value": ""
+                                  },
+                                  {
+                                    "name": "PREFERRED_ATM",
+                                    "value": "Y"
+                                  },
+                                  {
+                                    "name": "VISA_EVERYWHERE_ACCESS",
+                                    "value": "N"
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "location": {
+                                "score": 11.668627,
+                                "isMappable": "Y",
+                                "address": {
+                                  "country": "UNITED STATES OF AMERICA",
+                                  "formattedAddress": "10140 OLD OCEAN CITY BLVD, BERLIN, MD, 218111144",
+                                  "city": "BERLIN",
+                                  "street": "10140 OLD OCEAN CITY BLVD",
+                                  "postalCode": "218111144",
+                                  "state": "MD",
+                                  "street2": ""
+                                },
+                                "ownerBusId": "10067849",
+                                "typeName": null,
+                                "coordinates": {
+                                  "latitude": 38.33353,
+                                  "longitude": -75.21133
+                                },
+                                "placeName": "SHOP KWIK",
+                                "ownerBusName": "PAYMENT ALLIANCE INTERNATIONAL, INC.",
+                                "properties": [
+                                  {
+                                    "name": "ACCEPTS_PLUS_SHARED_DEPOSIT",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "CARD_ACCEPT",
+                                    "value": "B"
+                                  },
+                                  {
+                                    "name": "WHEELCHAIR",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "PLUS_ALLIANCE_NO_SURCHARGE_FEE",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "READY_LINK",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "NO_ATM_ACCS_FEE_IND",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "RESTRICTED",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "ACPT_INTL_CRD_IND",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "BALANCE_INQUIRY",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "OPER_HRS",
+                                    "value": "D"
+                                  },
+                                  {
+                                    "name": "LOC_DESC",
+                                    "value": ""
+                                  },
+                                  {
+                                    "name": "BRAILLE_AUDIO",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "PIN_CHANGE",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "AIRPORT_CD",
+                                    "value": ""
+                                  },
+                                  {
+                                    "name": "CHIP_CAPABLE",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "V_PAY_CAPABLE",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "BONUS_OFFER",
+                                    "value": "Y"
+                                  },
+                                  {
+                                    "name": "PREFERRED_ATM",
+                                    "value": ""
+                                  },
+                                  {
+                                    "name": "VISA_EVERYWHERE_ACCESS",
+                                    "value": "Y"
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "location": {
+                                "score": 11.681188,
+                                "isMappable": "Y",
+                                "address": {
+                                  "country": "UNITED STATES OF AMERICA",
+                                  "formattedAddress": "10137 OLD OCEAN CITY BLVD, BERLIN, MD, 218111143",
+                                  "city": "BERLIN",
+                                  "street": "10137 OLD OCEAN CITY BLVD",
+                                  "postalCode": "218111143",
+                                  "state": "MD",
+                                  "street2": ""
+                                },
+                                "ownerBusId": "10067849",
+                                "typeName": null,
+                                "coordinates": {
+                                  "latitude": 38.335471,
+                                  "longitude": -75.211867
+                                },
+                                "placeName": "YOUR STORE MARKET",
+                                "ownerBusName": "PAYMENT ALLIANCE INTERNATIONAL, INC.",
+                                "properties": [
+                                  {
+                                    "name": "ACCEPTS_PLUS_SHARED_DEPOSIT",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "CARD_ACCEPT",
+                                    "value": "B"
+                                  },
+                                  {
+                                    "name": "WHEELCHAIR",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "PLUS_ALLIANCE_NO_SURCHARGE_FEE",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "READY_LINK",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "NO_ATM_ACCS_FEE_IND",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "RESTRICTED",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "ACPT_INTL_CRD_IND",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "BALANCE_INQUIRY",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "OPER_HRS",
+                                    "value": "D"
+                                  },
+                                  {
+                                    "name": "LOC_DESC",
+                                    "value": ""
+                                  },
+                                  {
+                                    "name": "BRAILLE_AUDIO",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "PIN_CHANGE",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "AIRPORT_CD",
+                                    "value": ""
+                                  },
+                                  {
+                                    "name": "CHIP_CAPABLE",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "V_PAY_CAPABLE",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "BONUS_OFFER",
+                                    "value": "Y"
+                                  },
+                                  {
+                                    "name": "PREFERRED_ATM",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "VISA_EVERYWHERE_ACCESS",
+                                    "value": ""
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "location": {
+                                "score": 12.989946,
+                                "isMappable": "Y",
+                                "address": {
+                                  "country": "UNITED STATES OF AMERICA",
+                                  "formattedAddress": "10709 GRAYS CORNER RD, BERLIN, MD, 218112821",
+                                  "city": "BERLIN",
+                                  "street": "10709 GRAYS CORNER RD",
+                                  "postalCode": "218112821",
+                                  "state": "MD",
+                                  "street2": ""
+                                },
+                                "ownerBusId": "10067849",
+                                "typeName": null,
+                                "coordinates": {
+                                  "latitude": 38.344027,
+                                  "longitude": -75.190037
+                                },
+                                "placeName": "EXXON FRIENDSHIP FOOD MART",
+                                "ownerBusName": "PAYMENT ALLIANCE INTERNATIONAL, INC.",
+                                "properties": [
+                                  {
+                                    "name": "ACCEPTS_PLUS_SHARED_DEPOSIT",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "CARD_ACCEPT",
+                                    "value": "B"
+                                  },
+                                  {
+                                    "name": "WHEELCHAIR",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "PLUS_ALLIANCE_NO_SURCHARGE_FEE",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "READY_LINK",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "NO_ATM_ACCS_FEE_IND",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "RESTRICTED",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "ACPT_INTL_CRD_IND",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "BALANCE_INQUIRY",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "OPER_HRS",
+                                    "value": "D"
+                                  },
+                                  {
+                                    "name": "LOC_DESC",
+                                    "value": ""
+                                  },
+                                  {
+                                    "name": "BRAILLE_AUDIO",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "PIN_CHANGE",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "AIRPORT_CD",
+                                    "value": ""
+                                  },
+                                  {
+                                    "name": "CHIP_CAPABLE",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "V_PAY_CAPABLE",
+                                    "value": "N"
+                                  },
+                                  {
+                                    "name": "BONUS_OFFER",
+                                    "value": "Y"
+                                  },
+                                  {
+                                    "name": "PREFERRED_ATM",
+                                    "value": "Y"
+                                  },
+                                  {
+                                    "name": "VISA_EVERYWHERE_ACCESS",
+                                    "value": "Y"
+                                  }
+                                ]
+                              }
+                            }
+                          ],
+                          "bestMapView": {
+                            "northWest": {
+                              "latitude": 38.364027,
+                              "longitude": -75.4369
+                            },
+                            "southWest": {
+                              "latitude": 38.26352,
+                              "longitude": -75.4369
+                            },
+                            "distanceAcross": 16.046877,
+                            "northEast": {
+                              "latitude": 38.364027,
+                              "longitude": -75.170037
+                            },
+                            "southEast": {
+                              "latitude": 38.26352,
+                              "longitude": -75.170037
+                            }
+                          },
+                          "properties": null,
+                          "matchedLocations": null
+                        }
+                      ]
+                    }
+                  }
+                },
+                "example": null
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "SearchRequest",
+        "x-operationVersions": [
+          {
+            "label": "v1 - Latest",
+            "operationPointer": "#/paths/~1globalatmlocator~1v1~1localatms~1atmsinquiry/post",
+            "default": false
+          }
+        ],
+        "x-hideTryIt": true
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "SearchRequest": {
+        "required": [
+          "requestData",
+          "wsRequestHeaderV2"
+        ],
+        "type": "object",
+        "properties": {
+          "requestData": {
+            "$ref": "#/components/schemas/requestData"
+          },
+          "wsRequestHeaderV2": {
+            "$ref": "#/components/schemas/wsRequestHeaderV2"
+          }
+        }
+      },
+      "wsResponseHeaderV2": {
+        "type": "object",
+        "properties": {
+          "responseTs": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "requestMessageId": {
+            "type": "string"
+          },
+          "responseMessageId": {
+            "type": "string"
+          }
+        }
+      },
+      "requestDataGeocode": {
+        "required": [
+          "distance",
+          "distanceUnit",
+          "location",
+          "range"
+        ],
+        "type": "object",
+        "properties": {
+          "range": {
+            "required": [
+              "count",
+              "start"
+            ],
+            "type": "object",
+            "properties": {
+              "count": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "start": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          },
+          "culture": {
+            "type": "string",
+            "example": "en-US"
+          },
+          "options": {
+            "required": [
+              "range",
+              "sort"
+            ],
+            "type": "object",
+            "properties": {
+              "sort": {
+                "required": [
+                  "direction",
+                  "primary"
+                ],
+                "type": "object",
+                "properties": {
+                  "primary": {
+                    "type": "string",
+                    "description": "sorting field which geocodes search based on",
+                    "example": "distance"
+                  },
+                  "direction": {
+                    "type": "string",
+                    "description": "sorting order which geocodes search based on",
+                    "example": "asc"
+                  }
+                },
+                "description": "the sorting method"
+              },
+              "range": {
+                "required": [
+                  "count",
+                  "start"
+                ],
+                "type": "object",
+                "properties": {
+                  "count": {
+                    "type": "integer",
+                    "description": "the number of the results displayed",
+                    "format": "int32",
+                    "example": 10
+                  },
+                  "start": {
+                    "type": "integer",
+                    "description": "the starting position of the first result",
+                    "format": "int32",
+                    "example": 0
+                  }
+                },
+                "description": "range of the searching result"
+              },
+              "findFilters": {
+                "type": "array",
+                "description": "filters of ATM attributes",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "filter": {
+                      "$ref": "#/components/schemas/FindFilter"
+                    }
+                  }
+                }
+              },
+              "fetchATMOwnerData": {
+                "type": "string"
+              },
+              "useFirstAmbiguous": {
+                "type": "boolean"
+              }
+            },
+            "description": "searching options"
+          },
+          "distance": {
+            "type": "string",
+            "description": "searching distance radius of ATMs",
+            "example": "60"
+          },
+          "location": {
+            "type": "object",
+            "properties": {
+              "address": {
+                "type": "object",
+                "properties": {}
+              },
+              "geocodes": {
+                "required": [
+                  "latitude",
+                  "longitude"
+                ],
+                "type": "object",
+                "properties": {
+                  "latitude": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "longitude": {
+                    "type": "number",
+                    "format": "double"
+                  }
+                }
+              },
+              "placeName": {
+                "type": "string",
+                "description": "single line address where to find geocodes",
+                "example": "San Raphael"
+              }
+            }
+          },
+          "distanceUnit": {
+            "type": "string",
+            "description": "searching distance unit, choose from mi or km",
+            "example": "mi"
+          },
+          "metaDataOptions": {
+            "type": "number",
+            "example": 0
+          }
+        }
+      },
+      "wsStatus": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "string"
+          },
+          "statusDesc": {
+            "type": "string"
+          }
+        }
+      },
+      "responseDataGeocode": {
+        "type": "object",
+        "properties": {
+          "MetaData": {
+            "type": "string"
+          },
+          "Properties": {
+            "type": "string"
+          },
+          "BestMapView": {
+            "type": "object",
+            "properties": {
+              "northEast": {
+                "type": "object",
+                "properties": {
+                  "latitude": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "longitude": {
+                    "type": "number",
+                    "format": "double"
+                  }
+                }
+              },
+              "northWest": {
+                "type": "object",
+                "properties": {
+                  "latitude": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "longitude": {
+                    "type": "number",
+                    "format": "double"
+                  }
+                }
+              },
+              "southEast": {
+                "type": "object",
+                "properties": {
+                  "latitude": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "longitude": {
+                    "type": "number",
+                    "format": "double"
+                  }
+                }
+              },
+              "southWest": {
+                "type": "object",
+                "properties": {
+                  "latitude": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "longitude": {
+                    "type": "number",
+                    "format": "double"
+                  }
+                }
+              },
+              "distanceAcross": {
+                "type": "number",
+                "format": "double"
+              }
+            },
+            "description": "corner geocodes for best view in a map"
+          },
+          "DistanceUnit": {
+            "type": "string",
+            "description": "searching distance unit"
+          },
+          "MatchedLocations": {
+            "type": "array",
+            "description": "result of the candidate locations with geocodes",
+            "items": {
+              "type": "object",
+              "properties": {
+                "location": {
+                  "$ref": "#/components/schemas/location"
+                }
+              }
+            }
+          },
+          "FoundATMLocations": {
+            "type": "array",
+            "description": "details of found ATM terminals",
+            "items": {
+              "type": "object",
+              "properties": {
+                "atmLocation": {
+                  "$ref": "#/components/schemas/atmLocation"
+                }
+              }
+            }
+          }
+        }
+      },
+      "responseDataATMTotals": {
+        "type": "object",
+        "properties": {
+          "properties": {
+            "type": "array",
+            "description": "count of ATMs which match the filter criteria",
+            "items": {
+              "type": "object",
+              "properties": {
+                "propertyCount": {
+                  "$ref": "#/components/schemas/PropertyCount"
+                }
+              }
+            }
+          },
+          "bestMapView": {
+            "type": "object",
+            "properties": {
+              "northEast": {
+                "type": "object",
+                "properties": {
+                  "latitude": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "longitude": {
+                    "type": "number",
+                    "format": "double"
+                  }
+                }
+              },
+              "northWest": {
+                "type": "object",
+                "properties": {
+                  "latitude": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "longitude": {
+                    "type": "number",
+                    "format": "double"
+                  }
+                }
+              },
+              "southEast": {
+                "type": "object",
+                "properties": {
+                  "latitude": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "longitude": {
+                    "type": "number",
+                    "format": "double"
+                  }
+                }
+              },
+              "southWest": {
+                "type": "object",
+                "properties": {
+                  "latitude": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "longitude": {
+                    "type": "number",
+                    "format": "double"
+                  }
+                }
+              },
+              "distanceAcross": {
+                "type": "number",
+                "format": "double"
+              }
+            },
+            "description": "corner geocodes for best view in a map"
+          },
+          "distanceUnit": {
+            "type": "string",
+            "description": "searching distance unit"
+          },
+          "totalATMCount": {
+            "type": "integer",
+            "description": "total number of ATMs found",
+            "format": "int32"
+          },
+          "matchedLocations": {
+            "type": "array",
+            "description": "candidates of the locations where to search for ATM terminals",
+            "items": {
+              "type": "object",
+              "properties": {
+                "location": {
+                  "$ref": "#/components/schemas/location"
+                }
+              }
+            }
+          },
+          "foundATMLocations": {
+            "type": "array",
+            "description": "details of found ATM terminals",
+            "items": {
+              "type": "object",
+              "properties": {
+                "atmLocation": {
+                  "$ref": "#/components/schemas/atmLocation"
+                }
+              }
+            }
+          }
+        }
+      },
+      "RouteRequest": {
+        "required": [
+          "requestDataRoute",
+          "wsRequestHeaderV2"
+        ],
+        "type": "object",
+        "properties": {
+          "requestDataRoute": {
+            "$ref": "#/components/schemas/requestDataRoute"
+          },
+          "wsRequestHeaderV2": {
+            "$ref": "#/components/schemas/wsRequestHeaderV2"
+          }
+        }
+      },
+      "requestDataRoute": {
+        "required": [
+          "travelMode",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "example": "features"
+          },
+          "location": {
+            "type": "object",
+            "properties": {
+              "address": {
+                "type": "object",
+                "properties": {}
+              },
+              "geocodes": {
+                "required": [
+                  "latitude",
+                  "longitude"
+                ],
+                "type": "object",
+                "properties": {
+                  "latitude": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "longitude": {
+                    "type": "number",
+                    "format": "double"
+                  }
+                }
+              },
+              "placeName": {
+                "type": "string"
+              }
+            },
+            "description": "starting or ending location"
+          },
+          "travelMode": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "travel type, choose from WALKINGTIME or DRIVINGTIME",
+                "example": "WALKINGTIME"
+              }
+            }
+          },
+          "doNotLocateOnRestrictedElements": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "error": {
+            "type": "string"
+          },
+          "status": {
+            "type": "number",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string"
+          }
+        }
+      },
+      "responseData": {
+        "type": "object",
+        "properties": {
+          "bestMapView": {
+            "type": "object",
+            "properties": {
+              "northEast": {
+                "type": "object",
+                "properties": {
+                  "latitude": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "longitude": {
+                    "type": "number",
+                    "format": "double"
+                  }
+                }
+              },
+              "northWest": {
+                "type": "object",
+                "properties": {
+                  "latitude": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "longitude": {
+                    "type": "number",
+                    "format": "double"
+                  }
+                }
+              },
+              "southEast": {
+                "type": "object",
+                "properties": {
+                  "latitude": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "longitude": {
+                    "type": "number",
+                    "format": "double"
+                  }
+                }
+              },
+              "southWest": {
+                "type": "object",
+                "properties": {
+                  "latitude": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "longitude": {
+                    "type": "number",
+                    "format": "double"
+                  }
+                }
+              },
+              "distanceAcross": {
+                "type": "number",
+                "format": "double"
+              }
+            },
+            "description": "corner geocodes for best view in a map"
+          },
+          "distanceUnit": {
+            "type": "string",
+            "description": "searching distance unit"
+          },
+          "totalATMCount": {
+            "type": "integer",
+            "description": "total number of ATMs found",
+            "format": "int32"
+          },
+          "matchedLocations": {
+            "type": "array",
+            "description": "candidates of the locations where to search ATM terminals",
+            "items": {
+              "type": "object",
+              "properties": {
+                "location": {
+                  "$ref": "#/components/schemas/location"
+                }
+              }
+            }
+          },
+          "foundATMLocations": {
+            "type": "array",
+            "description": "details of found ATM terminals",
+            "items": {
+              "type": "object",
+              "properties": {
+                "atmLocation": {
+                  "$ref": "#/components/schemas/atmLocation"
+                }
+              }
+            }
+          }
+        }
+      },
+      "PropertyCount": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        }
+      },
+      "responseDataRoute": {
+        "type": "object",
+        "properties": {
+          "MetaData": {
+            "type": "string"
+          },
+          "Properties": {
+            "type": "string"
+          },
+          "BestMapView": {
+            "type": "object",
+            "properties": {
+              "northEast": {
+                "type": "object",
+                "properties": {
+                  "latitude": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "longitude": {
+                    "type": "number",
+                    "format": "double"
+                  }
+                }
+              },
+              "northWest": {
+                "type": "object",
+                "properties": {
+                  "latitude": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "longitude": {
+                    "type": "number",
+                    "format": "double"
+                  }
+                }
+              },
+              "southEast": {
+                "type": "object",
+                "properties": {
+                  "latitude": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "longitude": {
+                    "type": "number",
+                    "format": "double"
+                  }
+                }
+              },
+              "southWest": {
+                "type": "object",
+                "properties": {
+                  "latitude": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "longitude": {
+                    "type": "number",
+                    "format": "double"
+                  }
+                }
+              },
+              "distanceAcross": {
+                "type": "number",
+                "format": "double"
+              }
+            },
+            "description": "corner geocodes for best view in a map"
+          },
+          "DistanceUnit": {
+            "type": "string",
+            "description": "searching distance unit"
+          },
+          "MatchedLocations": {
+            "type": "array",
+            "description": "result of the candidate locations with geocodes",
+            "items": {
+              "type": "object",
+              "properties": {
+                "location": {
+                  "$ref": "#/components/schemas/location"
+                }
+              }
+            }
+          },
+          "FoundATMLocations": {
+            "type": "array",
+            "description": "details of found ATM terminals",
+            "items": {
+              "type": "object",
+              "properties": {
+                "atmLocation": {
+                  "$ref": "#/components/schemas/atmLocation"
+                }
+              }
+            }
+          }
+        }
+      },
+      "GeocodeRequest": {
+        "required": [
+          "requestDataGeocode",
+          "wsRequestHeaderV2"
+        ],
+        "type": "object",
+        "properties": {
+          "wsRequestHeaderV2": {
+            "$ref": "#/components/schemas/wsRequestHeaderV2"
+          },
+          "requestDataGeocode": {
+            "$ref": "#/components/schemas/requestDataGeocode"
+          }
+        }
+      },
+      "SearchResponse": {
+        "type": "object",
+        "properties": {
+          "wsStatus": {
+            "$ref": "#/components/schemas/wsStatus"
+          },
+          "responseData": {
+            "$ref": "#/components/schemas/responseData"
+          },
+          "wsResponseHeaderV2": {
+            "$ref": "#/components/schemas/wsResponseHeaderV2"
+          }
+        }
+      },
+      "GeocodeLocation": {
+        "type": "object",
+        "properties": {
+          "Address": {
+            "type": "object",
+            "properties": {
+              "city": {
+                "type": "string"
+              },
+              "state": {
+                "type": "string"
+              },
+              "street": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
+              "street2": {
+                "type": "string"
+              },
+              "postalCode": {
+                "type": "string"
+              },
+              "formattedAddress": {
+                "type": "string"
+              }
+            }
+          },
+          "Property": {
+            "type": "object",
+            "properties": {}
+          },
+          "TypeName": {
+            "type": "string"
+          },
+          "PlaceName": {
+            "type": "string"
+          },
+          "Coordinates": {
+            "type": "object",
+            "properties": {
+              "Latitude": {
+                "type": "number",
+                "format": "double"
+              },
+              "Longitude": {
+                "type": "number",
+                "format": "double"
+              }
+            }
+          },
+          "GeocodeMethod": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      },
+      "atmLocation": {
+        "type": "object",
+        "properties": {
+          "score": {
+            "type": "number",
+            "format": "double"
+          },
+          "address": {
+            "type": "object",
+            "properties": {
+              "city": {
+                "type": "string"
+              },
+              "state": {
+                "type": "string"
+              },
+              "street": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
+              "street2": {
+                "type": "string"
+              },
+              "postalCode": {
+                "type": "string"
+              },
+              "formattedAddress": {
+                "type": "string"
+              }
+            }
+          },
+          "storeID": {
+            "type": "string"
+          },
+          "typeName": {
+            "type": "string"
+          },
+          "placeName": {
+            "type": "string"
+          },
+          "isMappable": {
+            "type": "string"
+          },
+          "ownerBusId": {
+            "type": "string"
+          },
+          "properties": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "filter": {
+                  "$ref": "#/components/schemas/FindFilter"
+                }
+              }
+            }
+          },
+          "coordinates": {
+            "type": "object",
+            "properties": {
+              "latitude": {
+                "type": "number",
+                "format": "double"
+              },
+              "longitude": {
+                "type": "number",
+                "format": "double"
+              }
+            }
+          },
+          "ownerBusName": {
+            "type": "string"
+          }
+        }
+      },
+      "FindFilter": {
+        "type": "object",
+        "properties": {
+          "filterName": {
+            "type": "string"
+          },
+          "filterValue": {
+            "type": "string"
+          }
+        }
+      },
+      "RouteResponse": {
+        "type": "object",
+        "properties": {
+          "wsStatus": {
+            "$ref": "#/components/schemas/wsStatus"
+          },
+          "responseData": {
+            "$ref": "#/components/schemas/responseDataRoute"
+          },
+          "wsResponseHeaderV2": {
+            "$ref": "#/components/schemas/wsResponseHeaderV2"
+          },
+          "responseSummaryData": {
+            "type": "string"
+          }
+        }
+      },
+      "GeocodeResponse": {
+        "type": "object",
+        "properties": {
+          "wsStatus": {
+            "$ref": "#/components/schemas/wsStatus"
+          },
+          "responseData": {
+            "$ref": "#/components/schemas/responseDataGeocode"
+          },
+          "wsResponseHeaderV2": {
+            "$ref": "#/components/schemas/wsResponseHeaderV2"
+          },
+          "responseSummaryData": {
+            "type": "string"
+          }
+        }
+      },
+      "MatchedLocation": {
+        "type": "object",
+        "properties": {
+          "score": {
+            "type": "number",
+            "format": "double"
+          },
+          "Location": {
+            "$ref": "#/components/schemas/GeocodeLocation"
+          }
+        }
+      },
+      "location": {
+        "type": "object",
+        "properties": {
+          "score": {
+            "type": "number",
+            "format": "double"
+          },
+          "address": {
+            "type": "object",
+            "properties": {
+              "city": {
+                "type": "string"
+              },
+              "state": {
+                "type": "string"
+              },
+              "street": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
+              "street2": {
+                "type": "string"
+              },
+              "postalCode": {
+                "type": "string"
+              },
+              "formattedAddress": {
+                "type": "string"
+              }
+            }
+          },
+          "typeName": {
+            "type": "string"
+          },
+          "placeName": {
+            "type": "string"
+          },
+          "properties": {
+            "type": "object",
+            "properties": {}
+          },
+          "coordinates": {
+            "type": "object",
+            "properties": {
+              "latitude": {
+                "type": "number",
+                "format": "double"
+              },
+              "longitude": {
+                "type": "number",
+                "format": "double"
+              }
+            }
+          },
+          "geocodeMethod": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      },
+      "wsRequestHeaderV2": {
+        "required": [
+          "applicationId",
+          "requestMessageId",
+          "requestTs",
+          "userBid",
+          "userId"
+        ],
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string"
+          },
+          "userBid": {
+            "type": "string"
+          },
+          "requestTs": {
+            "type": "string"
+          },
+          "applicationId": {
+            "type": "string"
+          },
+          "correlationId": {
+            "type": "string"
+          },
+          "requestMessageId": {
+            "type": "string"
+          }
+        }
+      },
+      "SearchResponseATMTotals": {
+        "type": "object",
+        "properties": {
+          "wsStatus": {
+            "$ref": "#/components/schemas/wsStatus"
+          },
+          "wsResponseHeaderV2": {
+            "$ref": "#/components/schemas/wsResponseHeaderV2"
+          },
+          "responseDataATMTotals": {
+            "$ref": "#/components/schemas/responseDataATMTotals"
+          }
+        }
+      },
+      "requestData": {
+        "required": [
+          "distance",
+          "distanceUnit",
+          "location",
+          "range"
+        ],
+        "type": "object",
+        "properties": {
+          "range": {
+            "required": [
+              "count",
+              "start"
+            ],
+            "type": "object",
+            "properties": {
+              "count": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "start": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          },
+          "culture": {
+            "type": "string",
+            "example": "en-US"
+          },
+          "options": {
+            "required": [
+              "range",
+              "sort"
+            ],
+            "type": "object",
+            "properties": {
+              "sort": {
+                "required": [
+                  "direction",
+                  "primary"
+                ],
+                "type": "object",
+                "properties": {
+                  "primary": {
+                    "type": "string",
+                    "description": "sorting field which ATM search based on, choose from distance, placeName or city",
+                    "example": "distance"
+                  },
+                  "direction": {
+                    "type": "string",
+                    "description": "sorting order which ATM search based on, choose from asc or desc",
+                    "example": "asc"
+                  }
+                },
+                "description": "the sorting method"
+              },
+              "range": {
+                "required": [
+                  "count",
+                  "start"
+                ],
+                "type": "object",
+                "properties": {
+                  "count": {
+                    "type": "integer",
+                    "description": "the number of the results displayed",
+                    "format": "int32",
+                    "example": 10
+                  },
+                  "start": {
+                    "type": "integer",
+                    "description": "the starting position of the first result",
+                    "format": "int32",
+                    "example": 0
+                  }
+                },
+                "description": "range of the searching result"
+              },
+              "findFilters": {
+                "type": "array",
+                "description": "filters of ATM attributes",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "filter": {
+                      "$ref": "#/components/schemas/FindFilter"
+                    }
+                  }
+                }
+              },
+              "operationName": {
+                "type": "string",
+                "description": "the conditional logic of all filters, choose from or OR and",
+                "example": "and"
+              }
+            },
+            "description": "searching ATMs options"
+          },
+          "distance": {
+            "type": "string",
+            "description": "searching distance radius of ATMs",
+            "example": "60"
+          },
+          "location": {
+            "required": [
+              "geocodes"
+            ],
+            "type": "object",
+            "properties": {
+              "address": {
+                "type": "object",
+                "properties": {}
+              },
+              "geocodes": {
+                "required": [
+                  "latitude",
+                  "longitude"
+                ],
+                "type": "object",
+                "properties": {
+                  "latitude": {
+                    "type": "number",
+                    "description": "input latitude where to search for ATMs",
+                    "format": "double",
+                    "example": 30.26759000000004
+                  },
+                  "longitude": {
+                    "type": "number",
+                    "description": "input longitude where to search for ATMs",
+                    "format": "double",
+                    "example": -97.74298999999996
+                  }
+                },
+                "description": "input geocodes where to search for ATMs"
+              },
+              "placeName": {
+                "type": "string",
+                "description": "single line address where to search for ATMs",
+                "example": "Austin, TX"
+              }
+            }
+          },
+          "distanceUnit": {
+            "type": "string",
+            "description": "searching distance unit, choose from mi or km",
+            "example": "mi"
+          },
+          "metaDataOptions": {
+            "type": "number",
+            "example": 0
+          }
+        }
+      }
+    },
+    "responses": {},
+    "parameters": {},
+    "examples": {},
+    "requestBodies": {},
+    "headers": {},
+    "callbacks": {}
+  },
+  "x-tagGroups": [
+    {
+      "name": "API Reference",
+      "tags": [
+        "Locate ATMs API"
+      ]
+    }
+  ]
+}
