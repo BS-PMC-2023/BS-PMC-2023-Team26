@@ -21,7 +21,8 @@ INSTALLED_APPS = [
     "Users",
     "frontend",
     "rest_framework",
-    "rest_auth"
+    "rest_auth",
+    "allauth",
 ]
 
 MIDDLEWARE = [
