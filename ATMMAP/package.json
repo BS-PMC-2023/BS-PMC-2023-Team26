@@ -2,7 +2,10 @@
   "name": "my-project",
   "version": "1.0.0",
   "scripts": {
-    "build": "echo 'Build complete.'"
+  "start": "react-scripts start",
+  "build": "react-scripts build",
+  "test": "react-scripts test",
+  "eject": "react-scripts eject"
   },
   "dependencies": {
     "@turf/turf": "^6.5.0",
