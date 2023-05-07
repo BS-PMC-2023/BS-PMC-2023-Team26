@@ -28,7 +28,7 @@ export default class Homepage extends Component {
           <Route exact path="/account" Component={AccountDetails}/>
           <Route exact path="/StockHistory" Component={StockHistory}/>
           <Route exact path="/ResetRequest" Component={ResetRequest}/>
-          <Route exact path="/reset_form" Component={ResetPasswordForm}/>
+          <Route exact path="/reset_form/:uidb64/:token" Component={ResetPasswordForm} />
         </Routes>
       </BrowserRouter>
     );

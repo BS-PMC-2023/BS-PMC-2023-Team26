@@ -8,5 +8,5 @@ urlpatterns = [
     path('signin/', views.index2),
     path('map/', views.index),
     path('ResetRequest/', views.index),
-    path('reset_form/', views.index),
+    path('reset_form/<uidb64>/<token>/', views.index, name='reset_form')
 ]

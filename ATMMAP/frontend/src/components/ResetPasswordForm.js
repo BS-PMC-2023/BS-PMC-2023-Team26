@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams  } from 'react-router-dom';
 import '../styles/LoginPage.css';
+import { Navigate } from 'react-router-dom';
 
 const ResetPasswordForm = () => {
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
   const [csrfToken, setCsrfToken] = useState('');
   const [isSuccess, setIsSuccess] = useState(false);
-  const navigate = useNavigate();
+  const { uidb64, token } = useParams();
 
   useEffect(() => {
     fetch('/Users/get-csrf-token/')
@@ -22,13 +23,13 @@ const ResetPasswordForm = () => {
 
   const handleReset = (e) => {
     e.preventDefault();
-
+    const data = {};
     const formData = new FormData();
     formData.append('password1', password);
     formData.append('password2', password2);
     formData.append('csrfmiddlewaretoken', csrfToken);
 
-    fetch('/Users/reset_form/', {
+    fetch('/Users/reset_form/'+ uidb64 +'/'+ token +'/', {
       method: 'POST',
       body: formData,
       headers: {
@@ -40,6 +41,7 @@ const ResetPasswordForm = () => {
           throw new Error('Network response was not ok');
         }
         setIsSuccess(true);
+        console.log(formData);
         return response.json();
       })
       .then(data => {
@@ -49,10 +51,11 @@ const ResetPasswordForm = () => {
         console.error('There was a problem with the fetch operation:', error);
         // handle error
       });
+
   }
 
   if (isSuccess) {
-    navigate('/', { replace: true });
+    return <Navigate to="/" />; 
   }
 
   return (
