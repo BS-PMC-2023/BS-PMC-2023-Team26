@@ -21,11 +21,12 @@ TEMPLATE_DIRS = (
 
 def signin(request):
     if request.method == 'POST':
+        model = get_user_model()
         username = request.POST.get('username')
         password = request.POST.get('password')
         try:
-            user = CustomUser.objects.get(username=username)
-        except CustomUser.DoesNotExist:  # <-- use CustomUser here
+            user = model.objects.get(username=username)
+        except model.DoesNotExist:  # <-- use CustomUser here
             return JsonResponse({'success': False, 'message': 'Invalid username or password.'})
 
         if user.is_active and user.check_password(password):
@@ -82,7 +83,7 @@ def signout(request):
 
 # Checks if a user is logged in or not
 @csrf_exempt
-def check_login(request): 
+def check_login(request):
     is_authenticated = request.user.is_authenticated
     return JsonResponse({'isLoggedIn': is_authenticated})
 
@@ -97,9 +98,10 @@ def user_details(request):
     return JsonResponse(user_data)
 
 def verify(request, uidb64, token):
+    usermodel = get_user_model()
     try:
         uid = urlsafe_base64_decode(uidb64).decode()
-        user = CustomUser.objects.get(pk=uid)
+        user = usermodel.objects.get(pk=uid)
     except (TypeError, ValueError, OverflowError, User.DoesNotExist):
         user = None
 

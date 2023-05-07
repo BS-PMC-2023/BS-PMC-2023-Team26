@@ -11,7 +11,7 @@ class CustomUser(AbstractUser):
     groups = models.ManyToManyField(
         'auth.Group',
         blank=True,
-        related_name='custom_users', # Add this line
+        related_name='custom_users',
         verbose_name='groups',
         help_text='The groups this user belongs to. A user will get all permissions granted to each of their groups.',
     )
@@ -22,14 +22,13 @@ class CustomUser(AbstractUser):
     user_permissions = models.ManyToManyField(
         'auth.Permission',
         blank=True,
-        related_name='custom_users', # Add this line
+        related_name='custom_users',
         verbose_name='user permissions',
         help_text='Specific permissions for this user.',
     )
 
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(required=True)
-    class Meta:
-        model = CustomUser
+    class Meta(UserCreationForm.Meta):
+        model = User
         fields = UserCreationForm.Meta.fields + ('email',)
-
