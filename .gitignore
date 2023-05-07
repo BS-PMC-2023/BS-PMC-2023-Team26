@@ -5,6 +5,7 @@
 pycache/
 local_settings.py
 db.sqlite3
+license.txt
 
 # Node
 node_modules/
