@@ -9,6 +9,7 @@ import ExchangeRatePage from './ExchangeRatePage';
 import AuthButton from './AuthButton';
 import AccountDetails from './AccountDetails';
 import StockHistory from './StockHistory';
+import CurrencyValueGraph from './CurrencyValueGraph';
 
 
 export default class Homepage extends Component {
@@ -26,6 +27,7 @@ export default class Homepage extends Component {
           <Route exact path="/ExchangeRate" Component={ExchangeRatePage}/>
           <Route exact path="/account" Component={AccountDetails}/>
           <Route exact path="/StockHistory" Component={StockHistory}/>
+          <Route exact path="/CurrencyGraph" Component={CurrencyValueGraph}/>
         </Routes>
       </BrowserRouter>
     );
