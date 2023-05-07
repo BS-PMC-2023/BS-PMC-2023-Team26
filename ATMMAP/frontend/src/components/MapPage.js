@@ -112,50 +112,47 @@ function MapPage() {
         </Navbar.Collapse>
       </Navbar>
 
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col-md-3">
-            <form>
-              <div className="form-group">
-                <label htmlFor="cityFilter">City:</label>
-                <select
-                  id="cityFilter"
-                  className="form-control"
-                  value={cityFilter}
-                  onChange={handleCityFilterChange}
-                >
-                  <option value="">All Cities</option>
-                  {cities.map((city) => (
-                    <option key={city} value={city}>
-                      {city}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div className="form-group">
-                <label htmlFor="bankFilter">Banks:</label>
-                <select
-                  id="bankFilter"
-                  className="form-control"
-                  value={bankFilter}
-                  onChange={handleBankFilterChange}
-                >
-                  <option value="">All Banks</option>
-                  {bankNames.map((bankName) => (
-                    <option key={bankName} value={bankName}>
-                      {bankName}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </form>
-          </div>
-          <div className="col-md-9">
-          <div id="map" style={{ height: "650px", marginTop: "50px" }} ref={mapRef}></div>
-
-          </div>
+ <div className="map-page-container">
+    <div className="filters-container">
+      <form>
+        <div className="form-group">
+          <label htmlFor="cityFilter">City:</label>
+          <select
+            id="cityFilter"
+            className="form-control"
+            value={cityFilter}
+            onChange={handleCityFilterChange}
+          >
+            <option value="">All Cities</option>
+            {cities.map((city) => (
+              <option key={city} value={city}>
+                {city}
+              </option>
+            ))}
+          </select>
         </div>
-      </div>
+        <div className="form-group">
+          <label htmlFor="bankFilter">Banks:</label>
+          <select
+            id="bankFilter"
+            className="form-control"
+            value={bankFilter}
+            onChange={handleBankFilterChange}
+          >
+            <option value="">All Banks</option>
+            {bankNames.map((bankName) => (
+              <option key={bankName} value={bankName}>
+                {bankName}
+              </option>
+            ))}
+          </select>
+        </div>
+      </form>
+    </div>
+    <div className="map-container">
+      <div id="map" style={{ height: "650px", marginTop: "50px" }} ref={mapRef}></div>
+    </div>
+  </div>
     </div>
   );
 }
