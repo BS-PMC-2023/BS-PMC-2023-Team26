@@ -11,6 +11,8 @@ import AccountDetails from './AccountDetails';
 import StockHistory from './StockHistory';
 import CurrencyValueGraph from './CurrencyValueGraph';
 
+import ResetRequest from './ResetRequest';
+import ResetPasswordForm from './ResetPasswordForm';
 
 export default class Homepage extends Component {
   constructor(props){
@@ -28,6 +30,8 @@ export default class Homepage extends Component {
           <Route exact path="/account" Component={AccountDetails}/>
           <Route exact path="/StockHistory" Component={StockHistory}/>
           <Route exact path="/CurrencyGraph" Component={CurrencyValueGraph}/>
+          <Route exact path="/ResetRequest" Component={ResetRequest}/>
+          <Route exact path="/reset_form/:uidb64/:token" Component={ResetPasswordForm} />
         </Routes>
       </BrowserRouter>
     );

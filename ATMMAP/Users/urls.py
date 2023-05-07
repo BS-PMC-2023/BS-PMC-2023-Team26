@@ -10,4 +10,6 @@ urlpatterns = [
     path('user_details/', views.user_details),
     path('verify/<uidb64>/<token>/', views.verify, name='verify'),
     path('', include('allauth.urls')),
+    path('call_reset/', views.call_reset),
+    path('reset_form/<uidb64>/<token>/', views.reset_form, name='reset_form')
 ]

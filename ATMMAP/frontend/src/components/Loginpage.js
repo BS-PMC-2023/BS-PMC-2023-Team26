@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import '../styles/LoginPage.css';
 import Navbar from './Navbar';
+import { Link } from 'react-router-dom';
 
 function LoginPage() {
   const [username, setUsername] = useState('');
@@ -76,6 +77,9 @@ function LoginPage() {
             {error && <span className="login-error">{error}</span>}
             <button className="login-button" type="submit">Login</button>
           </form>
+          <Link to='/ResetRequest'>
+              <button className="button">Reset Password</button>
+          </Link>
         </div>
       </section>
     </>

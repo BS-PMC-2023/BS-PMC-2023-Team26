@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout, get_user_model
 from .models import CustomUserCreationForm
-from django.http import Http404, JsonResponse
+from django.http import Http404, HttpResponse, JsonResponse
 from django.contrib.auth.models import User
 from django.middleware.csrf import get_token
 from django.views.decorators.csrf import csrf_exempt
@@ -111,3 +111,49 @@ def verify(request, uidb64, token):
         return redirect('/')
     else:
         raise Http404('Email confirmation link is invalid or has expired.')
+    
+@csrf_exempt 
+def reset_form(request, uidb64, token):
+    if request.method == 'POST':
+        usermodel = get_user_model()
+        print(uidb64)
+        try:
+            uid = urlsafe_base64_decode(uidb64).decode()
+            user = usermodel.objects.get(pk=uid)
+        except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+            user = None
+            return JsonResponse({'success': False, 'message': 'User not found.'})
+        
+        password1 = request.POST.get('password1')
+        password2 = request.POST.get('password2')
+        if password1 != password2:
+            return JsonResponse({'success': False, 'message': 'Passwords do not match!'})
+        user.set_password(password1)
+        user.save()
+        logout(request)
+        return JsonResponse({'success': True})
+    else:
+        return render(request, 'frontend/index.html')
+
+@csrf_exempt  
+def call_reset(request):
+    if request.method == 'POST':
+        model = get_user_model()
+        username = request.POST.get('username')
+        try:
+            user = model.objects.get(username=username)
+        except model.DoesNotExist:  # <-- use CustomUser here
+            return JsonResponse({'success': False, 'message': 'User not found!.'})
+        token_generator = default_token_generator
+        uidb64 = urlsafe_base64_encode(force_bytes(user.pk))
+        print(uidb64)
+        token = token_generator.make_token(user)
+        password_url = request.build_absolute_uri(reverse('reset_form', args=[uidb64, token]))
+        send_mail(
+            'Reset your ATMMAP password',
+            f'Please click the following link to reset your password: {password_url}',
+            'markos5623@gmail.com',
+            [user.email],
+            fail_silently=False,)
+    return JsonResponse({'success': True})
+
