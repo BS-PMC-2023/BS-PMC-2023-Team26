@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function AccountDetails() {
   const [user, setUser] = useState(null);
@@ -20,6 +21,9 @@ function AccountDetails() {
       <h2>Account Details</h2>
       <p>Username: {user.username}</p>
       <p>Email: {user.email}</p>
+      <Link to='/ResetRequest'>
+        <button className="button">Reset Password</button>
+      </Link>
     </div>
   );
 }
