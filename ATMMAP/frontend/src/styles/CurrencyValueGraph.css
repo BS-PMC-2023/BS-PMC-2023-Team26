@@ -1,0 +1,26 @@
+.currency-value-graph {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.currency-value-graph__title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.currency-value-graph__options {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.currency-value-graph__options-item {
+  margin: 0 1rem;
+}
+
+.currency-value-graph__chart {
+  max-width: 600px;
+  max-height: 400px;
+}
