@@ -13,7 +13,6 @@ class CustomUser(AbstractUser):
         blank=True,
         related_name='custom_users',
         verbose_name='groups',
-        help_text='The groups this user belongs to. A user will get all permissions granted to each of their groups.',
     )
 
     def is_authenticated(self):
@@ -24,7 +23,6 @@ class CustomUser(AbstractUser):
         blank=True,
         related_name='custom_users',
         verbose_name='user permissions',
-        help_text='Specific permissions for this user.',
     )
 
 class CustomUserCreationForm(UserCreationForm):

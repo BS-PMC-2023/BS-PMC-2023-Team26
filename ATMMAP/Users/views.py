@@ -13,7 +13,6 @@ from django.utils.http import urlsafe_base64_encode
 from django.urls import reverse
 from django.contrib import messages
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from .models import CustomUser
 
 TEMPLATE_DIRS = (
     'ATMMAP/frontend'
