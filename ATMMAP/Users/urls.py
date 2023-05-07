@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 
 urlpatterns = [
@@ -8,4 +8,6 @@ urlpatterns = [
     path('get-csrf-token/', views.get_csrf_token),
     path('check_login/', views.check_login),
     path('user_details/', views.user_details),
+    path('verify/<uidb64>/<token>/', views.verify, name='verify'),
+    path('', include('allauth.urls')),
 ]
