@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout, get_user_model
 from .models import CustomUserCreationForm
-from django.http import Http404, JsonResponse
+from django.http import Http404, HttpResponse, JsonResponse
 from django.contrib.auth.models import User
 from django.middleware.csrf import get_token
 from django.views.decorators.csrf import csrf_exempt
@@ -111,3 +111,44 @@ def verify(request, uidb64, token):
         return redirect('/')
     else:
         raise Http404('Email confirmation link is invalid or has expired.')
+    
+@csrf_exempt 
+def reset_form(request):
+    if request.method == 'POST':
+        model = get_user_model()
+        username = None
+        if request.user.is_authenticated:
+            username = request.user.username
+        password1 = request.POST.get('password1')
+        password2 = request.POST.get('password2')
+        if password1 != password2:
+            return JsonResponse({'success': False, 'message': 'Passwords do not match!'})
+        try:
+            user = model.objects.get(username=username)
+        except model.DoesNotExist:
+            return JsonResponse({'success': False, 'message': 'User not found.'})
+        user.set_password(password1)
+        user.save()
+        logout(request)
+        return JsonResponse({'success': True})
+    else:
+        return render(request, 'frontend/index.html')
+
+@csrf_exempt  
+def call_reset(request):
+    if request.method == 'POST':
+        model = get_user_model()
+        username = request.POST.get('username')
+        try:
+            user = model.objects.get(username=username)
+        except model.DoesNotExist:  # <-- use CustomUser here
+            return JsonResponse({'success': False, 'message': 'User not found!.'})
+        password_url = request.build_absolute_uri(reverse('reset_form'))
+        send_mail(
+            'Reset your ATMMAP password',
+            f'Please click the following link to reset your password: {password_url}',
+            'markos5623@gmail.com',
+            [user.email],
+            fail_silently=False,)
+    return JsonResponse({'success': True})
+

@@ -7,4 +7,6 @@ urlpatterns = [
     path('signup/', views.index2),
     path('signin/', views.index2),
     path('map/', views.index),
+    path('ResetRequest/', views.index),
+    path('reset_form/', views.index),
 ]
