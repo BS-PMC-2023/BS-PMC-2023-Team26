@@ -25,11 +25,6 @@ function MapPage() {
         const xCoordinates = validBanks.map(bank => bank.X_Coordinate);
         const yCoordinates = validBanks.map(bank => bank.Y_Coordinate);
 
-        if (validBanks.length > 0) {
-          // set the view to the first bank's coordinates and zoom level 16
-          map.setView([yCoordinates[0], xCoordinates[0]], 16);
-        }
-
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
         }).addTo(map);
@@ -56,9 +51,13 @@ function MapPage() {
         console.log('Current location:', position.coords.latitude, position.coords.longitude);
         setCurrentLocation([position.coords.latitude, position.coords.longitude]);
         L.marker([position.coords.latitude, position.coords.longitude]).addTo(map).bindPopup('You are here');
+        // set the view to the user's current location coordinates and zoom level 16
+        map.setView([position.coords.latitude, position.coords.longitude], 16);
       });
+    } else {
+      // set the view to the first bank's coordinates and zoom level 16
+      map.setView([yCoordinates[0], xCoordinates[0]], 16);
     }
-    
 
     return () => {
       map.remove();
@@ -87,15 +86,15 @@ function MapPage() {
         </Navbar.Collapse>
       </Navbar>
       <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
-        <input type="text" placeholder="Filter by city" onChange={handleFilterChange} />
         <select onChange={handleCityFilterChange}>
           <option value="">All Cities</option>
-          {cities.map(city => <option value={city}>{city}</option>)}
+          {cities.map((city, index) => <option key={index} value={city}>{city}</option>)}
+
+
         </select>
         <div ref={mapRef} style={{ flex: "1", height: "100%" }} />
       </div>
-</>
+    </>
   );
-}
-
+  }  
 export default MapPage;
