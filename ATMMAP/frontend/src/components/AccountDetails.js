@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 import '../styles/Homepage.css';
 
+
+
 function AccountDetails() {
   const [user, setUser] = useState(null);
-
+  
   useEffect(() => {
     fetch('/Users/user_details/')
       .then(response => response.json())
@@ -13,6 +15,14 @@ function AccountDetails() {
         setUser(data);
       });
   }, []);
+
+  const handleDeleteUser = () => {
+    return <Navigate to="/DeleteRequest" />; 
+  }
+
+  const handleResetPassword = () => {
+    return <Navigate to="/ResetRequest" />; 
+  }
 
   if (!user) {
     return <div>Loading...</div>;
@@ -27,13 +37,9 @@ function AccountDetails() {
             <h2>Account Details</h2>
             <p>Username: {user.username}</p>
             <p>Email: {user.email}</p>
-            <div className="col-md-6 text-center">
-              <Link to='/ResetRequest'>
-                <button className="tn btn-primary btn-lg">Reset Password</button>
-              </Link>
-              <Link to='/DeleteRequest'>
-                <button className="tn btn-primary btn-lg" color='RED'>Delete User</button>
-              </Link>
+            <div>
+              <button className="btn btn-primary btn-lg" onClick={handleResetPassword}>Reset Password</button>
+              <button className="btn btn-danger btn-lg" onClick={handleDeleteUser}>Delete User</button>
             </div>
           </div>
         </div>
