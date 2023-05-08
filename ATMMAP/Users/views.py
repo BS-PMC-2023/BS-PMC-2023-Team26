@@ -157,3 +157,20 @@ def call_reset(request):
             fail_silently=False,)
     return JsonResponse({'success': True})
 
+@csrf_exempt 
+def delete_user(request):
+    if request.method == 'POST':
+        model = get_user_model()
+        username = request.user.username
+        try:
+            user = model.objects.get(username=username)
+        except model.DoesNotExist:  # <-- use CustomUser here
+            return JsonResponse({'success': False, 'message': 'User not found!.'})
+        
+        password1 = request.POST.get('password1')
+        if user.check_password(password1):
+            logout(request)
+            user.delete()
+            return JsonResponse({'success': True})
+    else:
+        return render(request, 'frontend/index.html')
