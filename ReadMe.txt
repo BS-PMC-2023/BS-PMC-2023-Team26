@@ -29,3 +29,5 @@ Python
 React
 Bable
 Material-UI
+
+backend packages install: pip install -r requirements.txt
