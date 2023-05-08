@@ -10,6 +10,7 @@ import AuthButton from './AuthButton';
 import AccountDetails from './AccountDetails';
 import StockHistory from './StockHistory';
 import ResetRequest from './ResetRequest';
+import DeleteRequest from './DeleteRequest';
 import ResetPasswordForm from './ResetPasswordForm';
 
 export default class Homepage extends Component {
@@ -28,6 +29,7 @@ export default class Homepage extends Component {
           <Route exact path="/account" Component={AccountDetails}/>
           <Route exact path="/StockHistory" Component={StockHistory}/>
           <Route exact path="/ResetRequest" Component={ResetRequest}/>
+          <Route exact path="/DeleteRequest" Component={DeleteRequest}/>
           <Route exact path="/reset_form/:uidb64/:token" Component={ResetPasswordForm} />
         </Routes>
       </BrowserRouter>
