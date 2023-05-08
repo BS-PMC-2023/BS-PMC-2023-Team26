@@ -27,7 +27,6 @@ def signin(request):
             user = model.objects.get(username=username)
         except model.DoesNotExist:  # <-- use CustomUser here
             return JsonResponse({'success': False, 'message': 'Invalid username or password.'})
-
         if user.is_active and user.check_password(password):
             login(request, user)
             return JsonResponse({'success': True})
