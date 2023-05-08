@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams  } from 'react-router-dom';
-import '../styles/LoginPage.css';
+import '../styles/DeleteRequest.css';
 import { Navigate } from 'react-router-dom';
+import Navbar from './Navbar';
 
 const DeleteRequest = () => {
   const [password, setPassword] = useState('');
@@ -9,6 +10,7 @@ const DeleteRequest = () => {
   const [csrfToken, setCsrfToken] = useState('');
   const [isSuccess, setIsSuccess] = useState(false);
   const { uidb64, token } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch('/Users/get-csrf-token/')
@@ -53,22 +55,32 @@ const DeleteRequest = () => {
 
   }
 
+  const handleReturnHome = () => {
+    navigate('/');
+  };
+
   if (isSuccess) {
     return <Navigate to="/" />; 
   }
 
   return (
-    <div>
-      <form onSubmit={handleDelete}>
-        <h2>Are you sure you want to delete your account?</h2>
-        <input type="hidden" name="csrfmiddlewaretoken" value={csrfToken} />
-        <label>
-          Enter your password to confirm:
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        </label>
-        <button type="submit" color='RED'>Confirm</button>
-      </form>
-    </div>
+    <>
+    <Navbar/>
+      <h2>Are you sure you want to delete your account?</h2>
+      <div className="delete-request-container">
+        <form className="delete-request-form" onSubmit={handleDelete}>
+          <input type="hidden" name="csrfmiddlewaretoken" value={csrfToken} />
+          <label>
+            Enter your password to confirm:
+            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          </label>
+          <div className="delete-request-buttons">
+            <button type="submit" className="delete-request-btn">Confirm</button>
+            <button type="button" onClick={handleReturnHome} className="delete-request-btn return-home-btn">Return Home</button>
+          </div>
+        </form>
+      </div>
+    </>
   );
 };
 
