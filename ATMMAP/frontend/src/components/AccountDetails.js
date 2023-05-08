@@ -16,11 +16,11 @@ function AccountDetails() {
       });
   }, []);
 
-  const handleDeleteUser = () => {
+  const handleDeleteUser = (e) => {
     return <Navigate to="/DeleteRequest" />; 
   }
 
-  const handleResetPassword = () => {
+  const handleResetPassword = (e) => {
     return <Navigate to="/ResetRequest" />; 
   }
 
@@ -38,8 +38,12 @@ function AccountDetails() {
             <p>Username: {user.username}</p>
             <p>Email: {user.email}</p>
             <div>
-              <button className="btn btn-primary btn-lg" onClick={handleResetPassword}>Reset Password</button>
-              <button className="btn btn-danger btn-lg" onClick={handleDeleteUser}>Delete User</button>
+              <Link to='/ResetRequest'>
+                <button className="button">Reset Password</button>
+              </Link>
+              <Link to='/DeleteRequest'>
+                <button className="button">Delete User</button>
+              </Link>
             </div>
           </div>
         </div>
