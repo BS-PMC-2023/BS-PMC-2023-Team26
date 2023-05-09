@@ -1,10 +1,10 @@
-.delete-container {
+.reset-container {
   padding: 2rem;
   max-width: 700px;
   margin: 0 auto;
 }
 
-.delete-request-container {
+.reset-request-container {
   border-radius: 10px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
   padding: 2rem;
@@ -12,18 +12,18 @@
   background-color: #fff;
 }
 
-.delete-request-container h2 {
+.reset-request-container h2 {
   color: #333;
   margin-bottom: 1.5rem;
 }
 
-.delete-request-form label {
+.reset-request-form label {
   font-size: 1.125rem;
   margin-bottom: 1rem;
   color: #666;
 }
 
-.delete-request-button {
+.reset-request-button {
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
   color: #fff;
@@ -34,10 +34,10 @@
   transition: background-color 0.3s ease;
 }
 
-.delete-request-button:hover {
+.reset-request-button:hover {
   background-color: #0056b3;
 }
 
-.delete-request-button:focus {
+.reset-request-button:focus {
   outline: none;
 }

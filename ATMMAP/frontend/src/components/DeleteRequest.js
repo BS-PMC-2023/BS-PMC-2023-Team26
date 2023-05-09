@@ -1,19 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams  } from 'react-router-dom';
-import '../styles/DeleteRequest.css';
 import { Navigate } from 'react-router-dom';
+import '../styles/DeleteRequest.css';
 import Navbar from './Navbar';
 
 const DeleteRequest = () => {
-  const [password, setPassword] = useState('');
-  const [password2, setPassword2] = useState('');
+  const [username, setUsername] = useState('');
   const [csrfToken, setCsrfToken] = useState('');
   const [isSuccess, setIsSuccess] = useState(false);
-  const { uidb64, token } = useParams();
-  const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('/Users/get-csrf-token/')
+    fetch('/Users/get-csrf-token/') // Update to your endpoint
       .then(response => response.json())
       .then(data => {
         setCsrfToken(data.csrfToken);
@@ -25,24 +21,20 @@ const DeleteRequest = () => {
 
   const handleDelete = (e) => {
     e.preventDefault();
-    const data = {};
+
     const formData = new FormData();
-    formData.append('password1', password);
+    formData.append('username', username);
     formData.append('csrfmiddlewaretoken', csrfToken);
 
-    fetch('/Users/delete_user/', {
+    fetch('/Users/delete-user/', { // Update to your endpoint
       method: 'POST',
-      body: formData,
-      headers: {
-        'X-CSRFToken': csrfToken,
-      },
+      body: formData
     })
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
         setIsSuccess(true);
-        console.log(formData);
         return response.json();
       })
       .then(data => {
@@ -52,33 +44,27 @@ const DeleteRequest = () => {
         console.error('There was a problem with the fetch operation:', error);
         // handle error
       });
-
   }
 
-  const handleReturnHome = () => {
-    navigate('/');
-  };
-
   if (isSuccess) {
-    return <Navigate to="/" />; 
+    return <Navigate to="/" replace />;
   }
 
   return (
     <>
-    <Navbar/>
-      <h2>Are you sure you want to delete your account?</h2>
-      <div className="delete-request-container">
-        <form className="delete-request-form" onSubmit={handleDelete}>
-          <input type="hidden" name="csrfmiddlewaretoken" value={csrfToken} />
-          <label>
-            Enter your password to confirm:
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-          </label>
-          <div className="delete-request-buttons">
-            <button type="submit" className="delete-request-btn">Confirm</button>
-            <button type="button" onClick={handleReturnHome} className="delete-request-btn return-home-btn">Return Home</button>
-          </div>
-        </form>
+      <Navbar />
+      <div className="delete-container">
+        <div className="delete-request-container">
+          <form className="delete-request-form" onSubmit={handleDelete}>
+            <h2>Delete Your Account</h2>
+            <input type="hidden" name="csrfmiddlewaretoken" value={csrfToken} />
+            <label className="delete-request-label">
+              Enter your Username:
+              <input className="delete-request-input" type="text" value={username} onChange={(e) => setUsername(e.target.value)} required />
+            </label>
+            <button className="delete-request-button" type="submit">Delete Account</button>
+          </form>
+        </div>
       </div>
     </>
   );

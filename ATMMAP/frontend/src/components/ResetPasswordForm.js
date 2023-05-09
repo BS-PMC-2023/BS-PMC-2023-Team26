@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams  } from 'react-router-dom';
-import '../styles/LoginPage.css';
+import { useNavigate, useParams } from 'react-router-dom';
+import '../styles/ResetPasswordForm.css';
 import { Navigate } from 'react-router-dom';
+import Navbar from './Navbar';
 
 const ResetPasswordForm = () => {
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const [csrfToken, setCsrfToken] = useState('');
   const [isSuccess, setIsSuccess] = useState(false);
   const { uidb64, token } = useParams();
@@ -23,7 +25,11 @@ const ResetPasswordForm = () => {
 
   const handleReset = (e) => {
     e.preventDefault();
-    const data = {};
+    if (password !== password2) {
+      setErrorMessage('Passwords do not match!');
+      return;
+    }
+
     const formData = new FormData();
     formData.append('password1', password);
     formData.append('password2', password2);
@@ -41,7 +47,6 @@ const ResetPasswordForm = () => {
           throw new Error('Network response was not ok');
         }
         setIsSuccess(true);
-        console.log(formData);
         return response.json();
       })
       .then(data => {
@@ -59,21 +64,28 @@ const ResetPasswordForm = () => {
   }
 
   return (
-    <div id="reset-password-form">
-      <form onSubmit={handleReset}>
-        <h2>Reset your password</h2>
-        <input type="hidden" name="csrfmiddlewaretoken" value={csrfToken} />
-        <label>
-          Password:
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        </label>
-        <label>
-          Confirm Password:
-          <input type="password" value={password2} onChange={(e) => setPassword2(e.target.value)} />
-        </label>
-        <button type="submit">Confirm</button>
-      </form>
-    </div>
+    <>
+      <Navbar/>
+      <div className="reset-password-container">
+        <div className="reset-password-form-container">
+          <form className="reset-password-form" onSubmit={handleReset}>
+            <h2>Reset Your Password</h2>
+            <p>Please enter your new password below:</p>
+            <input type="hidden" name="csrfmiddlewaretoken" value={csrfToken} />
+            <label className="reset-password-label">
+              New Password:
+              <input className="reset-password-input" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+            </label>
+            <label className="reset-password-label">
+              Confirm New Password:
+              <input className="reset-password-input" type="password" value={password2} onChange={(e) => setPassword2(e.target.value)} required />
+            </label>
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
+            <button className="reset-password-button" type="submit">Confirm New Password</button>
+          </form>
+        </div>
+      </div>
+    </>
   );
 };
 

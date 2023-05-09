@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
-import '../styles/Homepage.css';
-
-
+import '../styles/AccountDetails.css';
 
 function AccountDetails() {
   const [user, setUser] = useState(null);
@@ -16,40 +14,30 @@ function AccountDetails() {
       });
   }, []);
 
-  const handleDeleteUser = (e) => {
-    return <Navigate to="/DeleteRequest" />; 
-  }
-
-  const handleResetPassword = (e) => {
-    return <Navigate to="/ResetRequest" />; 
-  }
-
   if (!user) {
     return <div>Loading...</div>;
   }
 
   return (
-    <div>
+    <>
       <Navbar />
-      <div className="container">
-        <div className="row justify-content-center">
-          <div className="col-md-6 text-center">
-            <h2>Account Details</h2>
-            <p>Username: {user.username}</p>
-            <p>Email: {user.email}</p>
-            <div>
-              <Link to='/ResetRequest'>
-                <button className="button">Reset Password</button>
-              </Link>
-              <Link to='/DeleteRequest'>
-                <button className="button">Delete User</button>
-              </Link>
-            </div>
+      <div className="account-details-container">
+        <div className="account-details-container-inner">
+          <h2>Account Details</h2>
+          <p><strong>Username:</strong> {user.username}</p>
+          <p><strong>Email:</strong> {user.email}</p>
+          <div className="account-details-buttons">
+            <Link to='/ResetRequest'>
+              <button className="account-details-button">Reset Password</button>
+            </Link>
+            <Link to='/DeleteRequest'>
+              <button className="account-details-button">Delete User</button>
+            </Link>
           </div>
         </div>
       </div>
-    </div>
-  );
+    </>
+);
 }
 
 export default AccountDetails;
