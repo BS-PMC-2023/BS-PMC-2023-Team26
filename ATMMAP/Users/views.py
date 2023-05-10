@@ -173,3 +173,22 @@ def delete_user(request):
             return JsonResponse({'success': True})
     else:
         return render(request, 'frontend/index.html')
+    
+@csrf_exempt 
+def edit_user(request):
+    if request.method == 'POST':
+        usermodel = get_user_model()
+        try:
+            user = usermodel.objects.get(username=request.user.username)
+        except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+            user = None
+            return JsonResponse({'success': False, 'message': 'User not found.'})
+        username1 = request.POST.get('username1')
+        username2 = request.POST.get('username2')
+        if username1 != username2:
+            return JsonResponse({'success': False, 'message': 'Usernames do not match!'})
+        user.username = username1
+        user.save()
+        return JsonResponse({'success': True})
+    else:
+        return render(request, 'frontend/index.html')

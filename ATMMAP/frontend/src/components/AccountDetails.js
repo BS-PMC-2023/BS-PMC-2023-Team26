@@ -33,6 +33,9 @@ function AccountDetails() {
             <Link to='/DeleteRequest'>
               <button className="account-details-button">Delete User</button>
             </Link>
+            <Link to='/EditRequest'>
+              <button className="account-details-button">Edit Profile</button>
+            </Link>
           </div>
         </div>
       </div>

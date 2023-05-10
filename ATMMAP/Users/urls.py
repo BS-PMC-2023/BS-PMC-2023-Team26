@@ -12,5 +12,6 @@ urlpatterns = [
     path('', include('allauth.urls')),
     path('call_reset/', views.call_reset),
     path('delete_user/', views.delete_user),
+    path('edit_user/', views.edit_user),
     path('reset_form/<uidb64>/<token>/', views.reset_form, name='reset_form')
 ]
