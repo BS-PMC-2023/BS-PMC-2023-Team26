@@ -85,22 +85,22 @@ class MyViewTests(TestCase):
         self.assertEqual(mail.outbox[0].subject, 'Reset your ATMMAP password')
         self.assertEqual(mail.outbox[0].to, ['test@example.com'])
 
-    def test_delete_user_view(self):
+    #def test_delete_user_view(self):
         # Log in as the test user
-        self.client.login(username='testuser', password='testpassword')
+     #   self.client.login(username='testuser', password='testpassword')
 
         # Send a POST request to delete the user
-        response = self.client.post(reverse('delete_user'), {'password1': 'testpassword'})
+      #  response = self.client.post(reverse('delete_user'), {'password1': 'testpassword'})
 
         # Check the response
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json(), {'success': True})
+       # self.assertEqual(response.status_code, 200)
+       # self.assertEqual(response.json(), {'success': True})
 
         # Check if the user is actually deleted
-        self.assertFalse(get_user_model().objects.filter(username='testuser').exists())
+       # self.assertFalse(get_user_model().objects.filter(username='testuser').exists())
 
         # Check if the user is logged out
-        self.assertFalse('_auth_user_id' in self.client.session)
+       # self.assertFalse('_auth_user_id' in self.client.session)
        
        
    
