@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
-import '../styles/Signuppage.css';
+import '../styles/ResetRequest.css';
 import Navbar from './Navbar';
 
 const ResetRequest = () => {
@@ -51,18 +51,22 @@ const ResetRequest = () => {
   }
 
   return (
-    <div className="container">
+    <>
       <Navbar />
-      <form onSubmit={handleReset}>
-        <h2>Reset your password</h2>
-        <input type="hidden" name="csrfmiddlewaretoken" value={csrfToken} />
-        <label className="login-label">
+      <div className="reset-container">
+        <div className="reset-request-container">
+          <form className="reset-request-form" onSubmit={handleReset}>
+            <h2>Reset Your Password</h2>
+            <input type="hidden" name="csrfmiddlewaretoken" value={csrfToken} />
+            <label className="reset-request-label">
               Enter your Username:
-              <input className="login-input" type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+              <input className="reset-request-input" type="text" value={username} onChange={(e) => setUsername(e.target.value)} required />
             </label>
-        <button className="signup-button" type="submit">Confirm</button>
-      </form>
-    </div>
+            <button className="reset-request-button" type="submit">Send Reset Link</button>
+          </form>
+        </div>
+      </div>
+    </>
   );
 };
 

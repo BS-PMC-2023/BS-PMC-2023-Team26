@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
-import '../styles/Homepage.css';
-
-
+import '../styles/AccountDetails.css';
 
 function AccountDetails() {
   const [user, setUser] = useState(null);
@@ -16,35 +14,39 @@ function AccountDetails() {
       });
   }, []);
 
-  const handleDeleteUser = () => {
-    return <Navigate to="/DeleteRequest" />; 
-  }
-
-  const handleResetPassword = () => {
-    return <Navigate to="/ResetRequest" />; 
-  }
-
   if (!user) {
     return <div>Loading...</div>;
   }
 
   return (
-    <div>
+    <>
       <Navbar />
-      <div className="container">
-        <div className="row justify-content-center">
-          <div className="col-md-6 text-center">
-            <h2>Account Details</h2>
-            <p>Username: {user.username}</p>
-            <p>Email: {user.email}</p>
-            <div>
-              <button className="btn btn-primary btn-lg" onClick={handleResetPassword}>Reset Password</button>
-              <button className="btn btn-danger btn-lg" onClick={handleDeleteUser}>Delete User</button>
-            </div>
+      <div className="account-details-container">
+        <div className="account-details-container-inner">
+          <h2>Account Details</h2>
+          {user.profile_picture && (
+            <img
+              src={user.profile_picture}
+              alt="Profile Picture"
+              className="profile-picture"
+            />
+          )}
+          <p><strong>Username:</strong> {user.username}</p>
+          <p><strong>Email:</strong> {user.email}</p>
+          <div className="account-details-buttons">
+            <Link to='/ResetRequest'>
+              <button className="account-details-button">Reset Password</button>
+            </Link>
+            <Link to='/DeleteRequest'>
+              <button className="account-details-button">Delete User</button>
+            </Link>
+            <Link to='/EditRequest'>
+              <button className="account-details-button">Edit Profile</button>
+            </Link>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

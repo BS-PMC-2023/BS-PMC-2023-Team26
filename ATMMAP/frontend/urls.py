@@ -12,5 +12,6 @@ urlpatterns = [
     path('StockHistory/', views.index,name='StockHistory'),
     path('account/', views.index,name='account'),
     path('DeleteRequest/', views.index,name='DeleteRequest'),
+    path('EditRequest/', views.index),
     path('reset_form/<uidb64>/<token>/', views.index, name='reset_form')
 ]
