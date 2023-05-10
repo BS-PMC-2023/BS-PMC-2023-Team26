@@ -1,8 +1,7 @@
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { Navbar, Nav } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import React, { useRef, useEffect, useState } from "react";
+import Navbar from './Navbar';
 
 function MapPage() {
   const mapRef = useRef(null);
@@ -95,23 +94,7 @@ function MapPage() {
     
     return (
    <div>
-      <Navbar bg="light" expand="lg">
-        <Navbar.Brand as={Link} to="/">
-          Bank Locator
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
-            <Nav.Link as={Link} to="/">
-              Home
-            </Nav.Link>
-            <Nav.Link as={Link} to="/ExchangeRate">
-              Exchange rate
-            </Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
-
+   <Navbar />
  <div className="map-page-container">
     <div className="filters-container">
       <form>
