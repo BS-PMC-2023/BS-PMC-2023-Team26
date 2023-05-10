@@ -24,6 +24,13 @@ function AccountDetails() {
       <div className="account-details-container">
         <div className="account-details-container-inner">
           <h2>Account Details</h2>
+          {user.profile_picture && (
+            <img
+              src={user.profile_picture}
+              alt="Profile Picture"
+              className="profile-picture"
+            />
+          )}
           <p><strong>Username:</strong> {user.username}</p>
           <p><strong>Email:</strong> {user.email}</p>
           <div className="account-details-buttons">
@@ -40,7 +47,7 @@ function AccountDetails() {
         </div>
       </div>
     </>
-);
+  );
 }
 
 export default AccountDetails;

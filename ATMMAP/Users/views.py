@@ -13,7 +13,7 @@ from django.utils.http import urlsafe_base64_encode
 from django.urls import reverse
 from django.contrib import messages
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-
+from .models import CustomUser, Profile
 TEMPLATE_DIRS = (
     'ATMMAP/frontend'
 )
@@ -40,7 +40,7 @@ def get_csrf_token(request):
 
 def signup(request):
     if request.method == 'POST':
-        form = CustomUserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST, request.FILES)  
         if form.is_valid():
             # Save user data
             user = form.save(commit=False)
@@ -48,6 +48,12 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             user.set_password(raw_password)
             user.save()
+            # Get the profile picture from the form's cleaned data
+            profile_picture = form.cleaned_data.get('profile_picture')
+            if profile_picture:
+                profile, _ = Profile.objects.get_or_create(user=user)
+                profile.profile_picture = profile_picture
+                profile.save()
             # Generate verification token and save it to the user's profile
             token_generator = default_token_generator
             token = token_generator.make_token(user)
@@ -92,6 +98,7 @@ def user_details(request):
     user_data = {
         'username': user.username,
         'email': user.email,
+        'profile_picture': user.profile.profile_picture.url if hasattr(user, 'profile') and user.profile.profile_picture else None,
     }
     return JsonResponse(user_data)
 

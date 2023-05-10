@@ -27,6 +27,17 @@ class CustomUser(AbstractUser):
 
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(required=True)
+    profile_picture = forms.ImageField(required=False)
+
     class Meta(UserCreationForm.Meta):
         model = User
-        fields = UserCreationForm.Meta.fields + ('email',)
+        fields = UserCreationForm.Meta.fields + ('email', 'profile_picture')
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    profile_picture = models.ImageField(upload_to='profile_pictures/', blank=True, null=True)
+
+    # Add other profile fields as needed
+
+    def __str__(self):
+        return self.user.username
