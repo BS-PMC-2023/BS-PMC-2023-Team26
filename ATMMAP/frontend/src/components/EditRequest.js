@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import '../styles/ResetPasswordForm.css';
+import { useNavigate, Link } from 'react-router-dom';
+import '../styles/AccountDetails.css';
 import { Navigate } from 'react-router-dom';
 import Navbar from './Navbar';
 
@@ -65,26 +65,32 @@ const EditRequest = () => {
   return (
     <>
       <Navbar/>
-      <div className="reset-password-container">
-        <div className="reset-password-form-container">
-          <form className="reset-password-form" onSubmit={handleEdit}>
-            <h2>Edit your profile</h2>
-            <p>Please enter your new information below:</p>
+      <div className="account-details-container">
+      <h2>Edit your profile</h2>
+        <div className="account-details-form-container">
+        <p>Please enter your new information below:</p>
+          <form className="account-details-form" onSubmit={handleEdit}>
             <input type="hidden" name="csrfmiddlewaretoken" value={csrfToken} />
-            <label className="reset-password-label">
+            <label className="account-details-label">
               New Username:
-              <input className="reset-password-input" type="text" value={username} onChange={(e) => setUsername(e.target.value)} required />
+              <input className="account-details-input" type="text" value={username} onChange={(e) => setUsername(e.target.value)} required />
             </label>
-            <label className="reset-password-label">
+            <label className="account-details-label">
               Confirm New Username:
-              <input className="reset-password-input" type="text" value={username2} onChange={(e) => setUsername2(e.target.value)} required />
+              <input className="account-details-input" type="text" value={username2} onChange={(e) => setUsername2(e.target.value)} required />
             </label>
-            <label className="reset-password-label">
+            <label className="account-details-label">
             Profile Picture:
-            <input className="reset-password-input" type="file" accept="image/*" onChange={(e) => setProfilePicture(e.target.files[0])}/>
+            <input className="account-details-input" type="file" accept="image/*" onChange={(e) => setProfilePicture(e.target.files[0])}/>
             </label>
+            <p></p>
             {errorMessage && <p className="error-message">{errorMessage}</p>}
-            <button className="reset-password-button" type="submit">Confirm Edit</button>
+            <div className="account-details-buttons">
+              <button className="account-details-button" type="submit">Confirm Edit</button>
+              <Link to='/account'>
+                <button className="button">Cancel</button>
+              </Link>
+            </div>
           </form>
         </div>
       </div>
