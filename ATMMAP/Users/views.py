@@ -187,14 +187,27 @@ def edit_user(request):
         usermodel = get_user_model()
         try:
             user = usermodel.objects.get(username=request.user.username)
-        except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+        except (TypeError, ValueError, OverflowError, usermodel.DoesNotExist):
             user = None
             return JsonResponse({'success': False, 'message': 'User not found.'})
+        
         username1 = request.POST.get('username1')
         username2 = request.POST.get('username2')
         if username1 != username2:
             return JsonResponse({'success': False, 'message': 'Usernames do not match!'})
+        
         user.username = username1
+
+        # Handle profile picture update
+        profile_picture = request.FILES.get('profile_picture')
+        if profile_picture:
+            # Delete old profile picture if exists
+            if user.profile.profile_picture:
+                user.profile.profile_picture.delete(save=False)
+            # Save new profile picture
+            user.profile.profile_picture = profile_picture
+            user.profile.save()
+        
         user.save()
         return JsonResponse({'success': True})
     else:

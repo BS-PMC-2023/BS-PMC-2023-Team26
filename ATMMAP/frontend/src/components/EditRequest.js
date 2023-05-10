@@ -10,7 +10,7 @@ const EditRequest = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [csrfToken, setCsrfToken] = useState('');
   const [isSuccess, setIsSuccess] = useState(false);
-
+  const [profilePicture, setProfilePicture] = useState(null);
   useEffect(() => {
     fetch('/Users/get-csrf-token/')
       .then(response => response.json())
@@ -33,7 +33,7 @@ const EditRequest = () => {
     formData.append('username1', username);
     formData.append('username2', username2);
     formData.append('csrfmiddlewaretoken', csrfToken);
-
+    formData.append('profile_picture', profilePicture);
     fetch('/Users/edit_user/', {
       method: 'POST',
       body: formData,
@@ -78,6 +78,10 @@ const EditRequest = () => {
             <label className="reset-password-label">
               Confirm New Username:
               <input className="reset-password-input" type="text" value={username2} onChange={(e) => setUsername2(e.target.value)} required />
+            </label>
+            <label className="reset-password-label">
+            Profile Picture:
+            <input className="reset-password-input" type="file" accept="image/*" onChange={(e) => setProfilePicture(e.target.files[0])}/>
             </label>
             {errorMessage && <p className="error-message">{errorMessage}</p>}
             <button className="reset-password-button" type="submit">Confirm Edit</button>
