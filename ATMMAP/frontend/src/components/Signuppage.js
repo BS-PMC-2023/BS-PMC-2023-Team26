@@ -8,6 +8,7 @@ const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
+  const [profilePicture, setProfilePicture] = useState(null); // Added profile picture state
   const [csrfToken, setCsrfToken] = useState('');
   const [isSuccess, setIsSuccess] = useState(false);
 
@@ -30,6 +31,7 @@ const SignUp = () => {
     formData.append('email', email);
     formData.append('password1', password);
     formData.append('password2', password2);
+    formData.append('profile_picture', profilePicture); // Append profile picture to form data
     formData.append('csrfmiddlewaretoken', csrfToken);
 
     fetch('/Users/signup/', {
@@ -77,6 +79,10 @@ const SignUp = () => {
         <label className="signup-label">
           Confirm Password:
           <input className="signup-input" type="password" value={password2} onChange={(e) => setPassword2(e.target.value)} />
+        </label>
+        <label className="signup-label">
+          Profile Picture:
+          <input className="signup-input" type="file" accept="image/*" onChange={(e) => setProfilePicture(e.target.files[0])} />
         </label>
         <button className="signup-button" type="submit">Sign Up</button>
       </form>
