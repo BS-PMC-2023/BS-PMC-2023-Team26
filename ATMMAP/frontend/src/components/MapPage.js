@@ -10,14 +10,21 @@ function MapPage() {
   const [cities, setCities] = useState([]);
   const [bankNames, setBankNames] = useState([]);
   const [currentLocation, setCurrentLocation] = useState(null);
+  const [filterOption, setFilterOption] = useState("banks");
 
   useEffect(() => {
     const map = L.map(mapRef.current);
 
-    const banksUrl =
-      "https://data.gov.il/api/3/action/datastore_search?resource_id=1c5bc716-8210-4ec7-85be-92e6271955c2";
+    let apiUrl;
+    if (filterOption === "banks") {
+      apiUrl =
+        "https://data.gov.il/api/3/action/datastore_search?resource_id=1c5bc716-8210-4ec7-85be-92e6271955c2";
+    } else if (filterOption === "atms") {
+      apiUrl =
+        "https://data.gov.il/api/3/action/datastore_search?resource_id=b9d690de-0a9c-45ef-9ced-3e5957776b26";
+    }
 
-    fetch(banksUrl)
+    fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => {
         const banks = data.result.records;
@@ -41,22 +48,28 @@ function MapPage() {
         const uniqueBankNames = [...new Set(allBankNames)];
         setCities(uniqueCities);
         setBankNames(uniqueBankNames);
-
         validBanks.forEach((bank) => {
           const { X_Coordinate, Y_Coordinate, City, Bank_Name } = bank;
-
           if (
             (!cityFilter || City.toLowerCase().includes(cityFilter.toLowerCase())) &&
             (!bankFilter || Bank_Name.toLowerCase().includes(bankFilter.toLowerCase()))
           ) {
+            if (!X_Coordinate.toString().startsWith("35") && !X_Coordinate.toString().startsWith("34")) {
+              L.marker([X_Coordinate, Y_Coordinate])
+              .addTo(map)
+              .bindPopup(bank.branch_name_he);
+            }
+
+            else{
             L.marker([Y_Coordinate, X_Coordinate])
               .addTo(map)
               .bindPopup(bank.branch_name_he);
+            }
           }
         });
       })
       .catch((error) => {
-        console.error("Error fetching bank locations", error);
+        console.error("Error fetching locations", error);
       });
 
     // add a marker for the user's current location
@@ -82,56 +95,73 @@ function MapPage() {
     return () => {
       map.remove();
     };
-  }, [mapRef, cityFilter, bankFilter]);
+  }, [mapRef, cityFilter, bankFilter, filterOption]);
 
   const handleCityFilterChange = (event) => {
     setCityFilter(event.target.value);
-  }
+  };
 
-    const handleBankFilterChange = (event) => {
+  const handleBankFilterChange = (event) => {
     setBankFilter(event.target.value);
-    };
+  };
+
+  const handleFilterOptionChange = (event) => {
+    setFilterOption(event.target.value);
+  };
+    
     
     return (
-   <div>
-   <Navbar />
- <div className="map-page-container">
-    <div className="filters-container">
-      <form>
-        <div className="form-group">
-          <label htmlFor="cityFilter">City:</label>
-          <select
-            id="cityFilter"
-            className="form-control"
-            value={cityFilter}
-            onChange={handleCityFilterChange}
-          >
-            <option value="">All Cities</option>
-            {cities.map((city) => (
-              <option key={city} value={city}>
-                {city}
-              </option>
-            ))}
-          </select>
+      <div>
+      <Navbar />
+      <div className="map-page-container">
+        <div className="filters-container">
+          <form>
+            <div className="form-group">
+              <label htmlFor="cityFilter">City:</label>
+              <select
+                id="cityFilter"
+                className="form-control"
+                value={cityFilter}
+                onChange={handleCityFilterChange}
+              >
+                <option value="">All Cities</option>
+                {cities.map((city) => (
+                  <option key={city} value={city}>
+                    {city}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="form-group">
+              <label htmlFor="bankFilter">Banks:</label>
+              <select
+                id="bankFilter"
+                className="form-control"
+                value={bankFilter}
+                onChange={handleBankFilterChange}
+              >
+                <option value="">All Banks</option>
+                {bankNames.map((bankName) => (
+                  <option key={bankName} value={bankName}>
+                    {bankName}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="form-group">
+              <label htmlFor="filterOption">Filter:</label>
+              <select
+                id="filterOption"
+                className="form-control"
+                value={filterOption}
+                onChange={handleFilterOptionChange}
+              >
+                <option value="banks">Banks</option>
+                <option value="atms">ATMs</option>
+       </select>
+            </div>
+          </form>
         </div>
-        <div className="form-group">
-          <label htmlFor="bankFilter">Banks:</label>
-          <select
-            id="bankFilter"
-            className="form-control"
-            value={bankFilter}
-            onChange={handleBankFilterChange}
-          >
-            <option value="">All Banks</option>
-            {bankNames.map((bankName) => (
-              <option key={bankName} value={bankName}>
-                {bankName}
-              </option>
-            ))}
-          </select>
-        </div>
-      </form>
-    </div>
     <div className="map-container">
       <div id="map" style={{ height: "650px", marginTop: "50px" }} ref={mapRef}></div>
     </div>
