@@ -1,7 +1,19 @@
-import L from "leaflet";
-import "leaflet/dist/leaflet.css";
+
+
 import React, { useRef, useEffect, useState } from "react";
 import Navbar from './Navbar';
+import icon from 'leaflet/dist/images/marker-icon.png';
+import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
+
+
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: icon,
+  iconUrl: icon,
+  shadowUrl: iconShadow,
+});
 
 function MapPage() {
   const mapRef = useRef(null);
@@ -43,27 +55,32 @@ function MapPage() {
         }).addTo(map);
 
         const allBankNames = validBanks.map((bank) => bank.Bank_Name);
+ 
         const allCities = validBanks.map((bank) => bank.City);
         const uniqueCities = [...new Set(allCities)];
         const uniqueBankNames = [...new Set(allBankNames)];
+
         setCities(uniqueCities);
         setBankNames(uniqueBankNames);
         validBanks.forEach((bank) => {
           const { X_Coordinate, Y_Coordinate, City, Bank_Name } = bank;
+          const excludedCoordinate = { X_Coordinate: 33.211031, Y_Coordinate: 34.570094 };
           if (
             (!cityFilter || City.toLowerCase().includes(cityFilter.toLowerCase())) &&
-            (!bankFilter || Bank_Name.toLowerCase().includes(bankFilter.toLowerCase()))
+            (!bankFilter || Bank_Name.toLowerCase().includes(bankFilter.toLowerCase())) &&
+            (X_Coordinate !== excludedCoordinate.X_Coordinate || Y_Coordinate !== excludedCoordinate.Y_Coordinate)
           ) {
             if (!X_Coordinate.toString().startsWith("35") && !X_Coordinate.toString().startsWith("34")) {
               L.marker([X_Coordinate, Y_Coordinate])
               .addTo(map)
-              .bindPopup(bank.branch_name_he);
+              .bindPopup(`Bank: ${Bank_Name}`);
             }
+
 
             else{
             L.marker([Y_Coordinate, X_Coordinate])
               .addTo(map)
-              .bindPopup(bank.branch_name_he);
+              .bindPopup(`Bank: ${Bank_Name}`);
             }
           }
         });
@@ -162,9 +179,9 @@ function MapPage() {
             </div>
           </form>
         </div>
-    <div className="map-container">
-      <div id="map" style={{ height: "650px", marginTop: "50px" }} ref={mapRef}></div>
-    </div>
+        <div className="map-container">
+  <div id="map" style={{ height: "650px", marginTop: "50px" }} ref={mapRef}></div>
+</div>
   </div>
     </div>
   );

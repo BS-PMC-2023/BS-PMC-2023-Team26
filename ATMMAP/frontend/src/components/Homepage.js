@@ -1,7 +1,8 @@
 import Navbar from './Navbar';
 import React, { Component } from 'react';
-import '../styles/Homepage.css';
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import ResetPasswordForm from './ResetPasswordForm';
+
 import LoginPage from "./Loginpage";
 import SignUp from "./Signuppage";
 import MapPage from "./MapPage";
@@ -14,7 +15,9 @@ import ContactAdminForm from './ContactAdminForm';
 import EditRequest from './EditRequest'
 import ResetRequest from './ResetRequest';
 import DeleteRequest from './DeleteRequest';
-import ResetPasswordForm from './ResetPasswordForm';
+import '../styles/Homepage.css';
+
+
 
 export default class Homepage extends Component {
   constructor(props){
@@ -49,16 +52,18 @@ class Home extends Component {
   }
   render(){
     return (
+      
       <div className="home-page">
-      <Navbar />
-      <div className="container">
-        <div className="row justify-content-center">
-          <div className="col-md-6 text-center">
-            <h1>Welcome to Professional Exchange</h1>
-            <p>Connect with professionals in your industry</p>
-            <AuthButton />
+        <link rel="stylesheet" href="/styles/Homepage.css"></link>
+        <Navbar />
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-md-6 text-center">
+              <h1>Welcome to Professional Exchange</h1>
+              <p>Connect with professionals in your industry</p>
+              <AuthButton />
+            </div>
           </div>
-        </div>
         </div>
       </div>
     );

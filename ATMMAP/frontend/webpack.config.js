@@ -18,8 +18,19 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
-      }
+        use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              limit: 8192,
+            },
+          },
+        ],
+      },
     ],
   },
   optimization: {
@@ -28,7 +39,6 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       "process.env": {
-        // This has effect on the react lib size
         NODE_ENV: JSON.stringify("development"),
       },
     }),
