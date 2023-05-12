@@ -16,7 +16,7 @@ import EditRequest from './EditRequest'
 import ResetRequest from './ResetRequest';
 import DeleteRequest from './DeleteRequest';
 import '../styles/Homepage.css';
-
+import backgroundImage from '../styles/financial-stock-market-graph-rows-coins-growth-abstract-symbol-finance-concept-business-investment-currency-exchange-162020228.jpg';
 
 
 export default class Homepage extends Component {
@@ -53,7 +53,7 @@ class Home extends Component {
   render(){
     return (
       
-      <div className="home-page">
+      <div className="home-page" style={{ backgroundImage: `url(${backgroundImage})` }}>
         <link rel="stylesheet" href="/styles/Homepage.css"></link>
         <Navbar />
         <div className="container">

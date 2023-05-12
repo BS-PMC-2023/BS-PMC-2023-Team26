@@ -88,26 +88,29 @@ function MapPage() {
       .catch((error) => {
         console.error("Error fetching locations", error);
       });
-
-    // add a marker for the user's current location
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        console.log(
-          "Current location:",
-          position.coords.latitude,
-          position.coords.longitude
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            console.log(
+              "Current location:",
+              position.coords.latitude,
+              position.coords.longitude
+            );
+            setCurrentLocation([position.coords.latitude, position.coords.longitude]);
+            L.marker([position.coords.latitude, position.coords.longitude])
+              .addTo(map)
+              .bindPopup("You are here");
+            map.setView([position.coords.latitude, position.coords.longitude], 16);
+          },
+          (error) => {
+            console.error("Error retrieving current location:", error);
+          }
         );
-        setCurrentLocation([position.coords.latitude, position.coords.longitude]);
-        L.marker([position.coords.latitude, position.coords.longitude])
-          .addTo(map)
-          .bindPopup("You are here");
-        // set the view to the user's current location coordinates and zoom level 16
-        map.setView([position.coords.latitude, position.coords.longitude], 16);
-      });
-    } else {
-      // set the view to the first bank's coordinates and zoom level 16
-      map.setView([yCoordinates[0], xCoordinates[0]], 16);
-    }
+      } else {
+        console.error("Geolocation is not supported");
+      }
+      
+    // add a marker for the user's current location
 
     return () => {
       map.remove();

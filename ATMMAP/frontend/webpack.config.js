@@ -1,5 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
+;
+// Use the `image` variable wherever you need to reference the image URL.
 
 module.exports = {
   entry: "./src/index.js",
