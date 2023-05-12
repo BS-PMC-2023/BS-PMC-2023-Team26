@@ -3,6 +3,8 @@ import Chart from 'chart.js/auto';
 import axios from 'axios';
 import Navbar from './Navbar';
 import '../styles/CurrencyValueGraph.css';
+import 'chart.js/auto';
+
 
 
 const CurrencyValueGraph = ({ currencySymbol = 'USD/EUR' }) => {
