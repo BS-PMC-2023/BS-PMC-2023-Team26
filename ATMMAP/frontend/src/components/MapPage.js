@@ -108,11 +108,11 @@ function MapPage() {
       } else {
         console.error("Geolocation is not supported");
       }
-
-    return () => {
-      map.remove();
-    };
-  }, [mapRef, cityFilter, bankFilter, filterOption]);
+  
+      return () => {
+        map.remove();
+      };
+    }, [mapRef, cityFilter, bankFilter, filterOption, currentLocation]);
 
   const handleCityFilterChange = (event) => {
     setCityFilter(event.target.value);
