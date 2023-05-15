@@ -1,8 +1,8 @@
 .currency-value-graph {
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-  text-align: center;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .currency-value-graph__title {
@@ -13,14 +13,21 @@
 .currency-value-graph__options {
   display: flex;
   justify-content: center;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .currency-value-graph__options-item {
-  margin: 0 1rem;
+  margin-right: 1rem;
+}
+
+.currency-value-graph__options-item:last-child {
+  margin-right: 0;
 }
 
 .currency-value-graph__chart {
-  max-width: 600px;
-  max-height: 400px;
+  max-width: 500px; /* Adjust as per requirements */
+  max-height: 500px; /* Adjust as per requirements */
+  width: 100%;
+  height: auto;
+  aspect-ratio: 0.8; /* Ensures that the width and height are always equal, creating a square */
 }

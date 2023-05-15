@@ -15,6 +15,7 @@ import ContactAdminForm from './ContactAdminForm';
 import EditRequest from './EditRequest'
 import ResetRequest from './ResetRequest';
 import DeleteRequest from './DeleteRequest';
+import CryptoGraph from './CryptoGraph';
 import '../styles/Homepage.css';
 import backgroundImage from '../styles/financial-stock-market-graph-rows-coins-growth-abstract-symbol-finance-concept-business-investment-currency-exchange-162020228.jpg';
 
@@ -40,6 +41,7 @@ export default class Homepage extends Component {
           <Route exact path="/reset_form/:uidb64/:token" Component={ResetPasswordForm} />
           <Route exact path="/ContactAdminForm" Component={ContactAdminForm} />
           <Route exact path="/EditRequest" Component={EditRequest} />
+          <Route exact path="/CryptoGraph" Component={CryptoGraph} />
         </Routes>
       </BrowserRouter>
     );
