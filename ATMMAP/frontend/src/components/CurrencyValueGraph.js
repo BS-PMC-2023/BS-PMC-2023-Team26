@@ -126,7 +126,8 @@ const CurrencyValueGraph = ({ currencySymbol = 'USD/EUR' }) => {
         <canvas ref={chartRef} className="currency-value-graph__chart"></canvas>
       </div>
     </>
-  );  
+  );
+  
 };
 
 export default CurrencyValueGraph;

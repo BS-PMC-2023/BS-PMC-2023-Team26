@@ -13,5 +13,6 @@ urlpatterns = [
     path("DeleteRequest/", views.index, name="DeleteRequest"),
     path("EditRequest/", views.index),
     path("reset_form/<uidb64>/<token>/", views.index, name="reset_form"),
+    path("CurrencyGraph/", views.index, name="CurrencyGraph"),
     path("CryptoGraph/", views.index, name="CryptoGraph"),
 ]
