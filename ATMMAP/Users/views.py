@@ -190,25 +190,42 @@ def edit_user(request):
         except (TypeError, ValueError, OverflowError, usermodel.DoesNotExist):
             user = None
             return JsonResponse({'success': False, 'message': 'User not found.'})
-        
         username1 = request.POST.get('username1')
         username2 = request.POST.get('username2')
         if username1 != username2:
             return JsonResponse({'success': False, 'message': 'Usernames do not match!'})
-        
         user.username = username1
-
         # Handle profile picture update
         profile_picture = request.FILES.get('profile_picture')
         if profile_picture:
-            # Delete old profile picture if exists
+            # Delete old profile picture if it exists
             if user.profile.profile_picture:
                 user.profile.profile_picture.delete(save=False)
             # Save new profile picture
             user.profile.profile_picture = profile_picture
             user.profile.save()
-        
         user.save()
         return JsonResponse({'success': True})
     else:
         return render(request, 'frontend/index.html')
+
+def contact_us(request):
+    if request.method == 'POST':
+        model = get_user_model()
+        username = request.POST.get('username')
+        try:
+            user = model.objects.get(username=username)
+        except model.DoesNotExist:  # <-- use CustomUser here
+            return JsonResponse({'success': False, 'message': 'User not found!.'})
+        token_generator = default_token_generator
+        uidb64 = urlsafe_base64_encode(force_bytes(user.pk))
+        print(uidb64)
+        token = token_generator.make_token(user)
+        password_url = request.build_absolute_uri(reverse('reset_form', args=[uidb64, token]))
+        send_mail(
+            'Reset your ATMMAP password',
+            f'Please click the following link to reset your password: {password_url}',
+            'markos5623@gmail.com',
+            [user.email],
+            fail_silently=False,)
+    return JsonResponse({'success': True})

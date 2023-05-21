@@ -30,9 +30,11 @@
     "axios": "^1.4.0",
     "bootstrap": "^5.2.3",
     "chart.js": "^4.3.0",
+    "file-loader": "^6.2.0",
     "leaflet": "^1.9.3",
     "react-bootstrap": "^2.7.4",
     "react-router-dom": "^6.10.0",
-    "reactstrap": "^9.1.9"
+    "reactstrap": "^9.1.9",
+    "url-loader": "^4.1.1"
   }
 }

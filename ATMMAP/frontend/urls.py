@@ -15,4 +15,5 @@ urlpatterns = [
     path("reset_form/<uidb64>/<token>/", views.index, name="reset_form"),
     path("CurrencyGraph/", views.index, name="CurrencyGraph"),
     path("CryptoGraph/", views.index, name="CryptoGraph"),
+    path("ContactAdminForm/", views.index, name="ContactAdminForm"),
 ]
