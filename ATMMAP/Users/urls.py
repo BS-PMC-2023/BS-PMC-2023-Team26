@@ -13,5 +13,6 @@ urlpatterns = [
     path('call_reset/', views.call_reset,name='call_reset'),
     path('delete_user/', views.delete_user,name='delete_user'),
     path('edit_user/', views.edit_user),
+    path('contact_us/', views.contact_us),
     path('reset_form/<uidb64>/<token>/', views.reset_form, name='reset_form')
 ]

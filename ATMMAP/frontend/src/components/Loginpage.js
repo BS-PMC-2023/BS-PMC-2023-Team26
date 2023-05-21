@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Link } from 'react-router-dom';
 import '../styles/LoginPage.css';
 import Navbar from './Navbar';
-import { Link } from 'react-router-dom';
 
 function LoginPage() {
   const [username, setUsername] = useState('');

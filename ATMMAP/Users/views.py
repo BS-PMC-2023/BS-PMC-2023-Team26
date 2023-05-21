@@ -212,19 +212,18 @@ def edit_user(request):
 def contact_us(request):
     if request.method == 'POST':
         model = get_user_model()
-        username = request.POST.get('username')
         try:
-            user = model.objects.get(username=username)
+            user = model.objects.get(is_staff=True)
         except model.DoesNotExist:  # <-- use CustomUser here
-            return JsonResponse({'success': False, 'message': 'User not found!.'})
-        token_generator = default_token_generator
-        uidb64 = urlsafe_base64_encode(force_bytes(user.pk))
-        print(uidb64)
-        token = token_generator.make_token(user)
-        password_url = request.build_absolute_uri(reverse('reset_form', args=[uidb64, token]))
+            return JsonResponse({'success': False, 'message': 'Admin not found!.'})
+        email = request.POST.get('email')
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
         send_mail(
-            'Reset your ATMMAP password',
-            f'Please click the following link to reset your password: {password_url}',
+            'ATMMAP Contact-Us Message',
+            'User Email: ' + email + '\n' + 
+            'Message Subject: ' + subject + '\n' +
+            'Message: ' + message,
             'markos5623@gmail.com',
             [user.email],
             fail_silently=False,)
