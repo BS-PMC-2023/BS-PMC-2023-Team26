@@ -41,3 +41,10 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
+    
+class VIP(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    activated = models.BooleanField(default=False)
+    # Add other profile fields as needed
+    def __str__(self):
+        return self.user.username

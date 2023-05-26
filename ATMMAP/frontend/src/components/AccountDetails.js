@@ -43,6 +43,9 @@ function AccountDetails() {
             <Link to='/EditRequest'>
               <button className="account-details-button">Edit Profile</button>
             </Link>
+            <Link to='/PaymentPage'>
+              <button className="account-details-button">Become VIP</button>
+            </Link>
           </div>
         </div>
       </div>
