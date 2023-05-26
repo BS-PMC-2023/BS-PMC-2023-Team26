@@ -1,22 +1,26 @@
-<!DOCTYPE html>
-<div id="paypal-button-container-P-2EX19244UW412714WMRYLURQ"></div>
-<script src="https://www.paypal.com/sdk/js?client-id=AWgZtVPbDxM6S8cPteZODiacKsTNnBcJbliOhedxJliDvy9lrFx7jqF7y494mvSvUlv2iGTsPUdDwmW1&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
-<script>
-  paypal.Buttons({
-      style: {
-          shape: 'rect',
-          color: 'gold',
-          layout: 'vertical',
-          label: 'subscribe'
-      },
-      createSubscription: function(data, actions) {
-        return actions.subscription.create({
-          /* Creates the subscription */
-          plan_id: 'P-2EX19244UW412714WMRYLURQ'
-        });
-      },
-      onApprove: function(data, actions) {
-        alert(data.subscriptionID); // You can add optional success message for the subscriber here
-      }
-  }).render('#paypal-button-container-P-2EX19244UW412714WMRYLURQ'); // Renders the PayPal button
-</script>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ATMMAP</title>
+    {% load static %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    
+  </head>
+  <body>
+    <div id="main">
+      <div id="app"></div>
+    </div>
+    <script src="{% static "frontend/main.js" %}"></script>
+  </body>
+</html>

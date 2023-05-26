@@ -12,7 +12,8 @@ import AccountDetails from './AccountDetails';
 import StockHistory from './StockHistory';
 import CurrencyValueGraph from './CurrencyValueGraph';
 import ContactAdminForm from './ContactAdminForm';
-import EditRequest from './EditRequest'
+import EditRequest from './EditRequest';
+import PaymentPage from './PaymentPage';
 import ResetRequest from './ResetRequest';
 import DeleteRequest from './DeleteRequest';
 import CryptoGraph from './CryptoGraph';
@@ -42,6 +43,7 @@ export default class Homepage extends Component {
           <Route exact path="/ContactAdminForm" Component={ContactAdminForm} />
           <Route exact path="/EditRequest" Component={EditRequest} />
           <Route exact path="/CryptoGraph" Component={CryptoGraph} />
+          <Route exact path="/PaymentPage" Component={PaymentPage} />
         </Routes>
       </BrowserRouter>
     );

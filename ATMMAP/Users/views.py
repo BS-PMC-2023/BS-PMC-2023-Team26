@@ -234,12 +234,15 @@ def contact_us(request):
 def payment(request):
     paypal_dict = {
         "cmd": "_xclick-subscriptions",
+        "subscriber_id" : "PROD-8F636897B41831610",
         "business": 'SellerMan@mail.com',
-        "item_name": "ATMMAP VIP",
+        "no_note": "1", 
         "notify_url": "http://127.0.0.1:8000/",
         "return": "http://127.0.0.1:8000/",
         "cancel_return": "http://127.0.0.1:8000/",
+        "client_id": "AX4kf35YJeoUfZYFDsXZp9QrzyJDgdJDRNaIv490uk-t6srW5884CGU7WXDMmhFgYkifMfWkqFGk3UNp", 
     }
     form = PayPalPaymentsForm(initial=paypal_dict, button_type="subscribe")
     context = {"form": form}
     return render(request, "frontend/payment.html", context)
+
