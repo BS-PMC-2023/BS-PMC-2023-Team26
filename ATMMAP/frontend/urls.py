@@ -16,4 +16,5 @@ urlpatterns = [
     path("CurrencyGraph/", views.index, name="CurrencyGraph"),
     path("CryptoGraph/", views.index, name="CryptoGraph"),
     path("ContactAdminForm/", views.index, name="ContactAdminForm"),
+    path("payment/", views.index3, name="payment"),
 ]

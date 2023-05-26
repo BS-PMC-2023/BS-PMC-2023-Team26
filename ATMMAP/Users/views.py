@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
-from django.contrib.auth import authenticate, login, logout, get_user_model
+from django.contrib.auth import login, logout, get_user_model
 from .models import CustomUserCreationForm
-from django.http import Http404, HttpResponse, JsonResponse
+from django.http import Http404, JsonResponse
 from django.contrib.auth.models import User
 from django.middleware.csrf import get_token
 from django.views.decorators.csrf import csrf_exempt
@@ -13,7 +13,9 @@ from django.utils.http import urlsafe_base64_encode
 from django.urls import reverse
 from django.contrib import messages
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from .models import CustomUser, Profile
+from .models import Profile
+from paypal.standard.forms import PayPalPaymentsForm
+
 TEMPLATE_DIRS = (
     'ATMMAP/frontend'
 )
@@ -228,3 +230,16 @@ def contact_us(request):
             [user.email],
             fail_silently=False,)
     return JsonResponse({'success': True})
+    
+def payment(request):
+    paypal_dict = {
+        "cmd": "_xclick-subscriptions",
+        "business": 'SellerMan@mail.com',
+        "item_name": "ATMMAP VIP",
+        "notify_url": "http://127.0.0.1:8000/",
+        "return": "http://127.0.0.1:8000/",
+        "cancel_return": "http://127.0.0.1:8000/",
+    }
+    form = PayPalPaymentsForm(initial=paypal_dict, button_type="subscribe")
+    context = {"form": form}
+    return render(request, "frontend/payment.html", context)

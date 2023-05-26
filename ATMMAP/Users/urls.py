@@ -14,5 +14,8 @@ urlpatterns = [
     path('delete_user/', views.delete_user,name='delete_user'),
     path('edit_user/', views.edit_user),
     path('contact_us/', views.contact_us),
-    path('reset_form/<uidb64>/<token>/', views.reset_form, name='reset_form')
+    path('reset_form/<uidb64>/<token>/', views.reset_form, name='reset_form'),
+    path('paypal/', include("paypal.standard.ipn.urls")),
+    path('payment/', views.payment),
+    
 ]

@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_auth",
     "allauth",
+    "paypal.standard.ipn",
 ]
 
 MIDDLEWARE = [
@@ -54,6 +55,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "ATMMAP.wsgi.application"
+
+PAYPAL_TEST = True;
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
