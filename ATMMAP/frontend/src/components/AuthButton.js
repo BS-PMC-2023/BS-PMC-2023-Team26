@@ -5,8 +5,19 @@ class AuthButton extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoggedIn: false
+      isLoggedIn: false,
+      username: null,
     };
+  }
+
+  fetchUserDetails = () => {
+    fetch('Users/user_details/')
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          username: data.username,
+        });
+      });
   }
 
   componentDidMount() {
@@ -16,15 +27,19 @@ class AuthButton extends Component {
         this.setState({
           isLoggedIn: data.isLoggedIn
         });
+        if (data.isLoggedIn) {
+          this.fetchUserDetails();
+        }
       });
   }
 
   handleSignOut = () => {
-    fetch('/Users/signout/', { method: 'POST' })
+    fetch('Users/signout/', { method: 'POST' })
       .then(response => {
         if (response.ok) {
           this.setState({
-            isLoggedIn: false
+            isLoggedIn: false,
+            username: null,
           });
           return <Navigate to="/" />; 
         }
@@ -32,19 +47,23 @@ class AuthButton extends Component {
   }
 
   render() {
-    const { isLoggedIn } = this.state;
+    const { isLoggedIn, username } = this.state;
     if (isLoggedIn) {
       return (
         <div>
-            <button className="btn btn-primary btn-lg" onClick={this.handleSignOut}>Sign Out</button>
-            <Link to="/account">
-                <button className="btn btn-primary btn-lg">Account Details</button>
-            </Link>
-            <Link to="/ExchangeRate">
-                <button className="btn btn-primary btn-lg">Exchange rate</button>
-            </Link>
+          <h2 style={{ textAlign: 'center', fontSize: '30px' }}>
+            Welcome, {username}!
+          </h2>
+          <button className="btn btn-primary btn-lg" onClick={this.handleSignOut}>Sign Out</button>
+          <Link to="/account">
+            <button className="btn btn-primary btn-lg">Account Details</button>
+          </Link>
+          {/* <Link to="/ExchangeRate">
+            <button className="btn btn-primary btn-lg">Exchange rate</button>
+          </Link> */}
         </div>
       );
+      
     } else {
       return (
         <div>

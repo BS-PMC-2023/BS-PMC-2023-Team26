@@ -52,22 +52,27 @@ class Home extends Component {
   constructor(props){
     super(props);
   }
-  render(){
+  render() {
     return (
-      
       <div className="home-page" style={{ backgroundImage: `url(${backgroundImage})` }}>
         <link rel="stylesheet" href="/styles/Homepage.css"></link>
         <Navbar />
-        <div className="container">
-          <div className="row justify-content-center">
+        <div className="container h-100">
+          <div className="row justify-content-center align-items-center" style={{ height: '50%' }}>
             <div className="col-md-6 text-center">
-              <h1>Welcome to Professional Exchange</h1>
-              <p>Connect with professionals in your industry</p>
-              <AuthButton />
+              <div style={{ 
+                background: 'rgba(255, 255, 255, 0.7)', 
+                borderRadius: '15px', 
+                padding: '20px',
+                boxShadow: '0px 0px 10px 2px rgba(0,0,0,0.1)' 
+              }}>
+                <AuthButton />
+              </div>
             </div>
           </div>
         </div>
       </div>
     );
   }
+  
 }
