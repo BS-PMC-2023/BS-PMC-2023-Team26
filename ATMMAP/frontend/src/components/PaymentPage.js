@@ -7,7 +7,7 @@ const PaymentPage = () => {
   useEffect(() => {
     const script = document.createElement('script');
     script.src =
-      'https://www.paypal.com/sdk/js?client-id=AX4kf35YJeoUfZYFDsXZp9QrzyJDgdJDRNaIv490uk-t6srW5884CGU7WXDMmhFgYkifMfWkqFGk3UNp&vault=true&intent=subscription';
+      'https://www.sandbox.paypal.com/webapps/billing/plans/subscribe?plan_id=P-9W952749MP466283WMRYM4FQ';
     script.setAttribute('data-sdk-integration-source', 'button-factory');
     script.async = true;
 

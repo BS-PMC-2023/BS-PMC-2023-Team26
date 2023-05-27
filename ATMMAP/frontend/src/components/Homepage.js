@@ -17,6 +17,7 @@ import PaymentPage from './PaymentPage';
 import ResetRequest from './ResetRequest';
 import DeleteRequest from './DeleteRequest';
 import CryptoGraph from './CryptoGraph';
+import SubscriptionCancellation from './SubscriptionCancellation';
 import '../styles/Homepage.css';
 import backgroundImage from '../styles/financial-stock-market-graph-rows-coins-growth-abstract-symbol-finance-concept-business-investment-currency-exchange-162020228.jpg';
 
@@ -44,6 +45,7 @@ export default class Homepage extends Component {
           <Route exact path="/EditRequest" Component={EditRequest} />
           <Route exact path="/CryptoGraph" Component={CryptoGraph} />
           <Route exact path="/PaymentPage" Component={PaymentPage} />
+          <Route exact path="/cancelSub" Component={SubscriptionCancellation} />
         </Routes>
       </BrowserRouter>
     );
