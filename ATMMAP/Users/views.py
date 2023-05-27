@@ -57,6 +57,10 @@ def signup(request):
                 profile, _ = Profile.objects.get_or_create(user=user)
                 profile.profile_picture = profile_picture
                 profile.save()
+            vip, _ = VIP.objects.get_or_create(user=user)
+            vip.paymentID = ""
+            vip.activated = "False"
+            vip.save()
             # Generate verification token and save it to the user's profile
             token_generator = default_token_generator
             token = token_generator.make_token(user)
@@ -263,7 +267,7 @@ def VIP_Res(request):
         if subscription_id:
             vip, _ = VIP.objects.get_or_create(user=user)
             vip.paymentID = subscription_id
-            vip.activated = True
+            vip.activated = "True"
             vip.save()
             return JsonResponse({'message': vip.activated})
     return JsonResponse({'message': 'Payment ID not updated successfully'})
@@ -276,7 +280,7 @@ def VIP_Cancel(request):
         if user:
             vip, _ = VIP.objects.get_or_create(user=user)
             vip.paymentID = ""
-            vip.activated = False
+            vip.activated = "False"
             vip.save()
             return JsonResponse({'message': 'Payment canceled successfully'})
     return JsonResponse({'message': 'Payment ID not updated successfully'})
