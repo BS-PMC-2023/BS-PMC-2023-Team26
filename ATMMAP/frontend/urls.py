@@ -16,4 +16,7 @@ urlpatterns = [
     path("CurrencyGraph/", views.index, name="CurrencyGraph"),
     path("CryptoGraph/", views.index, name="CryptoGraph"),
     path("ContactAdminForm/", views.index, name="ContactAdminForm"),
+    path("PaymentPage/", views.index, name="PaymentPage"),
+    path('cancelSub/', views.index, name='cancelSub'),
 ]
+

@@ -9,6 +9,7 @@ urlpatterns = [
     path('API/', include('API.urls')),
     path('Users/', include('django.contrib.auth.urls')),
     path('Users/', include('Users.urls')),
+    path('paypal/', include("paypal.standard.ipn.urls")),
     path('', include('frontend.urls')),
 ] 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

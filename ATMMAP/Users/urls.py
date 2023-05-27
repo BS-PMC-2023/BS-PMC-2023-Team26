@@ -14,5 +14,10 @@ urlpatterns = [
     path('delete_user/', views.delete_user,name='delete_user'),
     path('edit_user/', views.edit_user),
     path('contact_us/', views.contact_us),
-    path('reset_form/<uidb64>/<token>/', views.reset_form, name='reset_form')
+    path('reset_form/<uidb64>/<token>/', views.reset_form, name='reset_form'),
+    path('paypal/', include("paypal.standard.ipn.urls")),
+    path('VIP_Res/', views.VIP_Res, name='VIP_Res'),
+    path('payment_id/', views.payment_id, name='payment_id'),
+    path('check_vip/', views.payment_id, name='check_vip'),
+    path('VIP_Cancel/', views.VIP_Cancel, name='VIP_Cancel'),
 ]
