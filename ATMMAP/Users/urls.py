@@ -16,5 +16,8 @@ urlpatterns = [
     path('contact_us/', views.contact_us),
     path('reset_form/<uidb64>/<token>/', views.reset_form, name='reset_form'),
     path('paypal/', include("paypal.standard.ipn.urls")),
-    path('cancelSub/<str:subscriptionId>/', views.cancelSub, name='cancelSub'),
+    path('VIP_Res/', views.VIP_Res, name='VIP_Res'),
+    path('payment_id/', views.payment_id, name='payment_id'),
+    path('check_vip/', views.payment_id, name='check_vip'),
+    path('VIP_Cancel/', views.VIP_Cancel, name='VIP_Cancel'),
 ]

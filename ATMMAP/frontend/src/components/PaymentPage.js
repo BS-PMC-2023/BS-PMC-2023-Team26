@@ -6,8 +6,7 @@ const PaymentPage = () => {
 
   useEffect(() => {
     const script = document.createElement('script');
-    script.src =
-      'https://www.sandbox.paypal.com/webapps/billing/plans/subscribe?plan_id=P-9W952749MP466283WMRYM4FQ';
+    script.src = 'https://www.paypal.com/sdk/js?client-id=AX4kf35YJeoUfZYFDsXZp9QrzyJDgdJDRNaIv490uk-t6srW5884CGU7WXDMmhFgYkifMfWkqFGk3UNp&vault=true&intent=subscription';
     script.setAttribute('data-sdk-integration-source', 'button-factory');
     script.async = true;
 
@@ -29,7 +28,23 @@ const PaymentPage = () => {
             });
           },
           onApprove: function (data, actions) {
-            // Redirect to the homepage after a successful transaction
+            const subscriptionId = data.subscriptionID;
+            fetch('Users/VIP_Res/', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ subscriptionId }),
+            })
+              .then(response => response.json())
+              .then(data => {
+                // Handle the response if needed
+                console.log(data);
+              })
+              .catch(error => {
+                // Handle any error that occurs during the request
+                console.error(error);
+              });
             navigate('/');
             alert('You have successfully registered for VIP services');
           },

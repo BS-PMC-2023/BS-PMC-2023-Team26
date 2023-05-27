@@ -5,12 +5,14 @@ import '../styles/AccountDetails.css';
 
 function AccountDetails() {
   const [user, setUser] = useState(null);
-  
+  const [vipActivated, setvipActivated] = useState('');
+
   useEffect(() => {
     fetch('/Users/user_details/')
       .then(response => response.json())
       .then(data => {
         setUser(data);
+        setvipActivated(user.activated);
       });
   }, []);
 
@@ -33,6 +35,7 @@ function AccountDetails() {
           )}
           <p><strong>Username:</strong> {user.username}</p>
           <p><strong>Email:</strong> {user.email}</p>
+          <p><strong>VIP subscriber:</strong> {user.activated}</p>
           <div className="account-details-buttons">
             <Link to='/ResetRequest'>
               <button className="account-details-button">Reset Password</button>
@@ -43,9 +46,16 @@ function AccountDetails() {
             <Link to='/EditRequest'>
               <button className="account-details-button">Edit Profile</button>
             </Link>
-            <Link to='/PaymentPage'>
-              <button className="account-details-button">Become VIP</button>
-            </Link>
+            {user.activated == "False" && (
+              <Link to='/PaymentPage'>
+                <button className="account-details-button">Become VIP</button>
+              </Link>
+            )}
+            {user.activated == "True" && (
+              <Link to='/cancelSub'>
+                <button className="account-details-button">Cancel VIP</button>
+              </Link>
+            )}
           </div>
         </div>
       </div>

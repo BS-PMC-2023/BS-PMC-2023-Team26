@@ -4,7 +4,7 @@ import '../styles/DeleteRequest.css';
 import Navbar from './Navbar';
 
 const DeleteRequest = () => {
-  const [username, setUsername] = useState('');
+  const [Password, setPassword] = useState('');
   const [csrfToken, setCsrfToken] = useState('');
   const [isSuccess, setIsSuccess] = useState(false);
 
@@ -23,10 +23,10 @@ const DeleteRequest = () => {
     e.preventDefault();
 
     const formData = new FormData();
-    formData.append('username', username);
+    formData.append('Password', Password);
     formData.append('csrfmiddlewaretoken', csrfToken);
 
-    fetch('/Users/delete-user/', { // Update to your endpoint
+    fetch('/Users/delete_user/', { // Update to your endpoint
       method: 'POST',
       body: formData
     })
@@ -59,8 +59,8 @@ const DeleteRequest = () => {
             <h2>Delete Your Account</h2>
             <input type="hidden" name="csrfmiddlewaretoken" value={csrfToken} />
             <label className="delete-request-label">
-              Enter your Username:
-              <input className="delete-request-input" type="text" value={username} onChange={(e) => setUsername(e.target.value)} required />
+              Enter your Password:
+              <input className="delete-request-input" type="text" value={Password} onChange={(e) => setPassword(e.target.value)} required />
             </label>
             <button className="delete-request-button" type="submit">Delete Account</button>
           </form>

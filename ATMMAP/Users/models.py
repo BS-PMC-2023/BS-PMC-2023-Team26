@@ -28,6 +28,7 @@ class CustomUser(AbstractUser):
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(required=True)
     profile_picture = forms.ImageField(required=False)
+    activated = models.BooleanField(default=False)
 
     class Meta(UserCreationForm.Meta):
         model = User
@@ -42,10 +43,9 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
 
-#class VIP(models.Model):
- #   user = models.OneToOneField(User, on_delete=models.CASCADE)
-  #  activated = models.BooleanField(default=False)
-   # paymentID = models.CharField(max_length=100, blank=True, null=True)
-    # Add other profile fields as needed
-    #def __str__(self):
-     #   return self.user.username
+class VIP(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    activated = models.BooleanField(default=False)
+    paymentID = models.CharField(max_length=100, blank=True, null=True)
+    def __str__(self):
+        return self.user.username

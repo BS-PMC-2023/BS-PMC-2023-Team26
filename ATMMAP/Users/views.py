@@ -1,7 +1,8 @@
+import json
 from django.shortcuts import redirect, render
 from django.contrib.auth import login, logout, get_user_model
 from .models import CustomUserCreationForm
-from django.http import Http404, HttpResponse, JsonResponse
+from django.http import Http404, HttpResponse, HttpResponseNotAllowed, JsonResponse
 from django.contrib.auth.models import User
 from django.middleware.csrf import get_token
 from django.views.decorators.csrf import csrf_exempt
@@ -13,7 +14,7 @@ from django.utils.http import urlsafe_base64_encode
 from django.urls import reverse
 from django.contrib import messages
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from .models import Profile
+from .models import Profile, VIP
 from paypal.standard.forms import PayPalPaymentsForm
 import requests
 TEMPLATE_DIRS = (
@@ -93,15 +94,37 @@ def check_login(request):
     is_authenticated = request.user.is_authenticated
     return JsonResponse({'isLoggedIn': is_authenticated})
 
+@csrf_exempt
+def payment_id(request):
+    user = request.user
+    vip = VIP.objects.get(user=user)
+    return JsonResponse({'subscriptionId': vip.paymentID})
+
+@csrf_exempt
+def check_vip(request):
+    user = request.user
+    vip = VIP.objects.get(user=user)
+    return JsonResponse({'vipActivated': vip.activated})
+
 # Checks if a user is logged in or not
 @login_required
 def user_details(request):
     user = request.user
-    user_data = {
-        'username': user.username,
-        'email': user.email,
-        'profile_picture': user.profile.profile_picture.url if hasattr(user, 'profile') and user.profile.profile_picture else None,
-    }
+    vip = VIP.objects.get(user=user)
+    if(vip.activated):
+        user_data = {
+            'username': user.username,
+            'email': user.email,
+            'profile_picture': user.profile.profile_picture.url if hasattr(user, 'profile') and user.profile.profile_picture else None,
+            'activated': 'True',
+        }
+    else:
+        user_data = {
+            'username': user.username,
+            'email': user.email,
+            'profile_picture': user.profile.profile_picture.url if hasattr(user, 'profile') and user.profile.profile_picture else None,
+            'activated': 'False',
+        }
     return JsonResponse(user_data)
 
 def verify(request, uidb64, token):
@@ -173,15 +196,14 @@ def delete_user(request):
         try:
             user = model.objects.get(username=username)
         except model.DoesNotExist:  # <-- use CustomUser here
-            return JsonResponse({'success': False, 'message': 'User not found!.'})
-        
-        password1 = request.POST.get('password1')
-        if user.check_password(password1):
+            return JsonResponse({'success': False, 'message': 'User not found!.'})  
+        Password = request.POST.get('Password')
+        if user.check_password(Password):
             logout(request)
             user.delete()
             return JsonResponse({'success': True})
     else:
-        return render(request, 'frontend/index.html')
+        return HttpResponse("Invalid request method")
     
 @csrf_exempt 
 def edit_user(request):
@@ -230,5 +252,31 @@ def contact_us(request):
             [user.email],
             fail_silently=False,)
     return JsonResponse({'success': True})
-    
 
+@csrf_exempt  
+def VIP_Res(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        subscription_id = data.get('subscriptionId')
+        model = get_user_model()
+        user = model.objects.get(username=request.user.username)
+        if subscription_id:
+            vip, _ = VIP.objects.get_or_create(user=user)
+            vip.paymentID = subscription_id
+            vip.activated = True
+            vip.save()
+            return JsonResponse({'message': vip.activated})
+    return JsonResponse({'message': 'Payment ID not updated successfully'})
+
+@csrf_exempt  
+def VIP_Cancel(request):
+    if request.method == 'POST':
+        model = get_user_model()
+        user = model.objects.get(username=request.user.username)
+        if user:
+            vip, _ = VIP.objects.get_or_create(user=user)
+            vip.paymentID = ""
+            vip.activated = False
+            vip.save()
+            return JsonResponse({'message': 'Payment canceled successfully'})
+    return JsonResponse({'message': 'Payment ID not updated successfully'})

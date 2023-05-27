@@ -18,6 +18,5 @@ urlpatterns = [
     path("ContactAdminForm/", views.index, name="ContactAdminForm"),
     path("PaymentPage/", views.index, name="PaymentPage"),
     path('cancelSub/', views.index, name='cancelSub'),
-    path('cancelSub/<str:subscriptionId>/', views.index, name='cancelSub'),
 ]
 
