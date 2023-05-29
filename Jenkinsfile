@@ -1,17 +1,24 @@
 pipeline {
-    agent any
-    environment {
-        DOCKER_IMAGE_NAME = 'bs-pmc-2023-team26'
-    }
+    agent any 
+
     stages {
-        stage('Build Docker image') {
+        stage('Checkout') {
             steps {
-                sh 'docker build -t ${DOCKER_IMAGE_NAME} .'
+                git 'https://github.com/BS-PMC-2023/BS-PMC-2023-Team26'
             }
         }
-        stage('Test Docker image') {
+
+        stage('Setup') {
             steps {
-                sh 'docker run --rm ${DOCKER_IMAGE_NAME}'
+                sh 'python3 -m venv venv'
+                sh '. venv/bin/activate'
+                sh 'pip install -r requirements.txt'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh 'python manage.py test'
             }
         }
     }
