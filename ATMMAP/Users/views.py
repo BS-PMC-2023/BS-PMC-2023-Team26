@@ -262,6 +262,7 @@ def VIP_Res(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         subscription_id = data.get('subscriptionId')
+        details = data.get('planId')
         model = get_user_model()
         user = model.objects.get(username=request.user.username)
         if subscription_id:
@@ -269,6 +270,17 @@ def VIP_Res(request):
             vip.paymentID = subscription_id
             vip.activated = "True"
             vip.save()
+            send_mail(
+            'ATMMAP VIP-Subcription Message',
+            'Username: ' + user.get_username() + '\n' + 
+            'User Email: ' + user.email + '\n' +
+            'You have succesfully register for VIP services in ATMMAP.\n' 
+            + 'Thank you for your purchase \n' 
+            + 'Your total charge: 20.00 ILS \n'
+            + 'For more information contact us at http://127.0.0.1:8000/ContactAdminForm',
+            'markos5623@gmail.com',
+            [user.email],
+            fail_silently=False,)
             return JsonResponse({'message': vip.activated})
     return JsonResponse({'message': 'Payment ID not updated successfully'})
 
@@ -282,5 +294,14 @@ def VIP_Cancel(request):
             vip.paymentID = ""
             vip.activated = "False"
             vip.save()
+            send_mail(
+            'ATMMAP VIP-Subcription-Canceletion Message',
+            'Username: ' + user.get_username() + '\n' + 
+            'User Email: ' + user.email + '\n' +
+            'Your VIP subcription for ATMMAPs has been succefully canceled!'
+            + 'For more information contact us at http://127.0.0.1:8000/ContactAdminForm',
+            'markos5623@gmail.com',
+            [user.email],
+            fail_silently=False,)
             return JsonResponse({'message': 'Payment canceled successfully'})
     return JsonResponse({'message': 'Payment ID not updated successfully'})

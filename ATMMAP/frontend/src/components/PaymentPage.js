@@ -29,12 +29,13 @@ const PaymentPage = () => {
           },
           onApprove: function (data, actions) {
             const subscriptionId = data.subscriptionID;
+            const planId = data.plan_id;
             fetch('Users/VIP_Res/', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
               },
-              body: JSON.stringify({ subscriptionId }),
+              body: JSON.stringify({ subscriptionId, planId }),
             })
               .then(response => response.json())
               .then(data => {
