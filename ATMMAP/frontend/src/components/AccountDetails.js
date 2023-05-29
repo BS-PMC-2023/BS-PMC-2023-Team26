@@ -5,14 +5,14 @@ import '../styles/AccountDetails.css';
 
 function AccountDetails() {
   const [user, setUser] = useState(null);
-  const [vipActivated, setvipActivated] = useState('');
+  const [vipActivated, setvipActivated] = useState(null);
 
   useEffect(() => {
     fetch('/Users/user_details/')
       .then(response => response.json())
       .then(data => {
         setUser(data);
-        setvipActivated(user.activated);
+        setvipActivated(data.activated);
       });
   }, []);
 

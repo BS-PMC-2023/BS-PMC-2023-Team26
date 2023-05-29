@@ -59,7 +59,6 @@ class Home extends Component {
   render() {
     return (
       <div className="home-page" style={{ backgroundImage: `url(${backgroundImage})` }}>
-        <link rel="stylesheet" href="/styles/Homepage.css"></link>
         <Navbar />
         <div className="container h-100">
           <div className="row justify-content-center align-items-center" style={{ height: '50%' }}>
