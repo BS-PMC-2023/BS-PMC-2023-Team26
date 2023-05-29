@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import '../styles/ResetPasswordForm.css';
 
 function cancelSub() {
   const [subscriptionId, setSubscriptionId] = useState('');
@@ -49,14 +50,27 @@ function cancelSub() {
   };
 
   return (
-    <div>
-      <h1>Cancel Subscription</h1>
-      <label>You are about to cancel your VIP subscription for ATM-MAP!</label>
-      <button onClick={handleCancel}>End Subscription</button>
-      <Link to='/'>
-        <button className="account-details-button">Cancel</button>
-      </Link>
-      {result && <p>{result}</p>}
+    <div className="reset-password-container">
+      <div className="reset-password-form-container">
+        <Link to='/account'>
+          <button className="account-details-button">Go back</button>
+        </Link>
+        <p>You are about to cancel your VIP subcription for ATMMAP</p>
+        <p>You are about to lose these benefits:
+          <br/>
+          - Use advanced filter options for banks and ATMs
+          <br/>
+          - View crypto currency values live
+          <br/>
+          - View stock values live 
+          <br/>
+          - View currency values in graph 
+          <br/>
+          - Export stock, currency and crypto currency values to XL
+        </p>
+        <button className="account-details-button" onClick={handleCancel}>End Subscription</button>
+        {result && <p>{result}</p>}
+      </div>
     </div>
   );
 }
