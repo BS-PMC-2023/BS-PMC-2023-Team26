@@ -1,10 +1,17 @@
 pipeline {
-    agent any 
+    agent any
 
     stages {
-        stage('Checkout') {
+        stage('Setup environment') {
             steps {
-                git 'https://github.com/BS-PMC-2023/BS-PMC-2023-Team26'
+                sh 'pip install --upgrade pip'
+                sh 'pip install -r requirements.txt'
+            }
+        }
+        
+        stage('Run tests') {
+            steps {
+                sh 'python manage.py test'
             }
         }
     }
