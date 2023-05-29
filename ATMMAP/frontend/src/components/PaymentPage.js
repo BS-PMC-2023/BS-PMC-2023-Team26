@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import '../styles/ResetPasswordForm.css';
 
 const PaymentPage = () => {
   const navigate = useNavigate();
@@ -59,7 +60,29 @@ const PaymentPage = () => {
     };
   }, [navigate]);
 
-  return <div id="paypal-button-container-P-9W952749MP466283WMRYM4FQ"></div>;
+  return (<>
+            <div className="reset-password-container">
+              <div className="reset-password-form-container">
+                <Link to='/account'>
+                  <button className="account-details-button">Go back</button>
+                </Link>
+                <p>You are about to register for VIP services for ATMMAP</p>
+                <p>Your benefits as a VIP member will be:
+                  <br/>
+                  - Use advanced filter options for banks and ATMs
+                  <br/>
+                  - View crypto currency values live
+                  <br/>
+                  - View stock values live 
+                  <br/>
+                  - View currency values in graph 
+                  <br/>
+                  - Export stock, currency and crypto currency values to XL
+                </p>
+                <div id="paypal-button-container-P-9W952749MP466283WMRYM4FQ"></div>
+              </div>
+            </div>
+          </>);
 };
 
 export default PaymentPage;

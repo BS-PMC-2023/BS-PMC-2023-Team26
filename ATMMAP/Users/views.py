@@ -262,7 +262,6 @@ def VIP_Res(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         subscription_id = data.get('subscriptionId')
-        details = data.get('planId')
         model = get_user_model()
         user = model.objects.get(username=request.user.username)
         if subscription_id:
