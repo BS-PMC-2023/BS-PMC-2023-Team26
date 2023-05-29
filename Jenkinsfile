@@ -2,23 +2,16 @@ pipeline {
     agent any
     environment {
         DOCKER_IMAGE_NAME = 'bs-pmc-2023-team26'
-        DOCKER_REGISTRY_URL = 'my-docker-registry.com'
     }
     stages {
-        
-        stage('Build and test') {
+        stage('Build Docker image') {
             steps {
-                sh 'cd ./ATMMAP/frontend'
-                sh 'npm install'
-                sh 'npm run dev'
-                sh 'cd ls'
-                sh 'python manage.py runserver'
+                sh 'docker build -t ${DOCKER_IMAGE_NAME} .'
             }
         }
-        stage('Deploy') {
+        stage('Test Docker image') {
             steps {
-                sh 'kubectl apply -f k8s/deployment.yaml'
-                sh 'kubectl apply -f k8s/service.yaml'
+                sh 'docker run --rm ${DOCKER_IMAGE_NAME}'
             }
         }
     }
