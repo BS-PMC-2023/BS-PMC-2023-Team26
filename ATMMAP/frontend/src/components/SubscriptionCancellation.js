@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import '../styles/ResetPasswordForm.css';
+import Navbar from './Navbar';
+import '../styles/SubscriptionCancellation.css';
 
-function cancelSub() {
+function CancelSubscription() {
   const [subscriptionId, setSubscriptionId] = useState('');
   const [result, setResult] = useState('');
   const clientId = 'AalNXBXcyO6rC2inzR9zjvkLx9Xhi7ASy6EUY6rysIgsCLQmFDVz4Je_Rm6gCoGalQ8QbOOTXP7boKT8'; // Replace with your actual client ID
@@ -50,29 +51,39 @@ function cancelSub() {
   };
 
   return (
-    <div className="reset-password-container">
-      <div className="reset-password-form-container">
-        <Link to='/account'>
-          <button className="account-details-button">Go back</button>
-        </Link>
-        <p>You are about to cancel your VIP subcription for ATMMAP</p>
-        <p>You are about to lose these benefits:
-          <br/>
-          - Use advanced filter options for banks and ATMs
-          <br/>
-          - View crypto currency values live
-          <br/>
-          - View stock values live 
-          <br/>
-          - View currency values in graph 
-          <br/>
-          - Export stock, currency and crypto currency values to XL
-        </p>
-        <button className="account-details-button" onClick={handleCancel}>End Subscription</button>
-        {result && <p>{result}</p>}
+    <>
+      <Navbar />
+      <div className="cancel-subscription-container">
+        <div className="cancel-subscription-content">
+          <h2 className="cancel-subscription-heading">Cancel Your VIP Subscription</h2>
+          <p className="cancel-subscription-text">
+            Are you sure you want to cancel your VIP subscription for ATMMAP?
+          </p>
+          <div className="benefits-container">
+            <h3 className="benefits-heading">Benefits of VIP Subscription:</h3>
+            <ul className="benefits-list">
+              <li>Use advanced filter options for banks and ATMs.</li>
+              <li>View live cryptocurrency values.</li>
+              <li>View live stock values.</li>
+              <li>View currency values in a graph.</li>
+              <li>Export stock, currency, and cryptocurrency values to Excel.</li>
+            </ul>
+          </div>
+          <div className="button-container">
+            <div className="cancel-button-wrapper">
+              <button className="cancel-subscription-button" onClick={handleCancel}>
+                Cancel Subscription
+              </button>
+              <Link to="/account" className="back-link">
+                <button className="back-button">Go back</button>
+              </Link>
+            </div>
+          </div>
+          {result && <p className="result-message">{result}</p>}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
-export default cancelSub;
+export default CancelSubscription;
