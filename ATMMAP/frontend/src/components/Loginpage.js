@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Navigate, Link } from 'react-router-dom';
-import '../styles/LoginPage.css';
+import '../styles/Loginpage.css';
 import Navbar from './Navbar';
 
 function LoginPage() {
