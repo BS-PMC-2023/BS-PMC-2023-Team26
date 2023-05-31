@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import Navbar from './Navbar';
 import '../styles/ResetPasswordForm.css';
 
 const PaymentPage = () => {
@@ -61,6 +62,7 @@ const PaymentPage = () => {
   }, [navigate]);
 
   return (<>
+  <Navbar />
             <div className="reset-password-container">
               <div className="reset-password-form-container">
                 <Link to='/account'>

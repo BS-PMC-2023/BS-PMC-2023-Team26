@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import '../styles/AccountDetails.css';
+import '../styles/EditRequest.css';
 import { Navigate } from 'react-router-dom';
 import Navbar from './Navbar';
 
