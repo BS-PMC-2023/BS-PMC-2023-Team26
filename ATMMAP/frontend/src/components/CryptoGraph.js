@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
 import axios from 'axios';
 import Navbar from './Navbar';
+import { saveAs } from 'file-saver';
+import * as XLSX from 'xlsx';
 import '../styles/CryptoGraph.css';
 
 const CryptoGraph = ({ coinId = 'bitcoin' }) => {
@@ -91,6 +93,22 @@ const CryptoGraph = ({ coinId = 'bitcoin' }) => {
     setSelectedDays(event.target.value);
   };
 
+  const exportToExcel = () => {
+    const data = chartData.labels.map((label, index) => ({
+      Date: label,
+      Value: chartData.datasets[0].data[index],
+    }));
+
+    const worksheet = XLSX.utils.json_to_sheet(data);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Crypto Data');
+
+    const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+    const date = new Date().toISOString().slice(0, 10);
+    const filename = `crypto_data_${date}.xlsx`;
+    saveAs(new Blob([excelBuffer], { type: 'application/octet-stream' }), filename);
+  };
+
   return (
     <>
       <Navbar />
@@ -119,6 +137,7 @@ const CryptoGraph = ({ coinId = 'bitcoin' }) => {
               <option value="365">1 Year</option>
             </select>
           </div>
+          <button onClick={exportToExcel}>Export to Excel</button>
         </div>
         <canvas ref={chartRef} className="crypto-graph__chart"></canvas>
       </div>
