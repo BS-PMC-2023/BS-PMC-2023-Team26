@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Navbar from './Navbar';
-
+import { saveAs } from 'file-saver';
+import * as XLSX from 'xlsx';
 import '../styles/StockHistory.css';
 
 const StockHistory = () => {
@@ -44,6 +45,22 @@ const StockHistory = () => {
     fetchStockData();
   };
 
+  const exportToExcel = () => {
+    const data = stockData.map(item => ({
+      Date: item.date,
+      Close: item.close,
+    }));
+
+    const worksheet = XLSX.utils.json_to_sheet(data);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Stock Data');
+
+    const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+    const date = new Date().toISOString().slice(0, 10);
+    const filename = `stock_data_${date}.xlsx`;
+    saveAs(new Blob([excelBuffer], { type: 'application/octet-stream' }), filename);
+  };
+
   return (
     <div>
       <Navbar />
@@ -68,13 +85,16 @@ const StockHistory = () => {
       {loading && <p>Loading data...</p>}
       {error && <p>{error}</p>}
       {!loading && !error && (
-        <ul>
-          {stockData.map((entry, index) => (
-            <li key={index}>
-              {entry.date}: {entry.close}
-            </li>
-          ))}
-        </ul>
+       <div> 
+          <button onClick={exportToExcel}>Export to Excel</button>
+          <ul>
+            {stockData.map((entry, index) => (
+              <li key={index}>
+                {entry.date}: {entry.close}
+              </li>
+            ))}
+          </ul>
+         </div> 
       )}
     </div>
     </div>
