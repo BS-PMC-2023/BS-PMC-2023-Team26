@@ -68,8 +68,8 @@ const EditRequest = () => {
     <>
       <Navbar/>
       <div className="account-details-container">
-      <h2 style={{ color: 'darkgoldenrod', fontWeight : 'bold', fontSize : '40px'}}>Edit your profile</h2>
         <div className="account-details-form-container">
+        <h2 style={{ color: 'darkgoldenrod', fontWeight : 'bold', fontSize : '40px'}}>Edit your profile</h2>
         <p>Please enter your new information below:</p>
           <form className="account-details-form" onSubmit={handleEdit}>
             <input type="hidden" name="csrfmiddlewaretoken" value={csrfToken} />
