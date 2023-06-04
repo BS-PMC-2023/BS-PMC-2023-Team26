@@ -91,7 +91,63 @@ const StockHistory = () => {
               },
             ],
           },
-          // Rest of the options...
+          options: {
+            responsive: true,
+            maintainAspectRatio: false, // Added line to disable aspect ratio
+            plugins: {
+              legend: {
+                display: false,
+              },
+              tooltip: {
+                enabled: true,
+                mode: 'nearest',
+                intersect: false,
+                callbacks: {
+                  title: () => '',
+                  label: tooltipItem => {
+                    const datasetIndex = tooltipItem.datasetIndex;
+                    const index = tooltipItem.dataIndex;
+                    const price = tooltipItem.parsed.y;
+                    const stockName = chartInstance.current.data.datasets[datasetIndex].label;
+                    return `${stockName}: ${price}`;
+                  },
+                },
+              },
+            },
+            scales: {
+              y: {
+                ticks: {
+                  beginAtZero: false,
+                  font: {
+                    weight: 'bold',
+                    size: 16, // Increase font size
+                  },
+                  color: 'rgba(0, 0, 0, 0.8)',
+                },
+                grid: {
+                  color: 'rgba(0, 0, 0, 0.1)',
+                },
+              },
+              x: {
+                ticks: {
+                  font: {
+                    weight: 'bold',
+                    size: 16, // Increase font size
+                  },
+                  color: 'rgba(0, 0, 0, 0.8)',
+                },
+                grid: {
+                  display: false,
+                },
+              },
+            },
+            layout: {
+              padding: {
+                top: 50,
+                bottom: 50,
+              },
+            },
+          },
         });
   
         // Set chart canvas size to match parent container
