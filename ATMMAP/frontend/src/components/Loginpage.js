@@ -8,7 +8,7 @@ function LoginPage() {
   const [password, setPassword] = useState('');
   const [csrfToken, setCsrfToken] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
-  const [error, setError] = useState('');
+  const [errors, setErrors] = useState({}); // New state for input errors
 
   useEffect(() => {
     fetch('/Users/get-csrf-token/')
@@ -21,40 +21,58 @@ function LoginPage() {
       });
   }, []);
 
+  const validateForm = () => {
+    const errors = {};
+
+    if (!username) {
+      errors.username = 'Username is required';
+    }
+
+    if (!password) {
+      errors.password = 'Password is required';
+    }
+
+    setErrors(errors);
+
+    return Object.keys(errors).length === 0; // Return true if there are no errors
+  };
+
   const handleLogin = (e) => {
     e.preventDefault();
   
-    const formData = new FormData();
-    formData.append('username', username);
-    formData.append('password', password);
-    formData.append('csrfmiddlewaretoken', csrfToken);
+    if (validateForm()) {
+      const formData = new FormData();
+      formData.append('username', username);
+      formData.append('password', password);
+      formData.append('csrfmiddlewaretoken', csrfToken);
   
-    fetch('/Users/signin/', {
-      method: 'POST',
-      body: formData,
-      headers: {
-        'X-CSRFToken': csrfToken,
-      },
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        setLoggedIn(true);
-        return response.json();
+      fetch('/Users/signin/', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'X-CSRFToken': csrfToken,
+        },
       })
-      .then(data => {
-        console.log(data);
-      })
-      .catch(error => {
-        console.error('There was a problem with the fetch operation:', error);
-        setError('Failed to login. Password or Username are invalid');
-      });
-  }
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            setLoggedIn(true);
+            console.log(data);
+          } else {
+            setErrors({ serverError: data.error });
+          }
+        })
+        .catch(error => {
+          console.error('There was a problem with the fetch operation:', error);
+          setErrors({ serverError: 'Failed to login. Please try again.' });
+        });
+    }
+  };
+  
   
 
   if (loggedIn) {
-    return <Navigate to="/" />; 
+    return <Navigate to="/" />;
   }
 
   return (
@@ -62,27 +80,50 @@ function LoginPage() {
       <Navbar />
       <section className="login-container">
         <div className="login-form">
-          <h2>Sign in</h2>
+          <h2 style={{ color: 'darkgoldenrod', fontWeight: 'bold', fontSize: '40px' }}>Sign in</h2>
           <form onSubmit={handleLogin}>
             <input type="hidden" name="csrfmiddlewaretoken" value={csrfToken} />
-            <label className="login-label">
+            <label className="login-label" style={{ color: 'darkgoldenrod' }}>
               Username:
-              <input className="login-input" type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+              <input
+                className="login-input"
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+              {errors.username && <span className="error-message">{errors.username}</span>}
             </label>
-            <label className="login-label">
+            <label className="login-label" style={{ color: 'darkgoldenrod' }}>
               Password:
-              <input className="login-input" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+              <input
+                className="login-input"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              {errors.password && <span className="error-message">{errors.password}</span>}
             </label>
-            {error && <span className="login-error">{error}</span>}
-            <button className="login-button" type="submit">Login</button>
+            {errors.serverError && <span className="error-message">{errors.serverError}</span>}
+            <div className="button-container">
+              <button
+                className="login-button"
+                style={{ color: '#212529', backgroundColor: 'darkgoldenrod', width: '100%' }}
+                type="submit">
+                Login
+              </button>
+            </div>
           </form>
-          <Link to='/ResetRequest'>
-              <button className="button">Reset Password</button>
+          <Link to="/ResetRequest">
+            <button
+              className="login-button"
+              style={{ width: 'auto', color: 'darkgoldenrod', backgroundColor: '#212529', width: '100%' }}>
+              Reset Password
+            </button>
           </Link>
         </div>
       </section>
     </>
-  );  
+  );
 }
 
 export default LoginPage;

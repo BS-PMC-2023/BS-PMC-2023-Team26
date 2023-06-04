@@ -56,11 +56,11 @@ function CancelSubscription() {
       <div className="cancel-subscription-container">
         <div className="cancel-subscription-content">
           <h2 className="cancel-subscription-heading">Cancel Your VIP Subscription</h2>
-          <p className="cancel-subscription-text">
+          <p className="cancel-subscription-text" style={{ color: 'darkgoldenrod'}}>
             Are you sure you want to cancel your VIP subscription for ATMMAP?
           </p>
           <div className="benefits-container">
-            <h3 className="benefits-heading">Benefits of VIP Subscription:</h3>
+            <h3 className="benefits-heading" style={{ color: 'darkgoldenrod'}}>Benefits of VIP Subscription:</h3>
             <ul className="benefits-list">
               <li>Use advanced filter options for banks and ATMs.</li>
               <li>View live cryptocurrency values.</li>

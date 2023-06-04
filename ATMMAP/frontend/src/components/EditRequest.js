@@ -62,33 +62,40 @@ const EditRequest = () => {
     return <Navigate to="/" />; 
   }
 
+  // ...
+
   return (
     <>
       <Navbar/>
       <div className="account-details-container">
-      <h2>Edit your profile</h2>
         <div className="account-details-form-container">
+        <h2 style={{ color: 'darkgoldenrod', fontWeight : 'bold', fontSize : '40px'}}>Edit your profile</h2>
         <p>Please enter your new information below:</p>
           <form className="account-details-form" onSubmit={handleEdit}>
             <input type="hidden" name="csrfmiddlewaretoken" value={csrfToken} />
-            <label className="account-details-label">
-              New Username:
-              <input className="account-details-input" type="text" value={username} onChange={(e) => setUsername(e.target.value)} required />
-            </label>
-            <label className="account-details-label">
-              Confirm New Username:
-              <input className="account-details-input" type="text" value={username2} onChange={(e) => setUsername2(e.target.value)} required />
-            </label>
-            <label className="account-details-label">
-            Profile Picture:
-            <input className="account-details-input" type="file" accept="image/*" onChange={(e) => setProfilePicture(e.target.files[0])}/>
-            </label>
-            <p></p>
-            {errorMessage && <p className="error-message">{errorMessage}</p>}
-            <div className="account-details-buttons">
-              <button className="account-details-button" type="submit">Confirm Edit</button>
+            <div className="edit-request__form-group">
+              <label className="edit-request__label">
+                New Username:
+                <input className="edit-request__input" type="text" value={username} onChange={(e) => setUsername(e.target.value)} required />
+              </label>
+            </div>
+            <div className="edit-request__form-group">
+              <label className="edit-request__label">
+                Confirm New Username:
+                <input className="edit-request__input" type="text" value={username2} onChange={(e) => setUsername2(e.target.value)} required />
+              </label>
+            </div>
+            <div className="edit-request__form-group">
+              <label className="edit-request__label">
+                Profile Picture:
+                <input className="edit-request__input" type="file" accept="image/*" onChange={(e) => setProfilePicture(e.target.files[0])}/>
+              </label>
+            </div>
+            {errorMessage && <p className="edit-request__error-message">{errorMessage}</p>}
+            <div className="edit-request__buttons">
+              <button className="edit-request__button" type="submit">Confirm Edit</button>
               <Link to='/account'>
-                <button className="button">Cancel</button>
+                <button className="edit-request__button edit-request__button--cancel">Cancel</button>
               </Link>
             </div>
           </form>
@@ -96,6 +103,7 @@ const EditRequest = () => {
       </div>
     </>
   );
-};
+  };
+  
 
 export default EditRequest;

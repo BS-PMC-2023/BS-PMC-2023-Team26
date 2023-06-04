@@ -29,12 +29,13 @@ def signin(request):
         try:
             user = model.objects.get(username=username)
         except model.DoesNotExist:  # <-- use CustomUser here
-            return JsonResponse({'success': False, 'message': 'Invalid username or password.'})
+            return JsonResponse({'success': False, 'error': 'Invalid username or password.'})
         if user.is_active and user.check_password(password):
             login(request, user)
             return JsonResponse({'success': True})
         else:
-            return JsonResponse({'success': False, 'message': 'Incorrect password.'})
+            return JsonResponse({'success': False, 'error': 'Incorrect password.'})
+
 
 # Return a csrf token 
 def get_csrf_token(request):

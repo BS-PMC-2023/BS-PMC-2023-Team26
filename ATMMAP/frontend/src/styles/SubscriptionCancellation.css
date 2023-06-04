@@ -3,6 +3,7 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
+  font-family: "Cambria", sans-serif;
 }
 
 .cancel-subscription-box {
@@ -70,8 +71,8 @@
 .back-button {
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
-  color: #000;
-  background-color: #f4f4f4;
+  color: #212529;
+  background-color: darkgoldenrod;
   border: 1px solid #ddd;
   border-radius: 4px;
   cursor: pointer;

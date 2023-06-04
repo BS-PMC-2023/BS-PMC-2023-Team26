@@ -68,8 +68,8 @@ const PaymentPage = () => {
                 <Link to='/account'>
                   <button className="account-details-button">Go back</button>
                 </Link>
-                <p>You are about to register for VIP services for ATMMAP</p>
-                <p>Your benefits as a VIP member will be:
+                <p style={{ color: 'darkgoldenrod'}}>You are about to register for VIP services for ATMMAP</p>
+                <p style={{ color: 'darkgoldenrod'}}>Your benefits as a VIP member will be:
                   <br/>
                   - Use advanced filter options for banks and ATMs
                   <br/>

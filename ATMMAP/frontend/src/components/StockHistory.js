@@ -113,7 +113,7 @@ const StockHistory = () => {
     <>
       <Navbar />
       <div className="stock-history">
-        <h1 className="stock-history__title" style={{ color: 'darkgoldenrod', fontWeight: 'bold', fontSize: '40px' }}>Stock History</h1>
+        <h1 className="stock-history__title" style={{ color: 'darkgoldenrod', fontWeight : 'bold', fontSize : '40px'}}>Stock History</h1>
         <form onSubmit={handleSubmit} className="stock-history__form">
           <label htmlFor="stock-symbol">Choose a stock:</label>
           <select id="stock-symbol" value={symbol} onChange={handleSymbolChange}>

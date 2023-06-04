@@ -69,6 +69,8 @@ function MyNavBar() {
               {loggedIn == true && (
                 <Nav.Link style={{ color: 'darkgoldenrod'}} onClick={handleSignOut}>Sign Out</Nav.Link>)}
               {loggedIn == false && (
+                <Nav.Link style={{ color: 'darkgoldenrod'}} as={Link} to="/signup">Sign Up</Nav.Link>)}
+              {loggedIn == false && (
                 <Nav.Link style={{ color: 'darkgoldenrod'}} as={Link} to="/signin">Sign In</Nav.Link>)}
               </Dropdown.Menu>
             </Dropdown>
