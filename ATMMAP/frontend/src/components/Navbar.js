@@ -4,12 +4,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import '../styles/Navbar.css';
 
 function MyNavBar() {
-  const [darkMode, setDarkMode] = useState(true);
   const [vipActivated, setvipActivated] = useState(null);
   const [loggedIn, setLoggedIn] = useState(false);
   const [isStaff, setisStaff] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   const navigate = useNavigate();
-
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
   }
@@ -40,6 +39,7 @@ function MyNavBar() {
       window.location.reload();
     }
   }
+
   return (
     <Navbar className="my-navbar" bg={darkMode ? 'dark' : 'light'} variant={darkMode ? 'dark' : 'light'} expand="lg">
       <div className="navbar-left"><Navbar.Brand className="font-yellow-big" as={Link} to="/">ATM MAP</Navbar.Brand></div>
