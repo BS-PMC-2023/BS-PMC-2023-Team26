@@ -144,7 +144,7 @@ const CryptoGraph = ({ coinId = 'bitcoin' }) => {
         <canvas ref={chartRef} className="crypto-graph__chart"></canvas>
       </div>
     </>
-);
+  );
 };
 
 export default CryptoGraph;
