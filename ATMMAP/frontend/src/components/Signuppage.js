@@ -85,7 +85,7 @@ const SignUp = () => {
     <>
       <Navbar />
       <form className="signup-form" onSubmit={handleSignUp}>
-        <h2 style={{ color: 'darkgoldenrod'}}>Create an Account</h2>
+        <h2 style={{ color: 'darkgoldenrod', fontWeight : 'bold', fontSize : '40px'}}>Create an Account</h2>
         <input type="hidden" name="csrfmiddlewaretoken" value={csrfToken} />
         <label className="signup-label" style={{ color: 'darkgoldenrod'}}>
           Username:
@@ -113,7 +113,7 @@ const SignUp = () => {
           <input className="signup-input" type="file" accept="image/*" onChange={(e) => setProfilePicture(e.target.files[0])} />
         </label>
         {error && <span className="error-message">{error}</span>}
-        <button className="signup-button" type="submit">Sign Up</button>
+        <button className="signup-button" type="submit" style={{ color: '#212529', backgroundColor: 'darkgoldenrod'}}>Sign Up</button>
       </form>
     </>
   );

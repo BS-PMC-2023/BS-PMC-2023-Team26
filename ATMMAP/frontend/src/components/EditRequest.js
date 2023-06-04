@@ -66,7 +66,7 @@ const EditRequest = () => {
     <>
       <Navbar/>
       <div className="account-details-container">
-      <h2>Edit your profile</h2>
+      <h2 style={{ color: 'darkgoldenrod', fontWeight : 'bold', fontSize : '40px'}}>Edit your profile</h2>
         <div className="account-details-form-container">
         <p>Please enter your new information below:</p>
           <form className="account-details-form" onSubmit={handleEdit}>

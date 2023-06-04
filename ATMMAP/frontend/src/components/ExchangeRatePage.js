@@ -48,7 +48,7 @@ function ExchangeRatePage() {
     <div>
       <Navbar />
       <div className="exchange-rate-page">
-        <h1 className="exchange-rate-page__title" style={{ color: 'darkgoldenrod'}}>Currency Exchange Rate</h1>
+        <h1 className="exchange-rate-page__title" style={{ color: 'darkgoldenrod', fontWeight : 'bold', fontSize : '40px'}}>Currency Exchange Rate</h1>
         <div className="exchange-rate-page__form-group">
           <div className="exchange-rate-page__form-group-item">
             <div className="input-container">

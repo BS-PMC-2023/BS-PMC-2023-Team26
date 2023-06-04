@@ -56,7 +56,7 @@ const ResetRequest = () => {
       <div className="reset-container">
         <div className="reset-request-container">
           <form className="reset-request-form" onSubmit={handleReset}>
-            <h2 style={{ color: 'darkgoldenrod'}}>Reset Your Password</h2>
+            <h2 style={{ color: 'darkgoldenrod', fontWeight : 'bold', fontSize : '40px'}}>Reset Your Password</h2>
             <input type="hidden" name="csrfmiddlewaretoken" value={csrfToken} />
             <label className="reset-request-label">
               Enter your Username:

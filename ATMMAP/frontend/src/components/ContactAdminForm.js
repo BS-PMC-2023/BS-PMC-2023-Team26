@@ -58,16 +58,16 @@ const ContactAdminForm = () => {
     <>
       <Navbar />
       <div className="contact-admin-form">
-        <h2 style={{ color: 'darkgoldenrod'}}>Contact Us</h2>
+        <h2 style={{ color: 'darkgoldenrod', fontWeight : 'bold', fontSize : '40px'}}>Contact Us</h2>
         <form onSubmit={handleSubmit}>
-        <label htmlFor="email">Your Email:</label>
+        <label htmlFor="email" style={{ color: 'darkgoldenrod', fontWeight : 'bold', fontSize : '20px'}}>Your Email:</label>
           <input
             type="email"
             id="email"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
             required/>
-            <label htmlFor="subject">Message Subject:</label>
+            <label htmlFor="subject" style={{ color: 'darkgoldenrod', fontWeight : 'bold', fontSize : '20px'}}>Message Subject:</label>
           <input
             type="text"
             id="subject"
@@ -75,7 +75,7 @@ const ContactAdminForm = () => {
             onChange={(event) => setSubject(event.target.value)}
             required
           />
-            <label htmlFor="message">Message:</label>
+            <label htmlFor="message" style={{ color: 'darkgoldenrod', fontWeight : 'bold', fontSize : '20px'}}>Message:</label>
             <textarea
               className="contact-admin-form__textarea"
               id="message"
@@ -85,7 +85,7 @@ const ContactAdminForm = () => {
               required
             />
             <div>
-            <button className="contact-admin-form__submit" type="submit">
+            <button className="contact-admin-form__submit" style={{ color: '#212529', backgroundColor: 'darkgoldenrod'}} type="submit">
               Send Message
             </button>
             </div>

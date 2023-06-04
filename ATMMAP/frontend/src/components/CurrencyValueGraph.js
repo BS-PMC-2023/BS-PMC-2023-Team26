@@ -126,7 +126,7 @@ const CurrencyValueGraph = ({ currencySymbol = 'USD/EUR' }) => {
     <>
       <Navbar />
       <div className="currency-value-graph">
-        <h2 className="currency-value-graph__title" style={{ color: 'darkgoldenrod'}}>Currency Value: {selectedSymbol}</h2>
+        <h2 className="currency-value-graph__title" style={{ color: 'darkgoldenrod', fontWeight : 'bold', fontSize : '40px'}}>Currency Value: {selectedSymbol}</h2>
         <div className="currency-value-graph__options">
           <div className="currency-value-graph__options-item">
             <label htmlFor="symbol">Currency pair:</label>

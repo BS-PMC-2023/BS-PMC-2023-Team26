@@ -2,6 +2,7 @@
   padding: 2rem;
   max-width: 700px;
   margin: 0 auto;
+  font-family: "Cambria", sans-serif;
 }
 
 .reset-request-container {
@@ -10,6 +11,7 @@
   padding: 2rem;
   margin-top: 2rem;
   background-color: #fff;
+  font-family: "Cambria", sans-serif;
 }
 
 .reset-request-container h2 {
