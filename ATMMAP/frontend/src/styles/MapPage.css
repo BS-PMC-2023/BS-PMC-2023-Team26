@@ -1,0 +1,39 @@
+.map-page-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.filters-container {
+  flex: 0 0 300px;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.map-container {
+  flex: 1;
+  margin-left: 20px;
+}
+
+.map {
+  height: 650px;
+  margin-top: 50px;
+}

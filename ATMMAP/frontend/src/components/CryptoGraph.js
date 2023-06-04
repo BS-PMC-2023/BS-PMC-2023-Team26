@@ -127,7 +127,7 @@ const CryptoGraph = ({ coinId = 'bitcoin' }) => {
             </select>
           </div>
           <div className="crypto-graph__options-item">
-          <label htmlFor="days">Timeline:</label>
+            <label htmlFor="days">Timeline:</label>
             <select id="days" value={selectedDays} onChange={handleDaysChange}>
               <option value="1">1 Day</option>
               <option value="7">1 Week</option>
@@ -137,7 +137,9 @@ const CryptoGraph = ({ coinId = 'bitcoin' }) => {
               <option value="365">1 Year</option>
             </select>
           </div>
-          <button onClick={exportToExcel}>Export to Excel</button>
+          <div className="crypto-graph__options-item">
+            <button onClick={exportToExcel}>Export to Excel</button>
+          </div>
         </div>
         <canvas ref={chartRef} className="crypto-graph__chart"></canvas>
       </div>

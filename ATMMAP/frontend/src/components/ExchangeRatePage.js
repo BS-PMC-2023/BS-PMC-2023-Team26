@@ -45,48 +45,57 @@ function ExchangeRatePage() {
   };
 
   return (
-
     <div>
       <Navbar />
-    <div className="ExchangeRatePage">
-      <h1>Currency Exchange Rate</h1>
-      <div className="form-group">
-        <label>
-          From Currency:
-          <select value={fromCurrency} onChange={handleFromCurrencyChange}>
-            <option value="USD">USD</option>
-            <option value="EUR">EUR</option>
-            <option value="GBP">GBP</option>
-            <option value="CAD">CAD</option>
-            <option value="ILS">ILS</option>
-          </select>
-        </label>
-        <label>
-          To Currency:
-          <select value={toCurrency} onChange={handleToCurrencyChange}>
-            <option value="USD">USD</option>
-            <option value="EUR">EUR</option>
-            <option value="GBP">GBP</option>
-            <option value="CAD">CAD</option>
-            <option value="ILS">ILS</option>
-          </select>
-        </label>
-        <label>
-          Amount:
-          <input type="number" value={amount} onChange={handleAmountChange} />
-        </label>
+      <div className="exchange-rate-page">
+        <h1 className="exchange-rate-page__title">Currency Exchange Rate</h1>
+        <div className="exchange-rate-page__form-group">
+          <div className="exchange-rate-page__form-group-item">
+            <div className="input-container">
+              <label htmlFor="from-currency" className="label-spacing">From Currency:</label>
+              <select id="from-currency" value={fromCurrency} onChange={handleFromCurrencyChange}>
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="GBP">GBP</option>
+                <option value="CAD">CAD</option>
+                <option value="ILS">ILS</option>
+              </select>
+            </div>
+          </div>
+          <div className="exchange-rate-page__form-group-item">
+            <div className="input-container">
+              <label htmlFor="to-currency" className="label-spacing">To Currency:</label>
+              <select id="to-currency" value={toCurrency} onChange={handleToCurrencyChange}>
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="GBP">GBP</option>
+                <option value="CAD">CAD</option>
+                <option value="ILS">ILS</option>
+              </select>
+            </div>
+          </div>
+          <div className="exchange-rate-page__form-group-item">
+            <div className="input-container">
+              <label htmlFor="amount" className="label-spacing">Amount:</label>
+              <input id="amount" type="number" value={amount} onChange={handleAmountChange} />
+            </div>
+          </div>
+        </div>
+        <button className="exchange-rate-page__convert-button" onClick={handleConvertClick}>
+          Convert
+        </button>
+        <div className="exchange-rate-page__result">
+          {convertedAmount && (
+            <p>
+              {amount} {fromCurrency} is {convertedAmount} {toCurrency}
+            </p>
+          )}
+        </div>
       </div>
-      <button onClick={handleConvertClick}>Convert</button>
-      <div>
-        {convertedAmount && (
-          <p>
-            {amount} {fromCurrency} is {convertedAmount} {toCurrency}
-          </p>
-        )}
-      </div>
-    </div>
     </div>
   );
 }
+
+
 
 export default ExchangeRatePage;

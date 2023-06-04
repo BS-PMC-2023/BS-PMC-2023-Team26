@@ -1,10 +1,10 @@
-
 import React, { useRef, useEffect, useState } from "react";
 import Navbar from './Navbar';
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import "../styles/MapPage.css";
 
 delete L.Icon.Default.prototype._getIconUrl;
 
