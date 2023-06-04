@@ -46,6 +46,7 @@ export default class Homepage extends Component {
           <Route exact path="/CryptoGraph" Component={CryptoGraph} />
           <Route exact path="/PaymentPage" Component={PaymentPage} />
           <Route exact path="/cancelSub" Component={SubscriptionCancellation} />
+          <Route exact path="/admin"/>
         </Routes>
       </BrowserRouter>
     );

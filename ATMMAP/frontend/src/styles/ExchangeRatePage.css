@@ -1,62 +1,66 @@
-
-h1 {
-  color: #f26322;
-  font-size: 2em;
-  text-align: center;
-  margin-bottom: 1em;
-  
-}
-body {
-  background-color: #f5f3f7;
-}
-
-.ExchangeRatePage {
+.exchange-rate-page {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 50px;
-  margin: 50px auto;
-  width: 80%;
-  max-width: 500px;
-  background-color: #F5F5F5;
+  width: 50%;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #f4f4f4;
   border-radius: 10px;
-  height: 40vh;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-label {
-  display: block;
-  margin-bottom: 0.5em;
+.exchange-rate-page__title {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #333;
 }
 
-select, input {
-  padding: 0.5em;
-  font-size: 1em;
-  border-radius: 0.25em;
+.exchange-rate-page__form-group {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1rem;
+}
+
+.exchange-rate-page__form-group-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.exchange-rate-page__form-group-item label {
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+.exchange-rate-page__form-group-item select,
+.exchange-rate-page__form-group-item input {
+  padding: 0.5rem;
+  width: 100%;
   border: none;
-  background-color: #f0f0f0;
+  border-radius: 5px;
 }
 
-button {
-  padding: 0.5em 1em;
-  font-size: 1em;
-  border-radius: 0.25em;
+/* .label-spacing {
+  margin-bottom: 0.5rem;
+} */
+
+
+.exchange-rate-page__convert-button {
+  padding: 0.5rem 1rem;
   border: none;
-  background-color: #02bbf9;
-  border-color: #02d4f9;
+  border-radius: 5px;
+  background-color: #28a745; /* set the background color to the primary color */
+  color: #fff;
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
-  margin: 0 auto;
-  display: block;
+}
+
+.exchange-rate-page__convert-button:hover {
+  background-color: #555;
 }
 
 
-button:hover {
-  background-color: #0062cc;
-}
-
-p {
-
-  margin-top: 1em;
-  font-size: 1.2em;
+.exchange-rate-page__result {
+  margin-top: 1rem;
+  font-size: 1.2rem;
 }

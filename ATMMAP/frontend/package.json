@@ -33,10 +33,12 @@
     "file-loader": "^6.2.0",
     "leaflet": "^1.9.4",
     "leaflet-color-markers": "^0.1.0",
+    "file-saver": "^2.0.5",
     "react-bootstrap": "^2.7.4",
     "react-leaflet": "^4.2.1",
     "react-router-dom": "^6.10.0",
     "reactstrap": "^9.1.9",
-    "url-loader": "^4.1.1"
+    "url-loader": "^4.1.1",
+    "xlsx": "^0.18.5"
   }
 }
