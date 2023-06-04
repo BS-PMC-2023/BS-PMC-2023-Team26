@@ -39,3 +39,20 @@
   width: 99%;
   height: 400px;
 }
+
+.crypto-graph__options-item button {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  width: 100%; /* make the button full width */
+  font-size: 1rem; /* adjust font size if necessary */
+  cursor: pointer;
+}
+
+.crypto-graph__options-item button:hover {
+  background-color: #ddd; /* change color on hover */
+}
+
+.crypto-graph__options-item button:active {
+  background-color: #bbb; /* change color when button is clicked */
+}

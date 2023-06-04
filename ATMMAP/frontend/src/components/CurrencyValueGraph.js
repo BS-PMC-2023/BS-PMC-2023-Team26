@@ -84,8 +84,17 @@ const CurrencyValueGraph = ({ currencySymbol = 'USD/EUR' }) => {
               },
             },
           },
+          elements: {
+            line: {
+              borderColor: '#007bff',
+              borderWidth: 2
+            },
+            point: {
+              radius: 0
+            }
+          },
         },
-      });
+      });    
     }
   }, [chartData]);
 
@@ -140,12 +149,15 @@ const CurrencyValueGraph = ({ currencySymbol = 'USD/EUR' }) => {
               <option value="1year">1 Year</option>
             </select>
           </div>
-          <button onClick={exportToExcel}>Export to Excel</button>
+          <div className="currency-value-graph__options-item">
+            <button onClick={exportToExcel}>Export to Excel</button>
+          </div>
         </div>
         <canvas ref={chartRef} className="currency-value-graph__chart"></canvas>
       </div>
     </>
-  );
+);
+
   
 };
 

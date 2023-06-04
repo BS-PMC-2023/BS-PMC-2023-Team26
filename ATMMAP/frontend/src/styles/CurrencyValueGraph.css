@@ -1,33 +1,51 @@
 .currency-value-graph {
+  width: 80%;
+  margin: 2rem auto;
   padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: #f4f4f4;
+  border-radius: 10px;
 }
 
 .currency-value-graph__title {
-  font-size: 1.5rem;
+  text-align: center;
+  color: #333;
   margin-bottom: 1rem;
 }
 
 .currency-value-graph__options {
   display: flex;
-  justify-content: center;
-  margin-bottom: 2rem;
+  justify-content: space-around;
+  margin-bottom: 1rem;
 }
 
 .currency-value-graph__options-item {
-  margin-right: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
-.currency-value-graph__options-item:last-child {
-  margin-right: 0;
+
+
+.currency-value-graph__options-item label {
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+.currency-value-graph__options-item select {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
 }
 
 .currency-value-graph__chart {
-  max-width: 500px; /* Adjust as per requirements */
-  max-height: 500px; /* Adjust as per requirements */
-  width: 100%;
-  height: auto;
-  aspect-ratio: 0.8; /* Ensures that the width and height are always equal, creating a square */
+  width: 99%;
+  height: 400px;
+}
+
+.currency-value__options-item button:hover {
+  background-color: #ddd; /* change color on hover */
+}
+
+.currency-value__options-item button:active {
+  background-color: #bbb; /* change color when button is clicked */
 }
