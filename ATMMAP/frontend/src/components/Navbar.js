@@ -62,16 +62,16 @@ function MyNavBar() {
                 My Account
               </Dropdown.Toggle>
               <Dropdown.Menu className={`${darkMode ? 'bg-dark' : ''}`}>
-              {loggedIn == true && (
-                <Nav.Link style={{ color: 'darkgoldenrod'}} as={Link} to="/account">Account Details</Nav.Link>)}
-              {isStaff == true && (
-                <Nav.Link style={{ color: 'darkgoldenrod'}} onClick={handleAdminClick}>Admin Page</Nav.Link>)}
-              {loggedIn == true && (
-                <Nav.Link style={{ color: 'darkgoldenrod'}} onClick={handleSignOut}>Sign Out</Nav.Link>)}
-              {loggedIn == false && (
-                <Nav.Link style={{ color: 'darkgoldenrod'}} as={Link} to="/signup">Sign Up</Nav.Link>)}
-              {loggedIn == false && (
-                <Nav.Link style={{ color: 'darkgoldenrod'}} as={Link} to="/signin">Sign In</Nav.Link>)}
+                {loggedIn == true && (
+                  <Nav.Link style={{ color: 'darkgoldenrod'}} as={Link} to="/account">Account Details</Nav.Link>)}
+                {isStaff == true && (
+                  <Nav.Link style={{ color: 'darkgoldenrod'}} onClick={handleAdminClick}>Admin Page</Nav.Link>)}
+                {loggedIn == true && (
+                  <Nav.Link style={{ color: 'darkgoldenrod'}} onClick={handleSignOut}>Sign Out</Nav.Link>)}
+                {loggedIn == false && (
+                  <Nav.Link style={{ color: 'darkgoldenrod'}} as={Link} to="/signup">Sign Up</Nav.Link>)}
+                {loggedIn == false && (
+                  <Nav.Link style={{ color: 'darkgoldenrod'}} as={Link} to="/signin">Sign In</Nav.Link>)}
               </Dropdown.Menu>
             </Dropdown>
         </Nav>
