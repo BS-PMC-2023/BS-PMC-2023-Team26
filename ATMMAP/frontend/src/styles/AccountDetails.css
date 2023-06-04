@@ -23,22 +23,37 @@
   color: #ffffff;
 }
 
+.account-details-buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; /* if the container is not wide enough, move buttons to the next line */
+  justify-content: space-between; /* distributes space between buttons */
+  gap: 15px; /* adds space between buttons */
+  margin-top: 1.5rem;
+}
+
 .account-details-button {
-  font-size: 16px;
+  padding: 12px 20px;
+  font-size: 1rem;
   color: #fff;
   background-color: darkgoldenrod;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
-  text-decoration: 'none';
+  text-align: center;
+  text-decoration: none;
   transition: background-color 0.3s ease;
-  height: 50px;
-  width: auto;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  flex: 1 1 auto; /* buttons can grow and shrink as needed, and base size is auto */
 }
 
 .account-details-button:hover {
-  background-color: darkgoldenrod;
+  background-color: #b08500;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .account-details-button:focus {
   outline: none;
 }
+
+
