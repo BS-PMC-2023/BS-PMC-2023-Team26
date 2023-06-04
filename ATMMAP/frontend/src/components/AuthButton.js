@@ -58,9 +58,6 @@ class AuthButton extends Component {
           <Link to="/account">
             <button className="btn btn-primary btn-lg">Account Details</button>
           </Link>
-          {/* <Link to="/ExchangeRate">
-            <button className="btn btn-primary btn-lg">Exchange rate</button>
-          </Link> */}
         </div>
       );
       

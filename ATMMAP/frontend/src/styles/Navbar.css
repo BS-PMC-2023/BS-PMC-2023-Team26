@@ -16,3 +16,8 @@
     font-size: 24px; 
     font-weight: bold;
 }
+
+.narrow-dropdown {
+    width: 120px; 
+    color:darkgoldenrod;
+  }

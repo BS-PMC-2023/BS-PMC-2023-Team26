@@ -25,7 +25,7 @@ function AccountDetails() {
       <Navbar />
       <div className="account-details-container">
         <div className="account-details-container-inner">
-          <h2>Account Details</h2>
+          <h2 style={{color : 'darkgoldenrod' }}>Account Details</h2>
           {user.profile_picture && (
             <img
               src={user.profile_picture}
@@ -33,9 +33,9 @@ function AccountDetails() {
               className="profile-picture"
             />
           )}
-          <p><strong>Username:</strong> {user.username}</p>
-          <p><strong>Email:</strong> {user.email}</p>
-          <p><strong>VIP subscriber:</strong> {user.activated}</p>
+          <p><strong style={{color : 'darkgoldenrod' }}>Username:</strong> {user.username}</p>
+          <p><strong style={{color : 'darkgoldenrod' }}>Email:</strong> {user.email}</p>
+          <p><strong style={{color : 'darkgoldenrod' }}>VIP subscriber:</strong> {user.activated}</p>
           <div className="account-details-buttons">
             <Link style={{ textDecoration: 'none'}} to='/ResetRequest'>
               <button style={{ backgroundColor: 'darkgoldenrod', color : 'white' }} className="account-details-button">Reset Password</button>

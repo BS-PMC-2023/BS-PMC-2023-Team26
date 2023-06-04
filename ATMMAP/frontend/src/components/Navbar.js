@@ -1,22 +1,38 @@
 import React, { useState, useEffect } from 'react';
-import { Navbar, Nav, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Navbar, Nav, Dropdown } from 'react-bootstrap';
+import { Link, useNavigate } from 'react-router-dom';
 import '../styles/Navbar.css';
 
 function MyNavBar() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   const [vipActivated, setvipActivated] = useState(null);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [isStaff, setisStaff] = useState(false);
+  const navigate = useNavigate();
+
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
   }
-  
+
   useEffect(() => {
     fetch('/Users/user_details/')
       .then(response => response.json())
       .then(data => {
         setvipActivated(data.activated);
+        setLoggedIn(data.loggedIn);
+        setisStaff(data.isAdmin);
       });
   }, []);
+
+  const handleSignOut = () => {
+    fetch('Users/signout/', { method: 'POST' })
+      .then(response => {
+        if (response.ok) {
+          setLoggedIn(false);
+          navigate('/');
+        }
+      });
+  }
 
   return (
     <Navbar className="my-navbar" bg={darkMode ? 'dark' : 'light'} variant={darkMode ? 'dark' : 'light'} expand="lg">
@@ -24,7 +40,6 @@ function MyNavBar() {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav" className="justify-content-between">
         <Nav>
-          <Nav.Link className="font-yellow" as={Link} to="/">Home</Nav.Link>
           <Nav.Link className="font-yellow" as={Link} to="/map">Map</Nav.Link>
           <Nav.Link className="font-yellow" as={Link} to="/ExchangeRate">Exchange rate</Nav.Link>
           {vipActivated == "True" && (
@@ -36,9 +51,21 @@ function MyNavBar() {
           <Nav.Link className="font-yellow" as={Link} to="/ContactAdminForm">Contact Us</Nav.Link>
         </Nav>
         <Nav className="navbar-right">
-          <Button onClick={toggleDarkMode} variant="outline-primary">
-            {darkMode ? 'Light Mode' : 'Dark Mode'}
-          </Button>
+          <Dropdown >
+              <Dropdown.Toggle className="font-yellow" variant="outline-light" id="dark-mode-dropdown">
+                My Account
+              </Dropdown.Toggle>
+              <Dropdown.Menu className={`${darkMode ? 'bg-dark' : ''}`}>
+              {loggedIn == true && (
+                <Nav.Link style={{ color: 'darkgoldenrod'}} as={Link} to="/account">Account Details</Nav.Link>)}
+              {isStaff == true && (
+                <Nav.Link style={{ color: 'darkgoldenrod'}} as={Link} to="/admin">Admin Page</Nav.Link>)}
+              {loggedIn == true && (
+                <Nav.Link style={{ color: 'darkgoldenrod'}} onClick={handleSignOut}>Sign Out</Nav.Link>)}
+              {loggedIn == false && (
+                <Nav.Link style={{ color: 'darkgoldenrod'}} as={Link} to="/signin">Sign In</Nav.Link>)}
+              </Dropdown.Menu>
+            </Dropdown>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

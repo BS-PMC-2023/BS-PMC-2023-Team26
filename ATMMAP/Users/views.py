@@ -121,6 +121,8 @@ def user_details(request):
             'email': user.email,
             'profile_picture': user.profile.profile_picture.url if hasattr(user, 'profile') and user.profile.profile_picture else None,
             'activated': 'True',
+            'loggedIn': user.is_authenticated,
+            'isAdmin': user.is_staff ,
         }
     else:
         user_data = {
@@ -128,6 +130,8 @@ def user_details(request):
             'email': user.email,
             'profile_picture': user.profile.profile_picture.url if hasattr(user, 'profile') and user.profile.profile_picture else None,
             'activated': 'False',
+            'loggedIn': user.is_authenticated,
+            'isAdmin': user.is_staff ,
         }
     return JsonResponse(user_data)
 
