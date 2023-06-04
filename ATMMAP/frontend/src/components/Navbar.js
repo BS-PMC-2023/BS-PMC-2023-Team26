@@ -30,10 +30,16 @@ function MyNavBar() {
         if (response.ok) {
           setLoggedIn(false);
           navigate('/');
+          window.location.reload();
         }
       });
   }
-
+  const handleAdminClick = () => {
+    if (isStaff) {
+      navigate('/admin');
+      window.location.reload();
+    }
+  }
   return (
     <Navbar className="my-navbar" bg={darkMode ? 'dark' : 'light'} variant={darkMode ? 'dark' : 'light'} expand="lg">
       <div className="navbar-left"><Navbar.Brand className="font-yellow-big" as={Link} to="/">ATM MAP</Navbar.Brand></div>
@@ -59,7 +65,7 @@ function MyNavBar() {
               {loggedIn == true && (
                 <Nav.Link style={{ color: 'darkgoldenrod'}} as={Link} to="/account">Account Details</Nav.Link>)}
               {isStaff == true && (
-                <Nav.Link style={{ color: 'darkgoldenrod'}} as={Link} to="/admin">Admin Page</Nav.Link>)}
+                <Nav.Link style={{ color: 'darkgoldenrod'}} onClick={handleAdminClick}>Admin Page</Nav.Link>)}
               {loggedIn == true && (
                 <Nav.Link style={{ color: 'darkgoldenrod'}} onClick={handleSignOut}>Sign Out</Nav.Link>)}
               {loggedIn == false && (
