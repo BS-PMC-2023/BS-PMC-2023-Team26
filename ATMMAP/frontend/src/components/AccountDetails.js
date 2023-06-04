@@ -37,25 +37,25 @@ function AccountDetails() {
           <p><strong>Email:</strong> {user.email}</p>
           <p><strong>VIP subscriber:</strong> {user.activated}</p>
           <div className="account-details-buttons">
-            <Link to='/ResetRequest'>
-              <button className="account-details-button">Reset Password</button>
+            <Link style={{ textDecoration: 'none'}} to='/ResetRequest'>
+              <button style={{ backgroundColor: 'darkgoldenrod', color : 'white' }} className="account-details-button">Reset Password</button>
             </Link>
-            <Link to='/DeleteRequest'>
-              <button className="account-details-button">Delete User</button>
-            </Link>
-            <Link to='/EditRequest'>
-              <button className="account-details-button">Edit Profile</button>
+            <Link style={{ textDecoration: 'none'}} to='/EditRequest'>
+              <button style={{ backgroundColor: 'darkgoldenrod', color : 'white' }} className="account-details-button">Edit Profile</button>
             </Link>
             {user.activated == "False" && (
-              <Link to='/PaymentPage'>
-                <button className="account-details-button">Become VIP</button>
+              <Link style={{ textDecoration: 'none'}} to='/PaymentPage'>
+                <button style={{ backgroundColor: 'darkgoldenrod', color : 'white' }} className="account-details-button">Become VIP</button>
               </Link>
             )}
             {user.activated == "True" && (
-              <Link to='/cancelSub'>
-                <button className="account-details-button">Cancel VIP</button>
+              <Link style={{ textDecoration: 'none'}} to='/cancelSub'>
+                <button style={{ backgroundColor: 'silver', color : 'white' }} className="account-details-button">Cancel VIP</button>
               </Link>
             )}
+              <Link style={{ textDecoration: 'none'}} to='/DeleteRequest'>
+                <button style={{ backgroundColor: 'darkred', color : 'white' }} className="account-details-button">Delete User</button>
+              </Link>
           </div>
         </div>
       </div>

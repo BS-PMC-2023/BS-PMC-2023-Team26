@@ -1,0 +1,18 @@
+.my-navbar {
+    font-family: "Cambria", sans-serif;
+    font-size: 20px; 
+  }
+.navbar-right{
+    margin-right: 10px;
+}
+.navbar-left{
+    margin-left: 10px;
+}
+.font-yellow{
+    color:darkgoldenrod;
+}
+.font-yellow-big{
+    color:darkgoldenrod;
+    font-size: 24px; 
+    font-weight: bold;
+}
