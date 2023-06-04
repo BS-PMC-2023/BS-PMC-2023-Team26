@@ -58,7 +58,7 @@ const ContactAdminForm = () => {
     <>
       <Navbar />
       <div className="contact-admin-form">
-        <h2>Contact Us</h2>
+        <h2 style={{ color: 'darkgoldenrod'}}>Contact Us</h2>
         <form onSubmit={handleSubmit}>
         <label htmlFor="email">Your Email:</label>
           <input

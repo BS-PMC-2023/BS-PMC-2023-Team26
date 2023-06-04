@@ -62,25 +62,25 @@ const SignUp = () => {
     <>
       <Navbar />
       <form className="signup-form" onSubmit={handleSignUp}>
-        <h2>Create an Account</h2>
+        <h2 style={{ color: 'darkgoldenrod'}}>Create an Account</h2>
         <input type="hidden" name="csrfmiddlewaretoken" value={csrfToken} />
-        <label className="signup-label">
+        <label className="signup-label" style={{ color: 'darkgoldenrod'}}>
           Username:
           <input className="signup-input" type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
         </label>
-        <label className="signup-label">
+        <label className="signup-label" style={{ color: 'darkgoldenrod'}}>
           Email:
           <input className="signup-input" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
         </label>
-        <label className="signup-label">
+        <label className="signup-label" style={{ color: 'darkgoldenrod'}}>
           Password:
           <input className="signup-input" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </label>
-        <label className="signup-label">
+        <label className="signup-label" style={{ color: 'darkgoldenrod'}}>
           Confirm Password:
           <input className="signup-input" type="password" value={password2} onChange={(e) => setPassword2(e.target.value)} />
         </label>
-        <label className="signup-label">
+        <label className="signup-label" style={{ color: 'darkgoldenrod'}}>
           Profile Picture:
           <input className="signup-input" type="file" accept="image/*" onChange={(e) => setProfilePicture(e.target.files[0])} />
         </label>

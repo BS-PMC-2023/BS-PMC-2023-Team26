@@ -113,7 +113,7 @@ const CryptoGraph = ({ coinId = 'bitcoin' }) => {
     <>
       <Navbar />
       <div className="crypto-graph">
-        <h2 className="crypto-graph__title">Crypto Value: {selectedCoin}</h2>
+        <h2 className="crypto-graph__title" style={{ color: 'darkgoldenrod'}}>Crypto Value: {selectedCoin}</h2>
         <div className="crypto-graph__options">
           <div className="crypto-graph__options-item">
             <label htmlFor="coin">Crypto:</label>

@@ -56,7 +56,7 @@ const DeleteRequest = () => {
       <div className="delete-container">
         <div className="delete-request-container">
           <form className="delete-request-form" onSubmit={handleDelete}>
-            <h2>Delete Your Account</h2>
+            <h2 style={{ color: 'darkgoldenrod'}}>Delete Your Account</h2>
             <input type="hidden" name="csrfmiddlewaretoken" value={csrfToken} />
             <label className="delete-request-label">
               Enter your Password:
