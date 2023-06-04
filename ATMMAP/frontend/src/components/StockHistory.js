@@ -62,42 +62,39 @@ const StockHistory = () => {
   };
 
   return (
-    <div>
+    <>
       <Navbar />
-    
-    <div className="stock-history">
-      <h1>Stock History</h1>
-
-      <form onSubmit={handleSubmit}>
-        <label>
-          Choose a stock:
-          <select value={symbol} onChange={handleSymbolChange}>
+      <div className="stock-history">
+        <h1 className="stock-history__title">Stock History</h1>
+        <form onSubmit={handleSubmit} className="stock-history__form">
+          <label htmlFor="stock-symbol">Choose a stock:</label>
+          <select id="stock-symbol" value={symbol} onChange={handleSymbolChange}>
             <option value="AAPL">Apple (AAPL)</option>
             <option value="AMZN">Amazon (AMZN)</option>
             <option value="FB">Facebook (FB)</option>
             <option value="GOOG">Google (GOOG)</option>
             <option value="MSFT">Microsoft (MSFT)</option>
           </select>
-        </label>
-        <button type="submit">Fetch Data</button>
-      </form>
-
-      {loading && <p>Loading data...</p>}
-      {error && <p>{error}</p>}
-      {!loading && !error && (
-       <div> 
-          <button onClick={exportToExcel}>Export to Excel</button>
-          <ul>
-            {stockData.map((entry, index) => (
-              <li key={index}>
-                {entry.date}: {entry.close}
-              </li>
-            ))}
-          </ul>
-         </div> 
-      )}
-    </div>
-    </div>
+        </form>
+        <div className="stock-history__buttons">
+          <button type="submit" className="stock-history__submit-button" onClick={handleSubmit}>Fetch Data</button>
+          <button onClick={exportToExcel} className="stock-history__export-button">Export to Excel</button>
+        </div>
+        {loading && <p>Loading data...</p>}
+        {error && <p>{error}</p>}
+        {!loading && !error && (
+          <div className="stock-history__results">
+            <ul>
+              {stockData.map((entry, index) => (
+                <li key={index}>
+                  {entry.date}: {entry.close}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 
