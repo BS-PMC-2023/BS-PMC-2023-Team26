@@ -2,6 +2,7 @@
   padding: 2rem;
   max-width: 700px;
   margin: 0 auto;
+  font-family: "Cambria", sans-serif;
 }
 
 .account-details-container-inner {
@@ -9,39 +10,34 @@
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
   padding: 2rem;
   margin-top: 2rem;
-  background-color: #fff;
+  background-color: #363131;
 }
 
 .account-details-container-inner h2 {
-  color: #333;
+  color: #ffffff;
   margin-bottom: 1.5rem;
 }
 
 .account-details-container-inner p {
   font-size: 1.125rem;
   margin-bottom: 1rem;
-  color: #666;
-}
-
-.account-details-buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 2rem;
+  color: #ffffff;
 }
 
 .account-details-button {
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
+  font-size: 16px;
   color: #fff;
-  background-color: #007bff;
+  background-color: darkgoldenrod;
   border: none;
-  border-radius: 5px;
   cursor: pointer;
+  text-decoration: 'none';
   transition: background-color 0.3s ease;
+  height: 50px;
+  width: auto;
 }
 
 .account-details-button:hover {
-  background-color: #0056b3;
+  background-color: darkgoldenrod;
 }
 
 .account-details-button:focus {
