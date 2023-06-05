@@ -140,7 +140,7 @@ const StockHistory = () => {
                   display: false,
                 },
               },
-            }
+            },
             layout: {
               padding: {
                 top: 50,
