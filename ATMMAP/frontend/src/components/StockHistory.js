@@ -166,7 +166,7 @@ const StockHistory = () => {
         <h1 className="stock-history__title">Stock History</h1>
         <form onSubmit={handleSubmit} className="stock-history__form">
           <div style={{ fontSize: '20px' }}>
-            <label htmlFor="stock-symbol">Choose a stock:</label>
+            <label >Choose a stock:</label>
             <select id="stock-symbol" value={symbol} onChange={handleSymbolChange}>
               <option value="AAPL">Apple (AAPL)</option>
               <option value="AMZN">Amazon (AMZN)</option>
