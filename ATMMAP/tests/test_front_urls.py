@@ -37,10 +37,30 @@ class TestUrls(SimpleTestCase):
         url =reverse('DeleteRequest')
         self.assertEqual(resolve(url).func,index)
 
-    def test_map_url_is_resolved(self):
-        url =reverse('map')
+    def test_EditRequest_url_is_resolved(self):
+        url =reverse('EditRequest')
         self.assertEqual(resolve(url).func,index)
     
     def test_reset_form_url_is_resolved(self):
         url =reverse('reset_form',args=['uidb64','token'])
         self.assertEqual(resolve(url).func,index)
+
+    def test_map_url_is_resolved(self):
+            url =reverse('CurrencyGraph')
+            self.assertEqual(resolve(url).func,index)
+
+    def test_CryptoGraph_url_is_resolved(self):
+            url =reverse('CryptoGraph')
+            self.assertEqual(resolve(url).func,index)
+
+    def test_ContactAdminForm_url_is_resolved(self):
+            url =reverse('ContactAdminForm')
+            self.assertEqual(resolve(url).func,index)
+
+    def test_PaymentPage_url_is_resolved(self):
+            url =reverse('PaymentPage')
+            self.assertEqual(resolve(url).func,index)
+
+    def test_cancelSub_url_is_resolved(self):
+            url =reverse('cancelSub')
+            self.assertEqual(resolve(url).func,index)
