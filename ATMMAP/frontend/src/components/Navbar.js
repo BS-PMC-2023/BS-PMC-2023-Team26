@@ -100,9 +100,14 @@ function MyNavBar() {
         </Nav>
         <Nav className="navbar-right">
           <Dropdown>
+            {loggedIn && (
             <Dropdown.Toggle className="font-yellow" variant="outline-light" id="dark-mode-dropdown">
               My Account
-            </Dropdown.Toggle>
+            </Dropdown.Toggle>)}
+            {!loggedIn && (
+            <Dropdown.Toggle className="font-yellow" variant="outline-light" id="dark-mode-dropdown">
+              Signup/Signin
+            </Dropdown.Toggle>)}
             <Dropdown.Menu className={`${darkMode ? 'bg-dark' : ''}`}>
               {loggedIn && (
                 <Nav.Link
