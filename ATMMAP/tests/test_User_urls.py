@@ -1,7 +1,7 @@
 from django.test import SimpleTestCase
 
-from django.urls import reverse , resolve
-from Users.views import signin ,signup , signout , get_csrf_token ,check_login , user_details ,verify ,call_reset, delete_user
+from django.urls import reverse , resolve,include
+from Users.views import VIP_Cancel,check_vip,payment_id,VIP_Res,reset_form,edit_user,contact_us, signin ,signup , signout , get_csrf_token ,check_login , user_details ,verify ,call_reset, delete_user
 
 class TestUrls(SimpleTestCase):
 
@@ -40,5 +40,29 @@ class TestUrls(SimpleTestCase):
     def test_delete_user_url_is_resolved(self):
         url =reverse('delete_user')
         self.assertEqual(resolve(url).func,delete_user)
+
+    def test_edit_user_user_url_is_resolved(self):
+        url =reverse('edit_user')
+        self.assertEqual(resolve(url).func,edit_user)
+
+    def test_contact_us_user_url_is_resolved(self):
+        url =reverse('contact_us')
+        self.assertEqual(resolve(url).func,contact_us)
+
+    def test_VIP_Res_url_is_resolved(self):
+        url =reverse('VIP_Res')
+        self.assertEqual(resolve(url).func,VIP_Res)
+
+    def test_payment_id_url_is_resolved(self):
+        url =reverse('payment_id')
+        self.assertEqual(resolve(url).func,payment_id)
+
+    def test_check_vip_url_is_resolved(self):
+        url =reverse('check_vip')
+        self.assertEqual(resolve(url).func,check_vip)
+
+    def test_VIP_Cancel_url_is_resolved(self):
+        url =reverse('VIP_Cancel')
+        self.assertEqual(resolve(url).func,VIP_Cancel)
 
     
