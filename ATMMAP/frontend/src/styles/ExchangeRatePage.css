@@ -56,20 +56,20 @@
 } */
 
 
-.exchange-rate-page__convert-button {
-  padding: 0.5rem 1rem;
-  border: none;
-  font-size: 20px;
-  border-radius: 5px;
-  background-color: #28a745; /* set the background color to the primary color */
-  color: #fff;
-  font-family: "Cambria", sans-serif;
-  cursor: pointer;
-}
+  .exchange-rate-page__convert-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    font-size: 20px;
+    border-radius: 5px;
+    background-color: #28a745; /* set the background color to the primary color */
+    color: #fff;
+    font-family: "Cambria", sans-serif;
+    cursor: pointer;
+  }
 
-.exchange-rate-page__convert-button:hover {
-  background-color: #555;
-}
+  .exchange-rate-page__convert-button:hover {
+    background-color: #555;
+  }
 
 
 .exchange-rate-page__result {

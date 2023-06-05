@@ -49,36 +49,36 @@ h2 {
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
 }
 
-.signup-button {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  font-weight: bold;
-  color: #fff;
-  background-color: #0066CC;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
-}
+  .signup-button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #0066CC;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
 
 
-.signup-button:hover {
-  background-color: #004B8D;
-  
-}
-.signup-form button {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: none;
-  background-color: #ffbb33;
-  color: white;
-  transition: background-color 0.2s ease;
-}
+  .signup-button:hover {
+    background-color: #004B8D;
+    
+  }
+  .signup-form button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    background-color: #ffbb33;
+    color: white;
+    transition: background-color 0.2s ease;
+  }
 
-.btn-primary:hover {
-  background-color: #ffbb33;
-  border-color: #ffbb33;
-}
+  .btn-primary:hover {
+    background-color: #ffbb33;
+    border-color: #ffbb33;
+  }

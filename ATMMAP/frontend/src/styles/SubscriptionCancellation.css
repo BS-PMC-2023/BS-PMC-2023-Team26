@@ -38,29 +38,29 @@
   margin-top: 2rem;
 }
 
-.cancel-subscription-button {
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  color: #fff;
-  background-color: #007bff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
+  .cancel-subscription-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
 
-.cancel-subscription-button {
-  display: inline-block;
-  padding: 12px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  text-align: center;
-  color: #fff;
-  background-color: #ff0000;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
+  .cancel-subscription-button {
+    display: inline-block;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    background-color: #ff0000;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
 
 
 .back-link {
@@ -68,15 +68,15 @@
   text-decoration: none;
 }
 
-.back-button {
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  color: #212529;
-  background-color: darkgoldenrod;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  cursor: pointer;
-}
+  .back-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    color: #212529;
+    background-color: darkgoldenrod;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+  }
 
 .result-message {
   margin-top: 20px;

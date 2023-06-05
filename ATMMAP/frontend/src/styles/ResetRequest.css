@@ -25,21 +25,21 @@
   color: #666;
 }
 
-.reset-request-button {
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  color: #fff;
-  background-color: #007bff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
+  .reset-request-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
 
-.reset-request-button:hover {
-  background-color: #0056b3;
-}
+  .reset-request-button:hover {
+    background-color: #0056b3;
+  }
 
-.reset-request-button:focus {
-  outline: none;
-}
+  .reset-request-button:focus {
+    outline: none;
+  }

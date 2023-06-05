@@ -50,27 +50,27 @@
   background-color: #0056b3;
 }
 
-.stock-history__buttons {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
+  .stock-history__buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
 
-.stock-history__export-button {
-  background-color: #28a745;
-  color: #fff;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 20px;
-}
+  .stock-history__export-button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+  }
 
-.stock-history__export-button:hover {
-  background-color: #1c7430;
-}
+  .stock-history__export-button:hover {
+    background-color: #1c7430;
+  }
 
 .stock-history__results {
   width: 100%;
