@@ -93,10 +93,10 @@ const EditRequest = () => {
             </div>
             {errorMessage && <p className="edit-request__error-message">{errorMessage}</p>}
             <div className="edit-request__buttons">
-              <button className="edit-request__button" type="submit">Confirm Edit</button>
               <Link to='/account'>
                 <button className="edit-request__button edit-request__button--cancel">Cancel</button>
               </Link>
+              <button className="edit-request__button" type="submit">Confirm Edit</button>
             </div>
           </form>
         </div>

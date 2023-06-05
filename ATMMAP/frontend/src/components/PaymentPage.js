@@ -54,7 +54,7 @@ const PaymentPage = () => {
         })
         .render('#paypal-button-container-P-9W952749MP466283WMRYM4FQ'); // Renders the PayPal button
     };
-
+    
     return () => {
       // Clean up the script when the component unmounts
       document.body.removeChild(script);
@@ -65,11 +65,8 @@ const PaymentPage = () => {
   <Navbar />
             <div className="reset-password-container">
               <div className="reset-password-form-container">
-                <Link to='/account'>
-                  <button className="account-details-button">Go back</button>
-                </Link>
-                <p style={{ color: 'darkgoldenrod'}}>You are about to register for VIP services for ATMMAP</p>
-                <p style={{ color: 'darkgoldenrod'}}>Your benefits as a VIP member will be:
+                <p style={{ color: 'darkgoldenrod', fontSize : '30px'}}>You are about to register for VIP services for ATMMAP</p>
+                <p style={{ fontSize : '20px'}}>Your benefits as a VIP member will be:
                   <br/>
                   - Use advanced filter options for banks and ATMs
                   <br/>
@@ -82,6 +79,9 @@ const PaymentPage = () => {
                   - Export stock, currency and crypto currency values to XL
                 </p>
                 <div id="paypal-button-container-P-9W952749MP466283WMRYM4FQ"></div>
+                <Link to='/account'>
+                  <button className="reset-password-button">Go back</button>
+                </Link>
               </div>
             </div>
           </>);

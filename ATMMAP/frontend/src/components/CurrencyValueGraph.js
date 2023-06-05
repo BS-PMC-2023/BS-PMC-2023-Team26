@@ -73,28 +73,38 @@ const CurrencyValueGraph = ({ currencySymbol = 'USD/EUR' }) => {
             y: {
               ticks: {
                 beginAtZero: false,
+                color: 'white', // Set the font color to white
+                font: {
+                  size: 16, // Adjust the font size as desired
+                },
               },
               grid: {
-                color: 'rgba(0, 0, 0, 0.1)',
+                color: 'rgba(255, 255, 255, 0.8)', // Set the grid color to white with reduced transparency
               },
             },
             x: {
               grid: {
                 display: false,
               },
+              ticks: {
+                color: 'white', // Set the font color to white
+                font: {
+                  size: 16, // Adjust the font size as desired
+                },
+              },
             },
           },
           elements: {
             line: {
-              borderColor: '#007bff',
-              borderWidth: 2
+              borderColor: '#ffffff', // Set the line color to white
+              borderWidth: 2,
             },
             point: {
-              radius: 0
-            }
+              radius: 0,
+            },
           },
         },
-      });    
+      });
     }
   }, [chartData]);
 

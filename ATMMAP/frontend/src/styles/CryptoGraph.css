@@ -3,14 +3,16 @@
   margin: 2rem auto;
   padding: 1rem;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  background-color: #f4f4f4;
+  background-color: #212529;
   border-radius: 10px;
   font-family: "Cambria", sans-serif;
+  font-size: large;
+  color: whitesmoke;
 }
 
 .crypto-graph__title {
   text-align: center;
-  color: #333;
+  color: whitesmoke;
   margin-bottom: 1rem;
 }
 
@@ -27,7 +29,7 @@
 
 .crypto-graph__options-item label {
   margin-bottom: 0.5rem;
-  color: #555;
+  color: whitesmoke;
 }
 
 .crypto-graph__options-item select {
@@ -46,15 +48,18 @@
   border: none;
   border-radius: 5px;
   width: 100%; /* make the button full width */
-  font-size: 1rem; /* adjust font size if necessary */
+  font-size: 20px; /* adjust font size if necessary */
+  font-family: "Cambria", sans-serif;
   cursor: pointer;
   background-color: #28a745; /* set the background color to green */
-  color: white; /* set the text color to white */
+  color: whitesmoke; /* set the text color to white */
 }
 
 
 .crypto-graph__options-item button:hover {
-  background-color: #ddd; /* change color on hover */
+  background-color: whitesmoke; /* change color on hover */
+  font-size: 20px; /* adjust font size if necessary */
+  font-family: "Cambria", sans-serif;
 }
 
 .crypto-graph__options-item button:active {

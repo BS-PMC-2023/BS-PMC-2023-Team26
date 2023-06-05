@@ -71,12 +71,12 @@ function CancelSubscription() {
           </div>
           <div className="button-container">
             <div className="cancel-button-wrapper">
-              <button className="cancel-subscription-button" onClick={handleCancel}>
-                Cancel Subscription
-              </button>
               <Link to="/account" className="back-link">
                 <button className="back-button">Go back</button>
               </Link>
+              <button className="cancel-subscription-button" onClick={handleCancel}>
+                Cancel Subscription
+              </button>
             </div>
           </div>
           {result && <p className="result-message">{result}</p>}

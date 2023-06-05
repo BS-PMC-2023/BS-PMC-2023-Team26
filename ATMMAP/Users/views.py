@@ -111,8 +111,6 @@ def check_vip(request):
     vip = VIP.objects.get(user=user)
     return JsonResponse({'vipActivated': vip.activated})
 
-# Checks if a user is logged in or not
-@login_required
 def user_details(request):
     user = request.user
     vip = VIP.objects.get(user=user)
@@ -223,20 +221,27 @@ def edit_user(request):
         except (TypeError, ValueError, OverflowError, usermodel.DoesNotExist):
             user = None
             return JsonResponse({'success': False, 'message': 'User not found.'})
+        
         username1 = request.POST.get('username1')
         username2 = request.POST.get('username2')
+
+        if username1 and usermodel.objects.exclude(pk=user.pk).filter(username=username1).exists():
+            return JsonResponse({'success': False, 'message': 'Username is already taken.'})
+        
         if username1 != username2:
             return JsonResponse({'success': False, 'message': 'Usernames do not match!'})
+        
         user.username = username1
         # Handle profile picture update
         profile_picture = request.FILES.get('profile_picture')
+        profile, _ = Profile.objects.get_or_create(user=user)
         if profile_picture:
             # Delete old profile picture if it exists
-            if user.profile.profile_picture:
-                user.profile.profile_picture.delete(save=False)
+            if profile.profile_picture:
+                profile.profile_picture.delete(save=False)
             # Save new profile picture
-            user.profile.profile_picture = profile_picture
-            user.profile.save()
+            profile.profile_picture = profile_picture
+            profile.save()
         user.save()
         return JsonResponse({'success': True})
     else:
