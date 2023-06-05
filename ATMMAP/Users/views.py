@@ -206,6 +206,13 @@ def delete_user(request):
             return JsonResponse({'success': False, 'message': 'User not found!.'})  
         Password = request.POST.get('Password')
         if user.check_password(Password):
+            send_mail(
+                'Your ATMMAP account has been deleted',
+                f'Your account {username} has been succefuly deleted!',
+                'markos5623@gmail.com',
+                [user.email],
+                fail_silently=False,
+            )
             logout(request)
             user.delete()
             return JsonResponse({'success': True})
