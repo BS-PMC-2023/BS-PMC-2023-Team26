@@ -6,7 +6,6 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('API/', include('API.urls')),
     path('Users/', include('django.contrib.auth.urls')),
     path('Users/', include('Users.urls')),
     path('paypal/', include("paypal.standard.ipn.urls")),

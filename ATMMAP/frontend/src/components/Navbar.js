@@ -26,7 +26,7 @@ function MyNavBar() {
   }, []);
 
   const handleSignOut = () => {
-    fetch('Users/signout/', { method: 'POST' })
+    fetch('/Users/signout/', { method: 'POST' })
       .then(response => {
         if (response.ok) {
           setLoggedIn(false);

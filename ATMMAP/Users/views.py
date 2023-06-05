@@ -113,26 +113,25 @@ def check_vip(request):
 
 def user_details(request):
     user = request.user
-    vip = VIP.objects.get(user=user)
-    if(vip.activated):
+    user_data = {  'activated': 'False',}
+    if user.is_authenticated:
+        try:
+            vip = VIP.objects.get(user=user)
+        except VIP.DoesNotExist:
+            return JsonResponse(user_data)
+        profile_picture = None
+        if hasattr(user, 'profile') and user.profile.profile_picture:
+            profile_picture = user.profile.profile_picture.url 
         user_data = {
             'username': user.username,
             'email': user.email,
-            'profile_picture': user.profile.profile_picture.url if hasattr(user, 'profile') and user.profile.profile_picture else None,
-            'activated': 'True',
+            'profile_picture': profile_picture,
+            'activated': str(vip.activated),
             'loggedIn': user.is_authenticated,
-            'isAdmin': user.is_staff ,
-        }
-    else:
-        user_data = {
-            'username': user.username,
-            'email': user.email,
-            'profile_picture': user.profile.profile_picture.url if hasattr(user, 'profile') and user.profile.profile_picture else None,
-            'activated': 'False',
-            'loggedIn': user.is_authenticated,
-            'isAdmin': user.is_staff ,
+            'isAdmin': user.is_staff,
         }
     return JsonResponse(user_data)
+
 
 def verify(request, uidb64, token):
     usermodel = get_user_model()

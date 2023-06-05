@@ -1,30 +1,32 @@
-.account-details-container {
-  padding: 2rem;
-  max-width: 80%;
-  margin: 0 auto;
-  font-family: "Cambria", sans-serif;
-  font-size: 20px;
-}
+  .account-details-container {
+    padding: 2rem;
+    max-width: 80%;
+    margin: 0 auto;
+    font-family: "Cambria", sans-serif;
+    font-size: 20px;
+  }
 
-.account-details-container-inner {
-  border-radius: 10px;
-  padding: 2rem;
-  margin-top: 2rem;
-  background-color:#212529;
-  font-family: "Cambria", sans-serif;
-  font-size: 20px;
-}
+    .account-details-container-inner {
+      border-radius: 10px;
+      padding: 2rem;
+      margin-top: 2rem;
+      background-color:#212529;
+      font-family: "Cambria", sans-serif;
+      font-size: 20px;
+    }
 
-.account-details-container-inner h2 {
-  color: #ffffff;
-  margin-bottom: 1.5rem;
-}
+  .account-details-container-inner h2 {
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+  }
 
-.account-details-container-inner p {
-  font-size: 1.125rem;
-  margin-bottom: 1rem;
-  color: #ffffff;
-}
+  .account-details-container-inner p {
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+  }
+
+
 
 .account-details-buttons {
   display: flex;
@@ -35,30 +37,34 @@
   margin-top: 1.5rem;
   font-family: "Cambria", sans-serif;
   font-size: 18px;
-}
+ }
 
-.account-details-button {
-  padding: 12px 20px;
-  font-size: 1rem;
-  color: #fff;
-  background-color: darkgoldenrod;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  flex: 1 1 auto; /* buttons can grow and shrink as needed, and base size is auto */
-  font-family: "Cambria", sans-serif;
-  font-size: 18px;
-  gap: 10px;
-}
 
-.account-details-button:hover {
-  background-color: #b08500;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-}
+
+  .account-details-button {
+    padding: 12px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: darkgoldenrod;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    flex: 1 1 auto; /* buttons can grow and shrink as needed, and base size is auto */
+    font-family: "Cambria", sans-serif;
+    font-size: 18px;
+    gap: 10px;
+  }
+
+
+
+  .account-details-button:hover {
+    background-color: #b08500;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  }
 
 .account-details-button:focus {
   outline: none;

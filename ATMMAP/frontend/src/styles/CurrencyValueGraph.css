@@ -1,31 +1,31 @@
-.currency-value-graph {
-  width: 80%;
-  margin: 2rem auto;
-  padding: 1rem;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  background-color: #212529;
-  border-radius: 10px;
-  font-family: "Cambria", sans-serif;
-  color: whitesmoke;
-  font-size: 20px;
-}
+  .currency-value-graph {
+    width: 80%;
+    margin: 2rem auto;
+    padding: 1rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: #212529;
+    border-radius: 10px;
+    font-family: "Cambria", sans-serif;
+    color: whitesmoke;
+    font-size: 20px;
+  }
 
-.currency-value-graph__title {
-  text-align: center;
-  color: whitesmoke;
-  margin-bottom: 1rem;
-}
+  .currency-value-graph__title {
+    text-align: center;
+    color: whitesmoke;
+    margin-bottom: 1rem;
+  }
 
-.currency-value-graph__options {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 1rem;
-}
+  .currency-value-graph__options {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+  }
 
-.currency-value-graph__options-item {
-  display: flex;
-  flex-direction: column;
-}
+  .currency-value-graph__options-item {
+    display: flex;
+    flex-direction: column;
+  }
 
 
 
@@ -46,22 +46,22 @@
   height: 400px;
 }
 
-.currency-value-graph__options-item button {
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 5px;
-  background-color: #28a745; /* set the background color to the primary color */
-  color: #fff;
-  font-size: 20px;
-  cursor: pointer;
-}
+  .currency-value-graph__options-item button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #28a745; /* set the background color to the primary color */
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+  }
 
-.currency-value-graph__options-item button:hover {
-  background-color: #555;
-}
+  .currency-value-graph__options-item button:hover {
+    background-color: #555;
+  }
 
-.currency-value-graph__options-item button:active {
-  background-color: #777;
-}
+  .currency-value-graph__options-item button:active {
+    background-color: #777;
+  }
 
 

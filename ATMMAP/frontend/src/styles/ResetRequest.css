@@ -1,22 +1,22 @@
-.reset-container {
-  padding: 2rem;
-  max-width: 700px;
-  margin: 0 auto;
-  font-family: "Cambria", sans-serif;
-}
+  .reset-container {
+    padding: 2rem;
+    max-width: 700px;
+    margin: 0 auto;
+    font-family: "Cambria", sans-serif;
+  }
 
-.reset-request-container {
-  border-radius: 10px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-  padding: 2rem;
-  margin-top: 2rem;
-  background-color: #212529;
-  font-family: "Cambria", sans-serif;
-}
+  .reset-request-container {
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-top: 2rem;
+    background-color: #212529;
+    font-family: "Cambria", sans-serif;
+  }
 
-.reset-request-container h2 {
-  color: #333;
-  margin-bottom: 1.5rem;
+  .reset-request-container h2 {
+    color: #333;
+    margin-bottom: 1.5rem;
 }
 
 .reset-request-form label {
@@ -25,21 +25,21 @@
   color: #666;
 }
 
-.reset-request-button {
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  color: #fff;
-  background-color: #007bff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
+  .reset-request-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
 
-.reset-request-button:hover {
-  background-color: #0056b3;
-}
+  .reset-request-button:hover {
+    background-color: #0056b3;
+  }
 
-.reset-request-button:focus {
-  outline: none;
-}
+  .reset-request-button:focus {
+    outline: none;
+  }

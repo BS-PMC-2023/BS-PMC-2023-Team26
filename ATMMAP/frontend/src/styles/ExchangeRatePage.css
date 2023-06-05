@@ -1,75 +1,75 @@
-.exchange-rate-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 50%;
-  margin: 2rem auto;
-  padding: 2rem;
-  background-color: #212529;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  font-family: "Cambria", sans-serif;
-  color: #fff;
-}
+  .exchange-rate-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #212529;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-family: "Cambria", sans-serif;
+    color: #fff;
+  }
 
-.exchange-rate-page__title {
-  text-align: center;
-  margin-bottom: 1rem;
-  color: #fff;
-  font-family: "Cambria", sans-serif;
-}
+  .exchange-rate-page__title {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #fff;
+    font-family: "Cambria", sans-serif;
+  }
 
-.exchange-rate-page__form-group {
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-  margin-bottom: 1rem;
-}
+  .exchange-rate-page__form-group {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
 
-.exchange-rate-page__form-group-item {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  font-size: 20px;
-  font-family: "Cambria", sans-serif;
-}
+  .exchange-rate-page__form-group-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 20px;
+    font-family: "Cambria", sans-serif;
+  }
 
-.exchange-rate-page__form-group-item label {
-  margin-bottom: 0.5rem;
-  color: #fff;
-  font-size: 20px;
-  font-family: "Cambria", sans-serif;
-}
+  .exchange-rate-page__form-group-item label {
+    margin-bottom: 0.5rem;
+    color: #fff;
+    font-size: 20px;
+    font-family: "Cambria", sans-serif;
+  }
 
-.exchange-rate-page__form-group-item select,
-.exchange-rate-page__form-group-item input {
-  padding: 0.5rem;
-  display: flex;
-  width: 300px;
-  flex-direction: column;
-  border: none;
-  border-radius: 5px;
-}
+  .exchange-rate-page__form-group-item select,
+  .exchange-rate-page__form-group-item input {
+    padding: 0.5rem;
+    display: flex;
+    width: 300px;
+    flex-direction: column;
+    border: none;
+    border-radius: 5px;
+  }
 
 /* .label-spacing {
   margin-bottom: 0.5rem;
 } */
 
 
-.exchange-rate-page__convert-button {
-  padding: 0.5rem 1rem;
-  border: none;
-  font-size: 20px;
-  border-radius: 5px;
-  background-color: #28a745; /* set the background color to the primary color */
-  color: #fff;
-  font-family: "Cambria", sans-serif;
-  cursor: pointer;
-}
+  .exchange-rate-page__convert-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    font-size: 20px;
+    border-radius: 5px;
+    background-color: #28a745; /* set the background color to the primary color */
+    color: #fff;
+    font-family: "Cambria", sans-serif;
+    cursor: pointer;
+  }
 
-.exchange-rate-page__convert-button:hover {
-  background-color: #555;
-}
+  .exchange-rate-page__convert-button:hover {
+    background-color: #555;
+  }
 
 
 .exchange-rate-page__result {

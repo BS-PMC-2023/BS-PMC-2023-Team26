@@ -1,22 +1,22 @@
-.map-page-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  font-family: "Cambria", sans-serif;
-  color: whitesmoke;
-  font-size: 20px;
-}
+  .map-page-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-family: "Cambria", sans-serif;
+    color: whitesmoke;
+    font-size: 20px;
+  }
 
-.filters-container {
-  flex: 0 0 300px;
-  padding: 20px;
-  background-color: #212529;
-  border-radius: 10px;
-}
+  .filters-container {
+    flex: 0 0 300px;
+    padding: 20px;
+    background-color: #212529;
+    border-radius: 10px;
+  }
 
-.form-group {
-  margin-bottom: 20px;
-}
+  .form-group {
+    margin-bottom: 20px;
+  }
 
 .form-group label {
   display: block;
@@ -24,12 +24,12 @@
   margin-bottom: 5px;
 }
 
-.form-control {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
+  .form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
 
 .map-container {
   flex: 1;

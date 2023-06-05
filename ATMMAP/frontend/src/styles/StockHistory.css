@@ -1,35 +1,35 @@
-.stock-history {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 80%;
-  height: auto;
-  margin: 2rem auto;
-  padding: 2rem;  
-  background-color: #212529;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  font-family: "Cambria", sans-serif;
-  color: whitesmoke;
-  font-size: 20px;
-}
+  .stock-history {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    height: auto;
+    margin: 2rem auto;
+    padding: 2rem;  
+    background-color: #212529;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-family: "Cambria", sans-serif;
+    color: whitesmoke;
+    font-size: 20px;
+  }
 
-.stock-history__title {
-  color: darkgoldenrod;
-  font-size: 40px;
-  font-weight: bold;
-  margin-bottom: 2rem;
-  font-family: "Cambria", sans-serif;
-}
+  .stock-history__title {
+    color: darkgoldenrod;
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    font-family: "Cambria", sans-serif;
+  }
 
-.stock-history__form {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 2rem;
-  width: 100%;
-  font-family: "Cambria", sans-serif;
+  .stock-history__form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+    width: 100%;
+    font-family: "Cambria", sans-serif;
 }
 
 .stock-history__form select,
@@ -50,27 +50,27 @@
   background-color: #0056b3;
 }
 
-.stock-history__buttons {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
+  .stock-history__buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
 
-.stock-history__export-button {
-  background-color: #28a745;
-  color: #fff;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 20px;
-}
+  .stock-history__export-button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+  }
 
-.stock-history__export-button:hover {
-  background-color: #1c7430;
-}
+  .stock-history__export-button:hover {
+    background-color: #1c7430;
+  }
 
 .stock-history__results {
   width: 100%;

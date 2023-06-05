@@ -56,7 +56,8 @@ function Home() {
     fetch('/Users/user_details/')
       .then(response => response.json())
       .then(data => {
-        setvipActivated(data.activated);
+        if(data)
+          setvipActivated(data.activated);
       });
   }, []);
   return (
@@ -72,10 +73,10 @@ function Home() {
              <p style={{ color: 'white', fontSize: '20px', textAlign: 'left' }}>
                SPMP group 26 personally welcomes you to our site. Have a wonder full time using it!
              </p>
-             <p style={{ color: 'white', fontSize: '20px', textAlign: 'left' }}>
-               <h2 style={{ color: 'darkgoldenrod', fontSize: '25px', fontWeight: 'bold' }}>
+             <h2 style={{ color: 'darkgoldenrod', fontSize: '25px', fontWeight: 'bold' }}>
                  What would you like to do today?
-               </h2>
+              </h2>
+             <p style={{ color: 'white', fontSize: '20px', textAlign: 'left' }}>
                <Link style={{ textDecoration: 'none' }} to="/ExchangeRate">
                  - View currency exchange rates
                  <br />
