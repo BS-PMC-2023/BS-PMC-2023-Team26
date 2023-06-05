@@ -5,53 +5,33 @@
   font-family: "Cambria", sans-serif;
 }
 
-.account-details-heading {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 1.5rem;
-}
-
 .account-details-form-container {
-  background-color: #fff;
+  background-color: #212529;
   border-radius: 10px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
   padding: 2rem;
   margin-top: 2rem;
-  font-family: "Cambria", sans-serif;
 }
 
-.edit-request {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 50%;
-  margin: 2rem auto;
-  padding: 2rem;
-  background-color: #f4f4f4;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.edit-request__title {
-  text-align: center;
+.account-details-form-container h2 {
+  color: #ffffff;
+  font-size: 2rem;
   margin-bottom: 1rem;
-  color: #333;
+}
+
+.account-details-form-container p {
+  color: #ffffff;
+  margin-bottom: 1.5rem;
 }
 
 .edit-request__form-group {
   display: flex;
   flex-direction: column;
-  margin-bottom: 1rem;
-  width: 100%;
-}
-
-.edit-request__form-group-item {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .edit-request__label {
+  color: #ffffff;
   margin-bottom: 0.5rem;
-  color: #555;
 }
 
 .edit-request__input {
@@ -70,25 +50,25 @@
 .edit-request__buttons {
   display: flex;
   justify-content: space-between;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
 
 .edit-request__button {
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 5px;
-  background-color: #007BFF;
+  background-color: darkgoldenrod;
   color: #fff;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
 .edit-request__button:hover {
-  background-color: #0056b3;
+  background-color: #b08500;
 }
 
 .edit-request__button--cancel {
-  background-color: #DC3545;
+  background-color: #dc3545;
 }
 
 .edit-request__button--cancel:hover {
