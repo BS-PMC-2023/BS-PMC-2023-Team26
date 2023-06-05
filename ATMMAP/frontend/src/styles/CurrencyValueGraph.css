@@ -3,14 +3,16 @@
   margin: 2rem auto;
   padding: 1rem;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  background-color: #f4f4f4;
+  background-color: #212529;
   border-radius: 10px;
   font-family: "Cambria", sans-serif;
+  color: whitesmoke;
+  font-size: 20px;
 }
 
 .currency-value-graph__title {
   text-align: center;
-  color: #333;
+  color: whitesmoke;
   margin-bottom: 1rem;
 }
 
@@ -29,7 +31,8 @@
 
 .currency-value-graph__options-item label {
   margin-bottom: 0.5rem;
-  color: #555;
+  color: whitesmoke;
+  font-size: 20px;
 }
 
 .currency-value-graph__options-item select {
@@ -49,6 +52,7 @@
   border-radius: 5px;
   background-color: #28a745; /* set the background color to the primary color */
   color: #fff;
+  font-size: 20px;
   cursor: pointer;
 }
 

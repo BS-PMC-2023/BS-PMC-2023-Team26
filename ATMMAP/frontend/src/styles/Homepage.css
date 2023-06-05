@@ -1,5 +1,4 @@
 .home-page {
-  background-image: url('istockphoto-1250581414-612x612.jpg'); 
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -11,7 +10,15 @@
 .container {
   margin-top: 100px;
 }
-
+.container-info {
+  background-color: #212529;
+  border-radius: 15px;
+  padding: 20px;
+  width: 100%;
+  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  font-family: "Cambria", sans-serif;
+}
 .btn-primary {
   background-color: #ffffff;
   color: #f26322;

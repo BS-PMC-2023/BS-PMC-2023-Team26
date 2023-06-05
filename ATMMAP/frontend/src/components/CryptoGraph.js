@@ -69,21 +69,40 @@ const CryptoGraph = ({ coinId = 'bitcoin' }) => {
             y: {
               ticks: {
                 beginAtZero: false,
+                color: 'white', // Set the font color to white
+                font: {
+                  size: 16, // Adjust the font size as desired
+                },
               },
               grid: {
-                color: 'rgba(0, 0, 0, 0.1)',
+                color: 'rgba(255, 255, 255, 0.1)', // Set the grid color to white with reduced transparency
               },
             },
             x: {
               grid: {
                 display: false,
               },
+              ticks: {
+                color: 'white', // Set the font color to white
+                font: {
+                  size: 16, // Adjust the font size as desired
+                },
+              },
+            },
+          },
+          elements: {
+            line: {
+              borderColor: '#ffffff', // Set the line color to white
+              borderWidth: 2,
+            },
+            point: {
+              radius: 0,
             },
           },
         },
       });
     }
-  }, [chartData]);
+  },  [chartData]);
 
   const handleCoinChange = (event) => {
     setSelectedCoin(event.target.value);
@@ -141,7 +160,7 @@ const CryptoGraph = ({ coinId = 'bitcoin' }) => {
             <button onClick={exportToExcel}>Export to Excel</button>
           </div>
         </div>
-        <canvas ref={chartRef} className="crypto-graph__chart"></canvas>
+        <canvas style={{fontsize : '30px', color : 'whitesmoke'}} ref={chartRef} className="crypto-graph__chart"></canvas>
       </div>
     </>
   );

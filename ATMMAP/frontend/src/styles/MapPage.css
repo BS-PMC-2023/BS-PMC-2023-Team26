@@ -3,12 +3,14 @@
   justify-content: space-between;
   align-items: flex-start;
   font-family: "Cambria", sans-serif;
+  color: whitesmoke;
+  font-size: 20px;
 }
 
 .filters-container {
   flex: 0 0 300px;
   padding: 20px;
-  background-color: #f4f4f4;
+  background-color: #212529;
   border-radius: 10px;
 }
 

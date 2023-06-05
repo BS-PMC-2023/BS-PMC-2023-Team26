@@ -36,9 +36,9 @@ class CustomUserCreationForm(UserCreationForm):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profile_picture = models.ImageField(upload_to='profile_pictures/', blank=True, null=True)
-
-    # Add other profile fields as needed
+    profile_picture = models.ImageField(upload_to='profile_pictures/', blank=True, null=True, height_field='picture_height', width_field='picture_width')
+    picture_height = models.PositiveIntegerField(null=True, blank=True, editable=False)
+    picture_width = models.PositiveIntegerField(null=True, blank=True, editable=False)
 
     def __str__(self):
         return self.user.username
@@ -47,5 +47,6 @@ class VIP(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     activated = models.BooleanField(default=False)
     paymentID = models.CharField(max_length=100, blank=True, null=True)
+    
     def __str__(self):
         return self.user.username

@@ -1,13 +1,11 @@
 import Navbar from './Navbar';
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 import ResetPasswordForm from './ResetPasswordForm';
-
 import LoginPage from "./Loginpage";
 import SignUp from "./Signuppage";
 import MapPage from "./MapPage";
 import ExchangeRatePage from './ExchangeRatePage';
-import AuthButton from './AuthButton';
 import AccountDetails from './AccountDetails';
 import StockHistory from './StockHistory';
 import CurrencyValueGraph from './CurrencyValueGraph';
@@ -19,7 +17,6 @@ import DeleteRequest from './DeleteRequest';
 import CryptoGraph from './CryptoGraph';
 import SubscriptionCancellation from './SubscriptionCancellation';
 import '../styles/Homepage.css';
-import backgroundImage from '../styles/financial-stock-market-graph-rows-coins-growth-abstract-symbol-finance-concept-business-investment-currency-exchange-162020228.jpg';
 
 
 export default class Homepage extends Component {
@@ -53,32 +50,66 @@ export default class Homepage extends Component {
   }
 }
 
-class Home extends Component {
-  constructor(props){
-    super(props);
-  }
-  render() {
-    return (
-      <div className="home-page" style={{ backgroundImage: `url(${backgroundImage})` }}>
-        <Navbar />
-        <div className="container h-100">
-          <div className="row justify-content-center align-items-center" style={{ height: '50%' }}>
-            <div className="col-md-6 text-center">
-              <div style={{ 
-                background: 'rgba(255, 255, 255, 0.7)', 
-                borderRadius: '15px', 
-                padding: '20px',
-                boxShadow: '0px 0px 10px 2px rgba(0,0,0,0.1)',
-                maxWidth: '70%',
-                margin: '0 auto'
-              }}>
-                <AuthButton />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-  
+function Home() {
+  const [vipActivated, setvipActivated] = useState('False');
+  useEffect(() => {
+    fetch('/Users/user_details/')
+      .then(response => response.json())
+      .then(data => {
+        setvipActivated(data.activated);
+      });
+  }, []);
+  return (
+   <>
+     <Navbar />
+     <div className="container">
+       <div className="row justify-content-center align-items-center">
+         <div className="col-md-6 text-center">
+           <div className="container-info">
+             <h2 style={{ color: 'darkgoldenrod', fontSize: '50px', fontWeight: 'bold' }}>
+               Welcome to ATMMAP
+             </h2>
+             <p style={{ color: 'white', fontSize: '20px', textAlign: 'left' }}>
+               SPMP group 26 personally welcomes you to our site. Have a wonder full time using it!
+             </p>
+             <p style={{ color: 'white', fontSize: '20px', textAlign: 'left' }}>
+               <h2 style={{ color: 'darkgoldenrod', fontSize: '25px', fontWeight: 'bold' }}>
+                 What would you like to do today?
+               </h2>
+               <Link style={{ textDecoration: 'none' }} to="/ExchangeRate">
+                 - View currency exchange rates
+                 <br />
+               </Link>
+               <Link style={{ textDecoration: 'none' }} to="/map">
+                 - Find ATMs or banks in your area
+                 <br />
+               </Link>
+               {vipActivated == 'True' && (
+                 <>
+                   <Link style={{ textDecoration: 'none' }} to="/ExchangeRate">
+                     - Get current stock rates
+                     <br />
+                   </Link>
+                   <Link style={{ textDecoration: 'none' }} to="/CryptoGraph">
+                     - Watch current cryptocurrency rates
+                     <br />
+                   </Link>
+                   <Link style={{ textDecoration: 'none' }} to="/StockHistory">
+                     - Watch current stock rates
+                     <br />
+                   </Link>
+                   <Link style={{ textDecoration: 'none' }} to="/CurrencyGraph">
+                     - Watch current currency rates
+                   </Link>
+                 </>
+               )}
+             </p>
+           </div>
+         </div>
+       </div>
+     </div>
+   </>
+  );
 }
+  
+

@@ -1,13 +1,7 @@
 .my-navbar {
-    font-family: "Cambria", sans-serif;
     font-size: 20px; 
+    font-family: "Cambria", sans-serif;
   }
-.navbar-right{
-    margin-right: 10px;
-}
-.navbar-left{
-    margin-left: 10px;
-}
 .font-yellow{
     color:darkgoldenrod;
 }
@@ -16,7 +10,12 @@
     font-size: 24px; 
     font-weight: bold;
 }
-
+.navbar-right{
+    margin-right: 10px;
+}
+.navbar-left{
+    margin-left: 10px;
+}
 .narrow-dropdown {
     width: 120px; 
     color:darkgoldenrod;
